@@ -101,9 +101,11 @@ html>body .clearfix { overflow: hidden; }
 .blue{color:#05b9ef;}
 .green{ color:#9ac70e;}
 .black { color: #000; }
+.black1 {color: #333;}
 .black2 { color: #666; }
 .black3 { color: #999; }
 .fontColor {color: #18b494;}
+.bdColor {background-color: #f1f1f1;}
 .bgColor {background-color: #18b494;}
 .txt_indent{ text-indent:2em;}
 .el-button {padding: none !important;}
