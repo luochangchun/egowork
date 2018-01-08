@@ -1,0 +1,82 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: transparent;
+}
+
+p {
+    word-break: break-all;
+    word-break: break-word;
+}
+
+a {
+    display: block;
+}
+
+.el-rate__icon {
+    margin-right: 2px
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    display: block;
+    word-break: break-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.text-ellipsis-muti {
+    overflow: hidden;
+    /*超出隐藏*/
+    text-overflow: ellipsis;
+    /*文本溢出时显示省略标记*/
+    display: -webkit-box;
+    /*设置弹性盒模型*/
+    -webkit-box-orient: vertical;
+}
+
+.text-ellipsis-2 {
+    -webkit-line-clamp: 2;
+    /*文本占的行数,如果要设置2行加...则设置为2*/
+}
+
+.text-ellipsis-3 {
+    -webkit-line-clamp: 3;
+    /*文本占的行数,如果要设置2行加...则设置为2*/
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    /* box-sizing: border-box; */
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
