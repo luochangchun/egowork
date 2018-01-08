@@ -1,0 +1,14 @@
+*.iml
+*.log
+.project
+.classpath
+.settings
+.idea
+.vscode
+.svn
+.history
+.DS_Store
+npm-debug.log
+target
+build
+node_modules
