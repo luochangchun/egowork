@@ -1,11 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '../src/components/Index.vue'//首页
+import Index from '../src/components/index.vue'//首页
+import college from '../src/components/college.vue'//云创学院首页
+import activity from '../src/components/activity.vue'//活动详情
+import activityList from "../src/components/activityList.vue";//活动列表
+import financial from "../src/components/financial.vue";//活动列表
 Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/index', component: Index, name: 'Index' },
-	
+	{ path: '/college', component: college, name: 'college' },
+	{ path: '/activityList', component: activityList, name: 'activityList' },
+	{ path: '/activity', component: activity, name: 'activity' },
+	{ path: '/financial', component: financial, name: 'financial' },
 ];
 // 页面刷新时，重新赋值token
 // if (window.localStorage.getItem('token')) {

@@ -3,6 +3,7 @@ import api from './axios/api'
 import ElementUI from 'element-ui'
 import '../static/css/reset.css'
 import 'element-ui/lib/theme-chalk/index.css'
+import '../static/css/main.css'
 import router from './routes.js'
 import App from './App'
 Vue.use(ElementUI)
