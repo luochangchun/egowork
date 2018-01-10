@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../src/components/Index.vue'//首页
+import incubator from '../src/components/incubator.vue'//云创空间首页
+
 Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/index', component: Index, name: 'Index' },
-	
+    { path: '/incubator', component: incubator, name: 'incubator' },
 ];
 // 页面刷新时，重新赋值token
 // if (window.localStorage.getItem('token')) {

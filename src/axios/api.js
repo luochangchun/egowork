@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import store from '../components/store/store'
 // import * as types from '../components/store/types'
-import router from '../routes.js'
+import router from '../routes_lcc.js'
 // axios 配置
 // const baseUrl = '';
 const baseUrl = "";
