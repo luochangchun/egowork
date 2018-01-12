@@ -1,25 +1,29 @@
 <template>
     <div class="header">
-        <div class="top"  style="position:fixed;top:0;background-color:#2e2a3f;width:100%;z-index:100000">
+        <div class="top bgColor"  style="position:fixed;top:0;background-color:#2e2a3f;width:100%;z-index:100000">
             <div class="container" style="margin-top:0;">
                 <el-row :gutter="0">
                     <el-col :xs="0" :sm="0" :md="9" :lg="9">
                         <p class="solgan_word f14">创新创业孵化公共服务平台 中小企业一站式服务平台</p>
                     </el-col>
-                    <el-col :xs="18" :sm="18" :md="12" :lg="8" :offset="6">
-                        <a type="button" class="index_btn">预约参观></a>
-                        <a type="button" class="index_btn">发布需求></a>
+                    <el-col :xs="14" :sm="8" :md="6" :lg="6" :offset="5" class="header-nav-left">
+                        <a type="button" class="index_btn write bgColor">预约参观></a>
+                        <a type="button" class="index_btn write bgColor">发布需求></a>
+                    </el-col>
+                    <el-col :xs="10" :sm="6" :md="4" :lg="4">
                         <a class="text r ">免费注册</a>
                         <i class="r hr">&nbsp;&nbsp;|&nbsp;&nbsp;</i>
-                        <a v-if="!name" to="/login" class="text cur r">登录</a>
-                        <p v-if="name" class="text r">{{name}}</p>
+                        <a v-if="" to="/login" class="text cur r">登录</a>
+                        <p v-if="" class="text r"></p>
                     </el-col>
                 </el-row>
             </div>
         </div>
         <div class="main">
             <div class="container clear" style="position:relative;display:block;height:auto;overflow: inherit;">
-                <a href="" class="l logo"><img src="static/img/logo_header.png" alt="" class="padder-vx"></a>
+                <el-col :xs="0" :sm="4" :md="4" :lg="4">
+                    <a href="" class="l logo"><img src="static/img/logo_header.png" class="padder-vx" style="margin-top:15px;"></a>
+                </el-col>
                 <div class="nav nav_pc">
                     <div id="menu-button">菜单</div>
                     <ul>
@@ -48,7 +52,7 @@
                             <router-link to="/financialIndex.html">云创金融</router-link>
                         </li>
                         <li>
-                            <router-link to="/news.html">资讯中心</router-link>
+                            <router-link to="/news">资讯中心</router-link>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +101,20 @@
             return {
                 visible: false,
                 visible_sub: false,
-                name:"",
+                nickname: "",
+                dialogTableVisible: false,
+                dialogFormVisible: false,
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                },
+                formLabelWidth: '80px'
             }
         },
         created() {
@@ -120,7 +137,7 @@
                 }
             },
             getName() {
-                api.CheckCookie();
+//                api.CheckCookie();
             }
 
 
@@ -128,10 +145,6 @@
     }
 </script>
 <style scoped>
-    .top {
-        background-color: #0089e3;
-    }
-
     .header .top .el-col {
         padding: 10px 0;
     }
@@ -165,11 +178,41 @@
             display: none;
         }
     }
-
+    @media (max-width: 768px) {
+        .header-nav-left{
+            margin-left: 0;
+        }
+        .index_btn {
+            width: 90px;
+            height: 30px;
+            border-radius: 16px;
+            font-size: 12px;
+            border: none;
+            display: inline-block;
+            line-height: 30px;
+            text-align: center;
+        }
+    }
     @media (min-width: 992px) {
         .el-col-xs-0 {
             display: block;
         }
+    }
+    .nav,
+    .nav ul,
+    .nav ul li,
+    .nav ul li a,
+    .nav #menu-button {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        list-style: none;
+        line-height: 1;
+        display: block;
+        position: relative;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
     .nav:after,
     .nav>ul:after {
@@ -238,12 +281,12 @@
 
     .nav>ul>li:hover>a,
     .nav>ul>li.active>a {
-        color: #0089e3;
-        border-bottom: 2px solid #0089e3;
+        color: #18b494;
+        border-bottom: 2px solid #18b494;
     }
     .nav ul li .active {
-        color: #0089e3;
-        border-bottom: 2px solid #0089e3;
+        color: #18b494;
+        border-bottom: 2px solid #18b494;
     }
     .nav>ul>li.has-sub>a {
         padding-right: 25px;
@@ -271,7 +314,7 @@
     }
 
     .nav>ul>li.has-sub:hover>a::after {
-        border-color: #009ae1;
+        border-color: #18b494;
     }
 
     .nav ul ul {
@@ -384,7 +427,7 @@
         }
         .nav>ul>li:hover>a,
         .nav>ul>li.active>a {
-            color: #0089e3;
+            color: #18b494;
             border-bottom: none;
         }
         .nav.align-center>ul,
@@ -453,7 +496,7 @@
         .nav #menu-button::after {
             content: '';
             position: absolute;
-            top: 12px;
+            top: 10px;
             right: 20px;
             display: block;
             width: 15px;
@@ -463,7 +506,7 @@
         .nav #menu-button::before {
             content: '';
             position: absolute;
-            top: 17px;
+            top: 15px;
             right: 20px;
             display: block;
             width: 15px;

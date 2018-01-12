@@ -292,7 +292,7 @@ img{
 }
 .main{
     margin-top: 50px;
-    height: 50px;
+    height: 80px;
 }
 
 /*头部*/
@@ -330,6 +330,22 @@ footer .router-link-exact-active{
     color:#aaa;
 }
 /*footer*/
+
+/*banner图*/
+.bg-img1{
+    background: url(../img/kongjianbanner.png) no-repeat center center;
+    height:500px;
+}
+.bg-img2{
+    background: url(../img/xueyuanbanner.png) no-repeat center center;
+    height:500px;
+}
+.bg-img3{
+    background: url(../img/fuwubanner.jpg) no-repeat center center;
+    height:500px;
+    position: relative;
+}
+/*banner图*/
 
 /*common*/
 .title{
@@ -404,15 +420,50 @@ footer .router-link-exact-active{
 .el-carousel__indicators{
     display: none;
 }
-.carousel_btn .el-carousel__arrow--left{
-    top:495px;
-    left:26px;
-    z-index:100000;
+@media (min-width: 768px) and (max-width: 992px){
+    .carousel_btn .el-carousel__arrow--left {
+        top: 495px;
+        left: 26px;
+        z-index: 100000;
+    }
+
+    .carousel_btn .el-carousel__arrow--right {
+        top: 495px;
+        right: 590px;
+        z-index: 100000;
+    }
 }
-.carousel_btn .el-carousel__arrow--right{
-    top:495px;
-    right:456px;
-    z-index:100000;
+@media (min-width: 992px) {
+    .carousel_btn .el-carousel__arrow--left {
+        top: 495px;
+        left: 26px;
+        z-index: 100000;
+    }
+
+    .carousel_btn .el-carousel__arrow--right {
+        top: 495px;
+        right: 456px;
+        z-index: 100000;
+    }
+}
+@media (max-width: 768px) {
+    .carousel_btn .el-carousel__arrow--left{
+        top:495px;
+        left:26px;
+        z-index:100000;
+    }
+    .carousel_btn .el-carousel__arrow--right{
+        top:495px;
+        right:190px;
+        z-index:100000;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
 }
 .carousel_btn .el-carousel__arrow:hover {
     color:#18b494;
@@ -454,13 +505,9 @@ footer .router-link-exact-active{
 }
 .right_img img{
     height:167px;
-    /*width:220px;*/
 }
 .right_img{
     height:167px;
-    /*width:220px;*/
-    margin-right: 20px;
-    margin-bottom:40px;
 }
 .right_content h3{
     font-size:16px;
@@ -483,7 +530,7 @@ footer .router-link-exact-active{
 }
 .label2{
     display: inline-block;
-    padding: 0 10px;
+    padding: 0 2px;
     line-height: 22px;
     font-size: 12px;
     border-radius: 4px;
@@ -494,7 +541,28 @@ footer .router-link-exact-active{
     margin-right: 3px;
 }
 
-
+.index-fh-mb:last-child{
+    margin-bottom: 0;
+}
+@media (min-width: 970px) {
+    .index-fh-mb{
+        margin-bottom: 40px;
+    }
+}
+@media (max-width: 970px) {
+    .index-fh-mb{
+        margin-top: 40px;
+    }
+}
+.index_incubator_img img{
+    position: relative;
+}
+.index_incubator_content{
+    width:45%;
+    position: absolute;
+    top:0;
+    left:0;
+}
 /*国家级孵化器*/
 /*数字*/
 .number{
@@ -662,36 +730,586 @@ footer .router-link-exact-active{
 
 /*孵化器详情页*/
 
-/*云创孵化*/
+/*孵化器列表*/
+.p5{
+    font-size: 14px;
+    font-weight: bold;
+    color:#333;
+}
+.btn5{
+    width:80px;
+    height:25px;
+    line-height:22px;
+    text-align: center;
+    border:1px solid #18b494;
+    background-color: transparent;
+    color:#18b494;
+    border-radius:4px;
+    outline:none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+/*孵化器列表*/
 
+/*图片旋转*/
+.rotate{
+    position: relative;
+    top: -100px;
+    left: 0;
+}
+.incubator_one_p{
+    line-height:40px;
+    font-size:18px;
+}
+.back p:first-child{
+    margin-top:46px;
+    margin-bottom:24px;
+    color:#fff;
+}
+.flipper img{
+    width:80px;
+    height:80px;
+}
+.flipper p{
+    padding-left:40px;
+    padding-right:40px;
+    overflow: hidden;
+    margin: auto;
+    margin-top:-10px;
+    margin-bottom:10px;
+}
+.btn1{
+    background-color:#18b494;
+    color:#fff;
+    margin-top:10px;
+    border:none;
+    width:40%;
+    height:32px;
+    border-radius:20px;
+    font-size:14px;
+}
+.btn2{
+    background-color:#fff;
+    color:#18b494;
+    margin-top:20px;
+    border:none;
+    width:40%;
+    height:32px;
+    border-radius:20px;
+    font-size:14px;
+}
+.back{
+    box-shadow:3px 3px 3px #74c5b5;
+}
+.front{
+    /*border:1px solid #ddd;*/
+    box-shadow:3px 3px 3px #ddd;
+}
+.front img{
+    margin-top:20px;
+}
+.flip-container {
+    width:100%;
+    display: inline-block;
+    -webkit-perspective: 500;
+    -moz-perspective: 500;
+    -ms-perspective: 500;
+    perspective: 500;
+    -ms-transform: perspective(500px);
+    -moz-transform: perspective(500px);
+    transform-style: preserve-3d;
+}
+.flipper {
+    text-align: center;
+    position: relative;
+    height: 260px;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
 /* 触发翻转 */
+.flip-container:hover .flipper{
+    transform: rotateY(180deg);
+
+}
+.front ,.back{
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+}
+.front {
+    transform: rotateY(0deg);
+    z-index: 2;
+    background:#f1f1f1;
+}
+.front{
+    transform: rotateY(0deg);
+    z-index: 2;
+    background:#f1f1f1;
+}
+.back {
+    transform: rotateY(-180deg);
+    background:#18b494;
+}
+.distance .col-lg-3 , .distance .col-md-4 , .distance .col-sm-6 , .distance .col-xs-12{
+    padding-right: 8px;
+    padding-left:  8px;
+}
 
 /*图片旋转*/
 
-/*云创孵化*/
-
-/*云创孵化*/
-
-
 /*孵化项目*/
+.incubation_project{
+    background: url(../img/project_bg.png) no-repeat center center;
+    height:200px;
+    background-size:95%;
+    margin-bottom:10px;
+}
+.incubation_project h1{
+    font-size:24px;
+    color:#18b494;
+    text-align: center;
+    margin-top:55px;
+}
+.incubation_project p{
+    font-size:14px;
+    color:#fff;
+    text-align: center;
+    margin:20px 40px;
+    height:40px;
+}
+.text-ellipsis-2 {
+    -webkit-line-clamp: 2;
+    /*文本占的行数,如果要设置2行加...则设置为2*/
+}
 
+.text-desc img{
+    /*margin-top:10px;*/
+    margin-bottom: 50px;
+}
 /*孵化项目*/
-
 
 /*入孵企业*/
 
+/* 入孵企业列表 */
+.hatchedList .row {
+    width: 100%;
+}
+.hatchedList .item {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
 
+.hatchedList .item .line_green {
+    width: 60px;
+    height: 1px;
+    background-color: #1bd1b9;
+    margin: 0 auto 10px auto;
+}
+
+.hatchedList .item h1 {
+    color: #333;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    padding-top: 30px;
+}
+
+.hatchedList .item p {
+    width: 80%;
+    margin-left: 10%;
+    color: #666666;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.hatchedList .item p span {
+    color: #666;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.hatchedList .item .rel {
+    height: 96px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+.hatchedList .item .rel .img_wrap {
+    width: 86px;
+    height: 86px;
+    left: 50%;
+    margin-left: -38px;
+    z-index: 10;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.hatchedList .item .rel img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.hatchedList .item .rel .img_line {
+    width: 80%;
+    height: 1px;
+    background-color: #ccc;
+    top: 50%;
+    left: 10%;
+    z-index: 9;
+}
+
+#shareForm input[placeholder], [placeholder], *[placeholder], #shareTo input[placeholder], [placeholder], *[placeholder] {
+    font-size: 12px;
+}
+.partner_logo {
+    transition: all 0.4s;
+}
+.partner_logo:hover {
+    background-color: #f1f1f1;
+}
+
+.text-desc{position: absolute; left: 15px; top: 0; background-color: #fff; height: 95%; opacity: 0;padding: 20px;}
+
+.port-1{float: left;; position: relative; overflow: hidden; text-align: center; border: 4px solid rgba(255, 255, 255, 0.9);}
+.port-1 .text-desc{opacity: 1; top: -100%; transition: 0.5s; color: #000; padding: 45px 20px 20px;left: 10px;width: 79%;}
+.port-1 img{transition: 0.5s;}
+.port-1:hover img{transform: scale(1.2);}
+
+.port-1.effect-1:hover .text-desc{top: 0;}
+
+.port-1.effect-2 .text-desc{top: auto; bottom: -100%;}
+.port-1.effect-2:hover .text-desc{bottom: 0;left:10px;}
+.text-desc img{
+    margin-bottom: 50px;
+}
 /*入孵企业*/
 
-/*孵化器详情*/
+/* 入孵企业详情 */
+.hatchedWrap {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
 
-/*孵化器详情*/
+.hatchedImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 5%;
+}
+
+.hatchedInfo {
+    width: 300px;
+    margin-top: 5px;
+}
+
+.hatchedInfo p {
+    width: 100%;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.hatchedInfo p span {
+    border: 1px solid #fff;
+    padding: 2px 5px;
+    font-size: 12px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.hatchedBody {
+    margin-top: 30px;
+}
+.hatchedBody6{
+    line-height:30px;
+}
+/* 入孵企业详情 */
+
+/*入孵流程图*/
+.appli_process_r_2{
+    width: 100%;
+    height: 200px;
+    background: url(../img/rufulc.png) no-repeat center center;
+    background-size: contain;
+}
+
+/*入孵流程图*/
+/*详情标题*/
+.detail_title{
+    font-size:16px;
+    line-height:50px;
+    color:#333;
+}
+.detail_title span{
+    color:#18b494;
+    font-weight: bold;
+    margin-right: 3px;
+}
+.space_show_img{
+    padding:15px;
+    margin-right: 15px;
+}
+.s_show_img{
+    height:290px;
+}
+.space_show_img img{
+    width:100%;
+    height:230px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.space_show_right{
+    background-color: #fff;
+    padding:0 20px;
+    border-left:20px solid #f1f1f1;
+}
+/*详情标题*/
+
+
+.nav-tabs > li {
+    width: 12%;
+    text-align: center;
+}
+.tab1 {
+    height:55px;
+    border-bottom: 1px solid #18b494;
+}
+.tab1 > li.active > a, tab1 > li.active > a:hover, .tab1 > li.active > a:focus {
+    border: 1px solid #18b494;
+    border-bottom-color: transparent;
+}
+.nav-tabs > li.active > a {
+    color: #18b494;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover {
+    color: #18b494;
+}
+.service_index_li{
+    height:116px;
+    border-bottom:1px solid #ddd;
+    border-right:1px solid #ddd;
+    padding:10px;
+}
+.service_index_li h1{
+    color:#000;
+    font-size:16px;
+    line-height:40px;
+}
+.service_index_li p{
+    color:#666;
+    font-size:13px;
+    line-height:20px;
+}
+.tab-content .col-xs-3, .tab-content .col-sm-3, .tab-content .col-md-3, .tab-content .col-lg-3{
+    padding:0;
+}
+
+.service_detail_list>.nav > li > a{
+    padding: 10px 0;
+}
+
+.category-b{
+    font-weight:bold;
+}
+
+.service-left-img-p{
+    position:absolute;
+    top: 30px;
+    left: 10px;
+    color: #fff;
+}
+.s-img img{
+    height:410px;
+}
+.el-tabs__header {
+    padding: 0;
+    position: relative;
+     margin: 0;
+}
+.el-tabs__item {
+    padding: 0 38px;
+}
+.el-tabs--card>.el-tabs__header .el-tabs__item:first-child {
+    border-left: none;
+    padding: 0 52px;
+}
+.s-p{
+    border: 1px solid #ddd;
+    border-top: none;
+    height: 100px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+/*服务*/
+/*服务详情页*/
+.sdp{
+    padding:20px 0;
+}
+.el-breadcrumb {
+    height: 70px;
+    line-height:50px;
+    margin-left:10px;
+}
+.sdw{
+    background-color:#fff;
+    padding-top:20px;
+}
+.category-bg{
+    background:url(../img/category-bg.png);
+    min-height:700px;
+}
+.service_detail_title p{
+    /*margin-top:20px;*/
+    line-height:25px;
+    text-align: left;
+    color:#666;
+}
+.category-b{
+    font-weight:bold;
+}
+#category-qq{
+    cursor: pointer;
+    float:right;
+}
+.el-submenu__title:hover {
+    background-color: #18b494;
+    color:#fff;
+}
+.el-menu-item.is-active {
+    color: #18b494;
+}
+/*服务详情页*/
 
 
 
-/*云创孵化*/
+
+
+
+/*流程*/
+.appli_process_r_1 {
+    width: 100%;
+    height: 100px;
+    background: url(../img/service_process_line.png) no-repeat center center;
+    background-size: contain;
+}
+/*流程*/
+
+/*合作伙伴*/
+.partner_logo{
+    border:1px solid #ddd;
+    height:100px;
+    width:100%;
+}
+.partner_logo1{
+    background:url(../img/1.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo2{
+    background:url(../img/2.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo3{
+    background:url(../img/3.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo4{
+    background:url(../img/4.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo5{
+    background:url(../img/5.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo6{
+    background:url(../img/6.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo7{
+    background:url(../img/7.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo8{
+    background:url(../img/8.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo9{
+    background:url(../img/9.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo10{
+    background:url(../img/10.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo11{
+    background:url(../img/11.png) no-repeat center center;
+    background-size:90%;
+}
+.partner_logo12{
+    background:url(../img/12.png) no-repeat center center;
+    background-size:90%;
+}
+
+/*合作伙伴*/
 
 
 
 
+
+/*资讯中心*/
+.index_headline{
+    border:1px solid #ccc;
+    margin-right:30px;
+    margin-bottom:30px;
+    display: block;
+}
+.index_headline img{
+    width:100%;
+    height:200px;
+}
+.index_headline_content{
+    padding:20px 15px 30px 15px;
+    /*background-color:#fff;*/
+    margin-top: -4px;
+}
+.h4{
+    font-size:16px;
+    color:#2e2a3f;
+    margin-bottom:30px;
+}
+.p3{
+    font-size:14px;
+    color:#666;
+}
+.btn_betail{
+    width:110px;
+    height:34px;
+    line-height:34px;
+    text-align: center;
+    border:none;
+    border-radius:10px;
+    font-size:14px;
+    background-color:#18b494;
+    color:#fff;
+    display: block;
+    outline: none;
+}
+.margin_btn{
+    margin-top:20px;
+}
+.news-leftlist{
+  margin-top: 20px;
+}
+/*资讯中心*/
 

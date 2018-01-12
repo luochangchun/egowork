@@ -14,7 +14,7 @@
                         </a>
                     </el-col>
                     <el-col :lg="6" :md="6" :sm="6" :xs="8" class="index_color" v-for="(item,index) in 7" :key="index">
-                        <router-link to="/service_detail_list.html">
+                        <router-link to="/serviceDetail">
                             <a style="color:#333;">
                                 <div class="index_service image-box">
                                     <img src="static/img/1631.png">
@@ -37,55 +37,48 @@
                         <el-col :xs="24" :sm="24" :md="24" :lg="24">
                             <el-row :gutter="20">
                                 <el-col :lg="12" :md="12" :sm="24" :xs="24">
-                                    <el-carousel indicator-position="outside" :interval="500000" arrow="always" class="index_incubator">
+                                    <el-carousel  :interval="500000" arrow="always" class="index_incubator">
                                         <el-carousel-item v-for="item in imgArrs" :key="item.id" class="index_incubator_img">
                                             <img :src="item.src">
-                                            <div style="background-color:#000;z-index: 10000000000000;height:600px;width:50%;">
-                                                <h3>jfkdsjf;ldkfv</h3>
+                                            <div class="index_incubator_content">
+                                                <h3>武汉火凤凰云计算孵化器管理有限公司</h3>
+                                                <p class="text-ellipsis-muti text-ellipsis-6">孵化器主要集聚云计算创新研发、大数据服务、小微创新创业、投融资服务等企业，孵化器依托火凤凰云基地云服务平台的优势资源，自建了线上“双云双创”孵化服务平台，线下孵化器...</p>
+                                                <span class="label white">云计算/大数据平台</span>
                                             </div>
                                         </el-carousel-item>
                                     </el-carousel>
-                                    <!--<col-row>-->
-                                        <!--<el-col :lg="12" :md="12" :sm="12" :xs="12" >-->
-                                            <!--<el-carousel-item v-for="item in 3" :key="item" class="index_incubator_content">-->
-                                                <!--<h3>武汉火凤凰云计算孵化器管理有限公司</h3>-->
-                                                <!--<p>武汉火凤凰云计算孵化器管理有限公司武汉公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司武汉火凤凰云计算孵化器管理有限公司</p>-->
-                                                <!--<span class="label">云计算/大数据平台</span>-->
-                                            <!--</el-carousel-item>-->
-                                        <!--</el-col>-->
-                                    <!--</col-row>-->
                                 </el-col>
-                                <router-link to="/incubator">
-                                    <el-col :lg="12" :md="12" :sm="24" :xs="24"  v-for="item in imgArrs" :key="item.id">
-                                    <el-col :lg="10" :md="10" :sm="10" :xs="10">
-                                        <div class="right_img">
-                                            <img :src="item.src" alt="">
-                                        </div>
-                                    </el-col>
-                                    <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
-                                        <h3 class="text-ellipsis">武汉火凤凰云计算孵化器管理有限公司</h3>
-                                        <p class="text-ellipsis">地址: 武汉火凤凰云计算孵化器管理有限公司</p>
-                                        <p>联系电话:027-59103580</p>
-                                        <p>级别:国家级</p>
-                                        <p>地区:江汉区</p>
-                                        <span class="label2 fontColor" v-for="(item , index) in 3" :key="index">创业圣地</span>
-                                    </el-col>
+                                <el-col :lg="12" :md="12" :sm="24" :xs="24" v-for="item in imgArrs" :key="item.id" class="index-fh-mb">
+                                    <router-link to="/incubator">
+                                        <el-col :lg="10" :md="10" :sm="10" :xs="10">
+                                            <div class="right_img">
+                                                <img :src="item.src" alt="">
+                                            </div>
+                                        </el-col>
+                                        <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
+                                            <h3 class="text-ellipsis">武汉火凤凰云计算孵化器管理有限公司</h3>
+                                            <p class="text-ellipsis">地址: 武汉火凤凰云计算孵化器管理有限公司</p>
+                                            <p>联系电话:027-59103580</p>
+                                            <p>级别:国家级</p>
+                                            <p>地区:江汉区</p>
+                                            <span class="label2 fontColor" v-for="(item , index) in 3" :key="index">创业圣地</span>
+                                        </el-col>
+                                    </router-link>
                                 </el-col>
-                                </router-link>
                             </el-row>
                         </el-col>
                     </el-col>
-                    <a target="_blank" href="/introbatorsList" class="view_more db tc">
-                        查看更多
-                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                    </a>
                 </el-row>
+                <router-link to="/incubatorsList" class="view_more db tc">
+                    查看更多
+                    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </router-link>
             </div>
         </div>
         <!--国家孵化器-->
 
         <!--数字-->
-        <el-col class="number height" style="margin-bottom:50px;">
+        <el-col :lg="24" :md="24" :sm="24" :xs="0" class="number height" style="margin-bottom:50px;">
             <img src="static/img/banner_1.png" alt="">
             <el-row class="container">
                 <el-row>
@@ -159,11 +152,11 @@
                             </p>
                         </div>
                     </el-col>
-                    <a target="_blank" href="http://vedio.whwomen.org.cn/front/showcoulist" class="view_more db tc">
-                        查看更多
-                        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-                    </a>
                 </el-row>
+                <a target="_blank" href="http://vedio.whwomen.org.cn/front/showcoulist" class="view_more db tc">
+                    查看更多
+                    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
         <!--线上课堂-->

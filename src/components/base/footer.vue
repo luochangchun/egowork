@@ -2,7 +2,7 @@
     <div class="footer">
         <div class="container">
             <el-row :gutter="0" class="padder-v-md" style="text-align: ">
-                <el-col :xs="8" :sm="8" :md="8" :lg="8"  :xl="8">
+                <el-col :xs="16" :sm="8" :md="8" :lg="8"  :xl="8">
                     <ul>
                         <li class="footer_logo"><img src="static/img/footer_logo.png" alt=""></li>
                         <li>公司地址：武汉市江汉经济开发区江旺路6号</li>
@@ -10,7 +10,7 @@
                         <li>邮箱：marketing@hansap.com</li>
                     </ul>
                 </el-col>
-                <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4" class="contact_img">
+                <el-col :xs="0" :sm="4" :md="4" :lg="4" :xl="4" class="contact_img">
                     <ul>
                         <li>产品</li>
                         <li>空间租赁</li>
@@ -19,7 +19,7 @@
                         <li>共享会议室</li>
                     </ul>
                 </el-col>
-                <el-col :xs="4" :sm="4" :md="4" :lg="4" class="contact_img">
+                <el-col :xs="0" :sm="4" :md="4" :lg="4" class="contact_img">
                     <ul>
                         <li>服务</li>
                         <li>企业信息化</li>
@@ -32,7 +32,7 @@
                         <li>知识产权</li>
                     </ul>
                 </el-col>
-                <el-col :xs="4" :sm="4" :md="4" :lg="4" class="contact_img">
+                <el-col :xs="0" :sm="4" :md="4" :lg="4" class="contact_img">
                     <ul>
                         <li>快速入口</li>
                         <li>
@@ -52,7 +52,7 @@
                         </li>
                     </ul>
                 </el-col>
-                <el-col :xs="4" :sm="4" :md="4" :lg="4" class="contact_img">
+                <el-col :xs="8" :sm="4" :md="4" :lg="4" class="contact_img tc">
                     <p class="attention" style="padding-bottom:10px">关注我们</p>
                     <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" class="center-block" style="width:80px;">
                 </el-col>
@@ -93,5 +93,6 @@
         color: #666666;
         background-color: #222222;
     }
+
 </style>
 
