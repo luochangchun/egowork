@@ -4,6 +4,7 @@ import Index from '../src/components/index.vue'//首页
 import college from '../src/components/college.vue'//云创学院首页
 import activity from '../src/components/activity.vue'//活动详情
 import activityList from "../src/components/activityList.vue";//活动列表
+<<<<<<< HEAD
 // import financial from "../src/components/financial.vue";//活动列表
 
 
@@ -18,13 +19,18 @@ import service from "../src/components/service.vue";//云创服务首页
 import serviceDetail from "../src/components/serviceDetail.vue";//服务详情页
 import news from "../src/components/news.vue";//资讯中心首页
 import article from "../src/components/article.vue";//资讯详情页
+=======
+import financial from "../src/components/financial.vue";//云创金融首页
+import incubator from "../src/components/incubator.vue";//孵化器详情页
+
+>>>>>>> ec46755a481e7ab8f68ea093a5797d371e70fc73
 
 Vue.use(VueRouter)
 
 const routes = [
 	{ path: '/index', component: Index, name: 'index' },
 	{ path: '/college', component: college, name: 'college' },
-	{ path: '/activityList', component: activityList, name: 'activityList' },
+	{ path: '/activityList/:type', component: activityList, name: 'activityList' },
 	{ path: '/activity', component: activity, name: 'activity' },
 	// { path: '/financial', component: financial, name: 'financial' },
 

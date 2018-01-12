@@ -2,27 +2,15 @@
   <div class="college_index">
     <div class="banner_college"></div>
     <!-- 精彩活动 -->
-    <div class="container">
+    <div class="container mb50">
       <div class="activity">
         <h1 class="commonTitle tc">精彩活动</h1>
         <el-row :gutter="30" class="commonList clearfix">
-          <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" class="item" v-for="(item, index) in 4" :key="index">
-            <a class="rel">
-              <div class="img_wrap rel"> <span class="abs flag f12">已结束</span> <img src="http://localhost:8080/themes/newego/img/01.png" alt="">
-                <p class="tc white abs text-ellipsis-muti text-ellipsis-2"> 11月8日，首届武汉女性创业大赛颁奖典礼及女性云创空间揭牌仪式诚邀请您参加！</p>
-              </div>
-              <div class="para">
-                <p class="f14 text-ellipsis-muti text-ellipsis-2">11月8日，首届武汉女性创业大赛颁奖典礼及女性云创空间揭牌仪式诚邀请您参加！</p>
-                <p class="f12">活动时间： <span>2017-11-08</span> </p>
-              </div>
-              <div class="top_line" style="width: 0px"></div>
-              <div class="bottom_line" style="width: 0px;"></div>
-              <div class="left_line" style="height: 0px;"></div>
-              <div class="right_line" style="height: 0px;"></div>
-            </a>
-          </el-col>
+          <!-- 引入培训精彩活动 -->
+          <ActivityItem v-for="item in activityList" v-bind:activity="item" v-bind:key="item.id">></ActivityItem>
+          <!-- 引入培训精彩活动 -->
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <a href="" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i> </a>
+            <router-link :to="{ name: 'financial'}" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i></router-link>
           </el-col>
         </el-row>
       </div>
@@ -32,23 +20,9 @@
       <div class="container train_wrap">
         <h1 class="commonTitle tc">培训集锦</h1>
         <el-row :gutter="30" class="commonList clearfix">
-          <el-col :xs="24" :sm="12" :md="12" :lg="6" :xl="6" class="item" v-for="(item, index) in 4" :key="index">
-            <a href="" class="item">
-              <div class="rel">
-                <div class="img_wrap rel"> <span class="abs flag f12">已结束</span> <img src="http://localhost:8080/themes/newego/img/01.png" alt="">
-                  <p class="tc white abs text-ellipsis-muti text-ellipsis-2"> 创业者如何做好融资路演PPT </p>
-                </div>
-                <div class="para">
-                  <p class="f14">创业者如何做好融资路演PPT</p>
-                  <p class="f12">活动时间： <span>2017-06-29</span> </p>
-                </div>
-                <div class="top_line" style="width: 0px"></div>
-                <div class="bottom_line" style="width: 0px;"></div>
-                <div class="left_line" style="height: 0px;"></div>
-                <div class="right_line" style="height: 0px;"></div>
-              </div>
-            </a>
-          </el-col>
+          <!-- 引入培训集锦组件 -->
+          <ActivityItem v-for="item in trainList" v-bind:activity="item" v-bind:key="item.id">></ActivityItem>
+          <!-- 引入培训集锦组件 -->
           <el-col class="pb50" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
             <a href="" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i></a>
           </el-col>
@@ -61,18 +35,7 @@
         <div class="hot_course">
           <h1 class="commonTitle tc">热门课程</h1>
           <el-row :gutter="30" class="courseList clearfix">
-            <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8" class="item" v-for="(item, index) in 6" :key="index">
-              <a class="item rel">
-                <h2 class="text-ellipsis">工厂互联网巨头模式的优势与劣势</h2>
-                <p class="text-ellipsis-muti text-ellipsis-2">由火凤凰云计算有限公司副总裁郑丽主讲</p>
-                <p> <i class="fa fa-graduation-cap"></i><span>0</span>&nbsp;&nbsp;|&nbsp; <i class="fa fa-eye" aria-hidden="true"></i> <span>18</span> </p>
-                <div class="rel ovh" style="height:186px;"> <img src="http://vedio.whwomen.org.cn/upload/course/20171228/1514432697609.png" alt="">
-                  <div class="abs onlineMask courseMask"><a target="__blank" href="http://vedio.whwomen.org.cn/free/play/54" class="tc white db">开始学习</a></div>
-                </div>
-                <div class="line line_r abs"></div>
-                <div class="line line_b abs"></div>
-              </a>
-            </el-col>
+            <HotCourseItem v-for="item in HotCourseList" v-bind:hotCourse="item" v-bind:key="item.id"></HotCourseItem>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
               <a href="" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i> </a>
             </el-col>
@@ -101,7 +64,7 @@
     <div class="container">
       <div class="tutor">
         <h1 class="commonTitle tc">金牌导师</h1>
-        <el-row :gutter="0" class="tutorList clearfix">
+        <el-row :gutter="30" class="tutorList clearfix">
           <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6" v-for="(item, index) in 4" :key="index">
             <a target="__blank" href="" class="item col-lg-3 col-md-3 col-sm-6 col-sm-12"> <img src="http://vedio.whwomen.org.cn/upload/teacher/20171228/1514427617583.png">
               <h1 class="tc">郑丽</h1>
@@ -154,5 +117,67 @@
 </template>
 
 <script>
-  export default {}
+  import ActivityItem from './common/activityItem.vue'//活动组件
+  import HotCourseItem from './common/hotCourse.vue'//活动组件
+  export default {
+    data() {
+      return {
+        activityList: [{
+            'title': '活动1',
+            'time': '2012'
+          },
+          {
+            'title': '活动2',
+            'time': '2013'
+          },
+          {
+            'title': '活动3',
+            'time': '2014'
+          },
+          {
+            'title': '活动4',
+            'time': '2015'
+          },
+        ],
+        trainList: [{
+            'title': '中国强1',
+            'time': '2012'
+          },
+          {
+            'title': '中国强2',
+            'time': '2013'
+          },
+          {
+            'title': '中国强3',
+            'time': '2014'
+          },
+          {
+            'title': '中国强4',
+            'time': '2015'
+          },
+        ],
+        HotCourseList:[{
+            'title': '课程1',
+            'info': '详情'
+          },
+          {
+            'title': '课程2',
+            'info': '详情'
+          },
+          {
+            'title': '课程3',
+            'info': '详情'
+          },
+          {
+            'title': '课程4',
+            'info': '详情'
+          },
+        ],
+      }
+    },
+    components: {
+      ActivityItem,
+      HotCourseItem
+    }
+  }
 </script>

@@ -39,5 +39,16 @@
 </template>
 
 <script>
-    export default {};
+    export default {
+        mounted() {
+            let type = this.$route.params.type;
+            if (type == "enterprise") {
+                // alert('服务需求页面');
+                this.getServiceClass();
+            } else if (type == "consult") {
+                this.problemFlag = true;
+                this.getConsultClass();
+            }
+        },
+    };
 </script>

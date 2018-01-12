@@ -7,7 +7,7 @@ import '../static/css/common.css'
 import '../static/css/main.css'
 import router from './routes.js'
 import App from './App'
-// import router from '../config/routes_lcc.js'
+
 
 
 

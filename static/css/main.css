@@ -109,6 +109,9 @@ a {
     margin-right: auto;
     margin-left: auto;
 }
+.mb50 {
+    margin-bottom: 50px;
+}
 .pb50 {
     padding-bottom: 50px;
 }
@@ -122,9 +125,6 @@ a {
     color: #2e2a3f;
     font-size: 24px;
     padding: 30px 0;
-}
-.commonList {
-    margin-bottom: 50px;
 }
 
 .commonList .img_wrap {
@@ -218,8 +218,6 @@ a {
 }
 
 .courseList .item {
-    /* border-right: 1px solid #bbb;
-    border-bottom: 1px solid #bbb; */
     padding: 18px 25px 25px;
 }
 
@@ -747,6 +745,7 @@ a {
 .financial_agency .item h2 {
     font-size: 16px;
     padding: 10px 0;
+    color: #18b494;
 }
 
 .financial_agency .item .h2_bott {
