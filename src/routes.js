@@ -4,12 +4,13 @@ import Index from '../src/components/index.vue'//首页
 import college from '../src/components/college.vue'//云创学院首页
 import activity from '../src/components/activity.vue'//活动详情
 import activityList from "../src/components/activityList.vue";//活动列表
-<<<<<<< HEAD
-// import financial from "../src/components/financial.vue";//活动列表
+import financial from "../src/components/financial.vue";//云创金融首页
+import financialList from "../src/components/financialList.vue";//云创金融(融资项目或投资机构列表页)
+import incubator from "../src/components/incubator.vue";//孵化器详情页
+import register from '../src/components/register/register.vue'//注册组件
+import login from '../src/components/register/login.vue'//登录组件
+import forms from '../src/components/forms.vue'//表单集合
 
-
-
-import incubator from "../src/components/incubator.vue";//孵化器详情
 import incubatorsList from "../src/components/incubatorsList.vue";//孵化器列表
 import incubators from "../src/components/incubators.vue";//云创空间首页
 import seed from "../src/components/seed.vue";//孵化项目详情
@@ -19,11 +20,6 @@ import service from "../src/components/service.vue";//云创服务首页
 import serviceDetail from "../src/components/serviceDetail.vue";//服务详情页
 import news from "../src/components/news.vue";//资讯中心首页
 import article from "../src/components/article.vue";//资讯详情页
-=======
-import financial from "../src/components/financial.vue";//云创金融首页
-import incubator from "../src/components/incubator.vue";//孵化器详情页
-
->>>>>>> ec46755a481e7ab8f68ea093a5797d371e70fc73
 
 Vue.use(VueRouter)
 
@@ -32,8 +28,10 @@ const routes = [
 	{ path: '/college', component: college, name: 'college' },
 	{ path: '/activityList/:type', component: activityList, name: 'activityList' },
 	{ path: '/activity', component: activity, name: 'activity' },
-	// { path: '/financial', component: financial, name: 'financial' },
-
+	{ path: '/financial', component: financial, name: 'financial' },
+	{ path: '/register', component: register, name: 'register' },
+	{ path: '/login', component: login, name: 'login' },
+	{ path: '/forms', component: forms, name: 'forms' },
 
     { path: '/incubator', component: incubator, name: 'incubator' },
     { path: '/incubatorsList', component: incubatorsList, name: 'incubatorsList' },

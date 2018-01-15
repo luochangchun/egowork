@@ -118,7 +118,7 @@
 
 <script>
   import ActivityItem from './common/activityItem.vue'//活动组件
-  import HotCourseItem from './common/hotCourse.vue'//活动组件
+  import HotCourseItem from './common/hotCourse.vue'//热门课程组件
   export default {
     data() {
       return {

@@ -10,5 +10,4 @@
 .DS_Store
 npm-debug.log
 target
-build
 node_modules
