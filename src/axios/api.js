@@ -3,16 +3,16 @@ import axios from 'axios'
 // import * as types from '../components/store/types'
 // axios 配置
 // const baseUrl = '';
-const baseUrl = "";
+const baseUrl = "http://192.168.11.222/ego";
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = baseUrl;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 // 请求拦截器
 axios.interceptors.request.use(function (config) {
-  if (store.state.token) {
-    config.headers.Authorization = `Bearer ${store.state.token}`;
-  }
+  // if (store.state.token) {
+  //   config.headers.Authorization = `Bearer ${store.state.token}`;
+  // }
   return config;
 }, function (error) {
   return Promise.reject(error)

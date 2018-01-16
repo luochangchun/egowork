@@ -941,6 +941,7 @@ a {
     width: 600px;
     border-radius: 6px;
     padding: 20px;
+    max-width: 100%;
 }
 .commmonForm .el-form-item {
     margin-bottom: 12px;
@@ -950,9 +951,9 @@ a {
 }
 .commmonForm .el-form-item__label {
     color: #666;
-    /* text-align: center; */
 }
-.commmonForm .el-select {
+.commmonForm .el-select,
+.commmonForm .el-date-editor.el-input {
     width: 100%;
 }
 .commmonForm .el-button--primary {
@@ -961,6 +962,9 @@ a {
 }
 .commmonForm .el-input .el-input__inner {
     height: 34px;
+}
+.commmonForm .el-form-item.is-success .el-input__inner {
+    border-color: #dcdfe6;
 }
 @media (min-width: 768px) {
     .container {
