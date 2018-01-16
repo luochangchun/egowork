@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-img3"></div>
-        <div class="service" style="padding-bottom:150px;">
+        <div class="service margin-bottom">
             <!-- 创业服务 -->
             <div class="container margin-bottom">
                 <el-row>
@@ -16,7 +16,12 @@
                                     <router-link to="/serviceDetail">
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                             <div class="s-img">
-                                                <img src="static/img/fw_left1.png">
+                                                <img src="static/img/fw_left1.png" class="rel">
+                                                <p class="abs white f14 serp">招聘类服务招聘类服务招聘类服务招聘类服务
+                                                    招聘类服务招聘类服务招聘类服务招聘类服务
+                                                    招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务
+                                                    招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务
+                                                </p>
                                             </div>
                                         </el-col>
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in 9" :key="index">

@@ -10,7 +10,7 @@
             </el-row>
             <el-row :gutter="20">
                 <el-col :lg="6" :md="6" :sm="24" :xs="24">
-                    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+                    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
                         <el-submenu index="1">
                             <template slot="title">
                                 <a target="_blank" href="https://www.hansap.com/portal/welcome" style="color:#333;">
@@ -32,7 +32,7 @@
                     <div class="service_detail_title">
                         <el-col :lg="24" :md="24" :sm="24" :xs="24" class="service_body">
                                 <div>
-                                    <p class="f20 category-b" style="color:#18b494;display: inline-block; margin-bottom:30px;">小微企业贷款</p>
+                                    <p class="f20 b" style="color:#18b494;display: inline-block; margin-bottom:30px;">小微企业贷款</p>
                                     <!--QQ-->
                                     <a id="category-qq" class="text-center ng-scope" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank">
                                         <!--<i class="icon fa fa-qq animate_opatoshow animate_start"> 在线咨询</i>-->
@@ -60,8 +60,36 @@
     </div>
 </template>
 <script>
+export default {
+    data() {
+        return {
 
+
+        }
+    },
+    components: {
+//      commonSwiper: Swiper
+    },
+    created() {
+
+    },
+    filters: {
+
+    },
+    methods: {
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        }
+
+    }
+
+}
 </script>
+
+
 <style>
 
 </style>

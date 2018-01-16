@@ -1,28 +1,41 @@
 <template>
     <div>
         <div class="container">
-            <el-row :gutter="20">
+            <el-row :gutter="20" class="margin-bottom">
                 <el-col :lg="17" :md="17" :sm="24" :xs="24">
+                    <el-row :gutter="20">
+                        <el-col :lg="12" :md="12" :sm="24" :xs="24"  v-for="(item, index) in 2" :key="index">
+                            <div>
+                                <router-link to="/article" >
+                                    <span class="news_header_img">
+                                        <img src="static/img/nl.jpg" alt="">
+                                        <p class="text-ellipsis">第十届武汉金融博览会暨中国中部</p>
+                                    </span>
+                                </router-link>
+                            </div>
+                        </el-col>
+                    </el-row>
+
 
                     <!--导航切换-->
                     <el-tabs>
                         <el-tab-pane v-for="(item,index) in 5" :key="index" label="今日头条">
-                            <el-row :gutter="10" class="news-leftlist" v-for="(item, index) in 8" :key="index">
-                                <router-link to="/serviceList.html" class="news-left news-clear">
+                            <el-row :gutter="10" class="news-leftlist" v-for="(item, index) in 4" :key="index">
+                                <router-link to="/serviceList" class="news-left news-clear">
                                     <el-col :lg="8" :md="8" :sm="8" :xs="8" class="news-left-img">
-                                        <div>
+                                        <router-link to="/article">
                                             <img src="static/img/nl.jpg" class="w-full">
-                                        </div>
+                                        </router-link>
                                     </el-col>
                                     <el-col :lg="16" :md="16" :sm="16" :xs="16" class="news-left-content">
                                         <p class="news-text-ellipsis news-margin">
-                                            <a href="${article.url}" class="text-dark-lt">${article.title!}</a>
+                                            <a href="/" class="text-dark-lt f16 b">第十届武汉金融博览会暨中国中部（湖北）创业投资大会举办</a>
                                         </p>
-                                        <p class="text-ellipsis-muti text-ellipsis-4"> ${article.description!}</p>
-                                        <div class="pos-abt" style="bottom:0px;">
-                                            <p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
-                                            <p class="text-muted pull-left m-r"><i class="glyphicon glyphicon-eye-open"></i> <span>浏览次数:${article.views}</span></p>
-                                            <p class="text-muted pull-left"><i class="fa fa-edit m-r-xs"></i><span>云创空间</span></p>
+                                        <p class="text-ellipsis-muti text-ellipsis-4 f14 black1">11月22日，由湖北省人民政府、科技部、中国人民银行、武汉市人民政府等共同主办的第十届武汉金融博览会暨中国中部（湖北）创业投资大会开幕。</p>
+                                        <div class="pos-abt" style="bottom:25px;">
+                                            <p class="text-muted pull-left m-r"><i class="el-icon-time"></i> <span>时间：2017-11-28</span></p>
+                                            <p class="text-muted pull-left m-r"><i class="el-icon-view"></i> <span>浏览次数:1,006</span></p>
+                                            <p class="text-muted pull-left"><i class="el-icon-edit-outline"></i> <span>云创空间</span></p>
                                         </div>
                                     </el-col>
                                 </router-link>
@@ -41,21 +54,21 @@
                 </el-col>
                 <!--右边热门排行-->
                 <el-col :lg="7" :md="7" :sm="24" :xs="24">
-                    <div class="news-rightlist" style="background-color:#f1f1f1;">
-                        <p class="news-rightlist-p" style="margin-top:10px;">热门资讯 : </p>
-                        <div class="news-rightlist">
-                            <div class="m-t" style="margin: 10px 5px 20px 5px;">
+                    <div class="news-rightlist bdColor">
+                        <p class="f16 b">热门资讯 : </p>
+                        <el-row class="news-rightlist">
+                            <el-col :lg="24" :md="24" :sm="24" :xs="24" class="m-t m-right" v-for="(item, index) in 12" :key="index">
                                 <div>
-                                    <a href="${article.url}">
-                                        <p style="margin-bottom: 5px;clear:both;"> ${article.title!}</p>
-                                        <div style="margin-bottom:20px;">
-                                            <p class="text-muted pull-left m-r"><i class="fa fa-clock-o m-r-xs"></i><span>时间：${article.time?string("yyyy-MM-dd")}</span></p>
-                                            <p class="text-muted pull-left"><i class="glyphicon glyphicon-eye-open"></i> <span>浏览:${article.views}次</span></p>
+                                    <router-link to="/article">
+                                        <p style="margin-bottom:5px;clear:both;color:#428bca;"> 省科技厅关于组织申报2018年度大学生科技创业专项计划项目的通知</p>
+                                        <div>
+                                            <p class="text-muted pull-left m-r"><i class="el-icon-time"></i><span> 时间：2017-11-28</span></p>
+                                            <p class="text-muted pull-left"><i class="el-icon-view"></i> <span>浏览:1134次</span></p>
                                         </div>
-                                    </a>
+                                    </router-link>
                                 </div>
-                            </div>
-                        </div>
+                            </el-col>
+                        </el-row>
                     </div>
                 </el-col>
             </el-row>
@@ -73,9 +86,9 @@
 //            this.newApi();
         },
         methods: {
-            handleClick(tab, event) {
-                console.log(tab, event);
-            }
+//            handleClick(tab, event) {
+//                console.log(tab, event);
+//            }
 
 
         },

@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
-        <div class="container">
-            <el-row :gutter="0" class="padder-v-md" style="text-align: ">
+        <div class="container" style="padding-bottom: 20px;">
+            <el-row :gutter="0" class="padder-v-md">
                 <el-col :xs="16" :sm="8" :md="8" :lg="8"  :xl="8">
                     <ul>
                         <li class="footer_logo"><img src="static/img/footer_logo.png" alt=""></li>
@@ -53,12 +53,12 @@
                     </ul>
                 </el-col>
                 <el-col :xs="8" :sm="4" :md="4" :lg="4" class="contact_img tc">
-                    <p class="attention" style="padding-bottom:10px">关注我们</p>
+                    <p class="attention f16" style="padding-bottom:10px">关注我们</p>
                     <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" class="center-block" style="width:80px;">
                 </el-col>
             </el-row>
         </div>
-        <div class="bg-dark footer_footer">
+        <div class="bg-dark black2 footer_footer">
             <div class="tc padder-v-xxs">
                 <p>Copyright © 2017.Phoenix All rights reserved.鄂ICP备16001629号-1</p>
             </div>
@@ -78,7 +78,6 @@
     }
 
     .contact_info {
-        /* width: 100%; */
         box-sizing: border-box;
     }
 
@@ -90,7 +89,6 @@
         color: #8b8b8b;
     }
     .bg-dark {
-        color: #666666;
         background-color: #222222;
     }
 

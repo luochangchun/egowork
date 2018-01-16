@@ -43,16 +43,29 @@ img{
     -webkit-line-clamp:2;/*文本占的行数,如果要设置2行加...则设置为2*/
 }
 .text-ellipsis-3 {
-    -webkit-line-clamp:3;/*文本占的行数,如果要设置2行加...则设置为2*/
+    -webkit-line-clamp:3;/*文本占的行数,如果要设置2行加...则设置为3*/
 }
 .text-ellipsis-4 {
-    -webkit-line-clamp:4;/*文本占的行数,如果要设置2行加...则设置为2*/
+    -webkit-line-clamp:4;/*文本占的行数,如果要设置2行加...则设置为4*/
+}
+.text-ellipsis-5 {
+    -webkit-line-clamp:5;/*文本占的行数,如果要设置2行加...则设置为5*/
 }
 .text-ellipsis-6 {
-    -webkit-line-clamp:6;/*文本占的行数,如果要设置2行加...则设置为2*/
+    -webkit-line-clamp:6;/*文本占的行数,如果要设置2行加...则设置为6*/
 }
+/*轮播图*/
+.header-banner-imgs img{
+    height:600px;
+}
+/*轮播图*/
 
 /*客服*/
+.call img{
+    width:24px;
+    height:24px;
+    margin-top: 8px;
+}
 .call{
     position: fixed;
     top:50%;
@@ -68,6 +81,7 @@ img{
     line-height: 40px;
     font-size: 24px;
     width:40px;
+    height:40px;
 }
 #telnumber span {
     display: none;
@@ -89,11 +103,11 @@ img{
     line-height: 14px;
     margin-top: 6px;
 }
-#telnumber:not(.telCtrl):hover {
+#telnumber:hover {
     background: rgba(6, 146, 63, 1);
     color: white;
 }
-#telnumber:not(.telCtrl):hover span {
+#telnumber:hover span {
     display: block;
 }
 #telnumber span::after {
@@ -110,12 +124,12 @@ img{
 }
 
 /*QQ*/
-#qq:not(.telCtrl):hover {
-    background: rgba(116, 41, 184, 0.8);
+#qq:hover {
+    background: rgba(116, 41, 184, 1);
     color: white;
 }
 #qq {
-    /*margin-top: -40px;*/
+    margin-top: 0px;
     background: rgba(116, 41, 184, 0.8);
     color: rgba(255, 255, 255, 0.7);
     height: 40px;
@@ -165,14 +179,11 @@ img{
     border: 20px solid transparent;
     z-index: 1111;
 }
-
-
-
-#qq:not(.telCtrl):hover span {
+#qq:hover span {
     display: block;
 }
 #code {
-    background: rgba(8, 191, 183, 0.8);
+    background: rgba(24, 180, 148, 0.8);
     color: rgba(255, 255, 255, 0.7);
 }
 #code {
@@ -210,7 +221,7 @@ img{
     font-size: 12px;
 }
 #code span::after {
-    border-left-color: rgba(8, 191, 183, 0.8);
+    border-left-color: rgba(24, 180, 148, 0.8);
     content: "";
     display: block;
     position: absolute;
@@ -221,8 +232,11 @@ img{
     border: 20px solid transparent;
     z-index: 1111;
 }
-
-#code:not(.telCtrl):hover span {
+#code:hover {
+    background: rgba(24, 180, 148, 1);
+    color: white;
+}
+#code:hover span {
     display: block;
 }
 
@@ -238,16 +252,10 @@ img{
     height:30px;
     border-radius:16px;
     font-size:14px;
-    color:#fff;
-    background-color:#18b494;
     border:none;
     display: inline-block;
     line-height: 30px;
     text-align: center;
-}
-.el-button--primary{
-    background-color:#1877b4;
-    border:none;
 }
 .solgan_word{
     font-size:14px;
@@ -263,16 +271,9 @@ img{
     font-size:16px;
     color:#fff;
 }
-.header .cur{
-    background-color: transparent!important;
-}
 .header .top .el-col{
     padding:0 !important;
 }
-.top {
-    background-color: #0089e3;
-}
-
 .header .top .el-col {
     padding: 10px 0;
 }
@@ -311,13 +312,12 @@ img{
     margin-bottom:50px;
 }
 .padder-v-md ul li:first-child{
-    margin-bottom:30px;
+    margin-bottom:20px;
     font-size:16px;
     color:#ccc;
 }
 .attention{
     margin-bottom:30px;
-    font-size:16px;
     color:#ccc;
     text-align: center;
 }
@@ -368,13 +368,9 @@ footer .router-link-exact-active{
 /*common*/
 
 
-
-
-/*首页*/
 /*全面专业的服务体系*/
 .index_service{
     height:140px;
-    text-align: center;
 }
 .index_service img{
     width:70px;
@@ -385,8 +381,6 @@ footer .router-link-exact-active{
     margin-top:0;
     line-height:30px;
     height:30px;
-    font-size:20px;
-    text-align: center;
 }
 .index_service,
 .tutorList .item {
@@ -406,11 +400,9 @@ footer .router-link-exact-active{
 /*国家级孵化器*/
 .index_incubator{
     position:relative;
-    /*width:576px;*/
     height:582px;
 }
 .index_incubator_img img{
-    /*width:576px;*/
     height:582px;
 }
 .el-carousel__container {
@@ -472,23 +464,17 @@ footer .router-link-exact-active{
 .index_incubator_content {
     background-color: rgba(46, 42, 63, 0.5);
     height: 382px;
-    /*width: 228px;*/
     bottom: 39px;
     position: absolute;
     padding: 100px 30px;
     z-index: 100;
-    /*top:0;*/
 }
 .index_incubator_content h3{
-    font-size:16px;
-    color:#fff;
     margin-bottom:32px;
     line-height:30px;
     font-weight: normal;
 }
 .index_incubator_content p{
-    font-size:14px;
-    color:#fff;
     line-height:30px;
 }
 .label{
@@ -496,12 +482,10 @@ footer .router-link-exact-active{
     width:130px;
     height:26px;
     line-height:26px;
-    font-size:12px;
     border-radius:13px;
     border:1px solid #18b494;
     background-color: transparent;
     margin-top: 36px;
-    text-align: center;
 }
 .right_img img{
     height:167px;
@@ -510,8 +494,6 @@ footer .router-link-exact-active{
     height:167px;
 }
 .right_content h3{
-    font-size:16px;
-    color:#333;
     font-weight: normal;
     margin-bottom:10px;
 }
@@ -519,14 +501,6 @@ footer .router-link-exact-active{
     font-size:14px;
     color:#333;
     line-height:25px;
-}
-.small_btn button{
-    width:30px;
-    height:30px;
-    border:none;
-    background-color:#352f4f;
-    border-radius:4px;
-    color:#fff;
 }
 .label2{
     display: inline-block;
@@ -558,7 +532,7 @@ footer .router-link-exact-active{
     position: relative;
 }
 .index_incubator_content{
-    width:45%;
+    width:40%;
     position: absolute;
     top:0;
     left:0;
@@ -567,6 +541,7 @@ footer .router-link-exact-active{
 /*数字*/
 .number{
     width:100%;
+    margin-bottom:50px;
 }
 .number img{
     width:100%;
@@ -591,8 +566,6 @@ footer .router-link-exact-active{
     text-align: center;
 }
 .index_number_title{
-    font-size: 16px;
-    color:#fff;
     margin-top: 5px;
     text-align: center;
 }
@@ -602,27 +575,24 @@ footer .router-link-exact-active{
 .onlineCourse {
     margin-bottom: 50px;
 }
-
 .onlineWrap {
     width: 100%;
     height: 170px;
 }
 .item:hover .onlineMask {
-    top: 0px;
+    top: 0;
 }
 .onlineWrap img, .onlineMask {
     width: 100%;
     height: 100%;
-    top: 0px;
+    top: 0;
     left: 0;
 }
-
 .onlineMask {
     top: -170px;
     background-color: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
 }
-
 .onlineMask a {
     border: 1px solid #fff;
     font-size: 14px;
@@ -631,21 +601,17 @@ footer .router-link-exact-active{
     border-radius: 5px;
     margin: 60px auto 0 auto;
 }
-
 .courseMask {
     top: -186px;
 }
-
 .onlineMask a:hover {
     color: #fff;
 }
-
 .onlineWord p {
     padding: 5px 3px 2px 3px;
     line-height: 20px;
     box-sizing: border-box;
 }
-
 .onlineWord p strong {
     background-color: #18b494;
     font-size: 12px;
@@ -654,7 +620,7 @@ footer .router-link-exact-active{
     border-radius: 5px;
 }
 /*线上课堂*/
-/*首页*/
+
 
 /*孵化器详情页*/
 .float_left p{
@@ -727,7 +693,11 @@ footer .router-link-exact-active{
     padding: 0 20px;
     border-left: 20px solid #f1f1f1;
 }
-
+.i-d{
+    margin-right:0;
+    background-color:#fff;
+    border:none;
+}
 /*孵化器详情页*/
 
 /*孵化器列表*/
@@ -749,6 +719,10 @@ footer .router-link-exact-active{
     font-size: 14px;
     margin-top: 10px;
     display: block;
+}
+.index_headline:hover {
+    border: 1px solid #18b494;
+    border-radius: 5px;
 }
 /*孵化器列表*/
 
@@ -780,30 +754,24 @@ footer .router-link-exact-active{
     margin-bottom:10px;
 }
 .btn1{
-    background-color:#18b494;
-    color:#fff;
     margin-top:10px;
     border:none;
     width:40%;
     height:32px;
     border-radius:20px;
-    font-size:14px;
 }
 .btn2{
     background-color:#fff;
-    color:#18b494;
     margin-top:20px;
     border:none;
     width:40%;
     height:32px;
     border-radius:20px;
-    font-size:14px;
 }
 .back{
     box-shadow:3px 3px 3px #74c5b5;
 }
 .front{
-    /*border:1px solid #ddd;*/
     box-shadow:3px 3px 3px #ddd;
 }
 .front img{
@@ -843,20 +811,9 @@ footer .router-link-exact-active{
 .front {
     transform: rotateY(0deg);
     z-index: 2;
-    background:#f1f1f1;
-}
-.front{
-    transform: rotateY(0deg);
-    z-index: 2;
-    background:#f1f1f1;
 }
 .back {
     transform: rotateY(-180deg);
-    background:#18b494;
-}
-.distance .col-lg-3 , .distance .col-md-4 , .distance .col-sm-6 , .distance .col-xs-12{
-    padding-right: 8px;
-    padding-left:  8px;
 }
 
 /*图片旋转*/
@@ -869,26 +826,22 @@ footer .router-link-exact-active{
     margin-bottom:10px;
 }
 .incubation_project h1{
-    font-size:24px;
-    color:#18b494;
-    text-align: center;
     margin-top:55px;
+    font-weight: 400;
 }
 .incubation_project p{
-    font-size:14px;
-    color:#fff;
-    text-align: center;
     margin:20px 40px;
     height:40px;
 }
-.text-ellipsis-2 {
-    -webkit-line-clamp: 2;
-    /*文本占的行数,如果要设置2行加...则设置为2*/
-}
 
-.text-desc img{
-    /*margin-top:10px;*/
-    margin-bottom: 50px;
+.incubation_project:hover p {
+    color: #18b494;
+}
+.incubation_project:hover h1 {
+    color: #fff;
+}
+.incubation_project h1, .incubation_project p {
+    transition: color .4s;
 }
 /*孵化项目*/
 
@@ -907,28 +860,21 @@ footer .router-link-exact-active{
 .hatchedList .item .line_green {
     width: 60px;
     height: 1px;
-    background-color: #1bd1b9;
     margin: 0 auto 10px auto;
 }
-
 .hatchedList .item h1 {
-    color: #333;
-    font-size: 18px;
     line-height: 24px;
     margin-bottom: 10px;
     padding-top: 30px;
+    font-weight: normal;
 }
-
 .hatchedList .item p {
     width: 80%;
     margin-left: 10%;
-    color: #666666;
-    font-size: 14px;
     line-height: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
 .hatchedList .item p span {
     color: #666;
     display: inline-block;
@@ -939,13 +885,14 @@ footer .router-link-exact-active{
     height: 96px;
     box-sizing: border-box;
     margin-top: 50px;
+    margin-bottom: 15px;
 }
 
 .hatchedList .item .rel .img_wrap {
     width: 86px;
     height: 86px;
     left: 50%;
-    margin-left: -38px;
+    margin-left: -50px;
     z-index: 10;
     background-color: #fff;
     border-radius: 50%;
@@ -953,12 +900,11 @@ footer .router-link-exact-active{
 }
 
 .hatchedList .item .rel img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     border-radius: 50%;
     border: 1px solid #ccc;
 }
-
 .hatchedList .item .rel .img_line {
     width: 80%;
     height: 1px;
@@ -967,30 +913,53 @@ footer .router-link-exact-active{
     left: 10%;
     z-index: 9;
 }
-
-#shareForm input[placeholder], [placeholder], *[placeholder], #shareTo input[placeholder], [placeholder], *[placeholder] {
-    font-size: 12px;
+.text-desc{
+    position: absolute;
+    left: 15px;
+    top: 0;
+    height: 95%;
+    opacity: 0;
+    padding: 20px;
 }
-.partner_logo {
-    transition: all 0.4s;
+.port-1{
+    float: left;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border: 4px solid rgba(255, 255, 255, 0.9);
 }
-.partner_logo:hover {
-    background-color: #f1f1f1;
+.port-1 .text-desc{
+    opacity: 1;
+    top: -100%;
+    transition: 0.5s;
+    color: #000;
+    padding: 60px 20px 20px;
+    left: 10px;
+    width: 79%;
 }
-
-.text-desc{position: absolute; left: 15px; top: 0; background-color: #fff; height: 95%; opacity: 0;padding: 20px;}
-
-.port-1{float: left;; position: relative; overflow: hidden; text-align: center; border: 4px solid rgba(255, 255, 255, 0.9);}
-.port-1 .text-desc{opacity: 1; top: -100%; transition: 0.5s; color: #000; padding: 45px 20px 20px;left: 10px;width: 79%;}
-.port-1 img{transition: 0.5s;}
-.port-1:hover img{transform: scale(1.2);}
-
-.port-1.effect-1:hover .text-desc{top: 0;}
-
-.port-1.effect-2 .text-desc{top: auto; bottom: -100%;}
-.port-1.effect-2:hover .text-desc{bottom: 0;left:10px;}
-.text-desc img{
-    margin-bottom: 50px;
+.port-1 img{
+    transition: 0.5s;
+}
+.port-1:hover img{
+    transform: scale(1.2);
+}
+.port-1.effect-1:hover .text-desc{
+    top: 0;
+}
+.port-1.effect-2 .text-desc{
+    top: auto;
+    bottom: -100%;
+}
+.port-1.effect-2:hover .text-desc{
+    bottom: 0;left:10px;
+}
+.i-p{
+    padding-bottom:55px !important;
+    height:231px;
+    display:none;
+    z-index:10;
+    margin-bottom: 0!important;
+    padding-bottom: 55px;
 }
 /*入孵企业*/
 
@@ -1111,18 +1080,9 @@ footer .router-link-exact-active{
     font-size:13px;
     line-height:20px;
 }
-.tab-content .col-xs-3, .tab-content .col-sm-3, .tab-content .col-md-3, .tab-content .col-lg-3{
-    padding:0;
-}
-
 .service_detail_list>.nav > li > a{
     padding: 10px 0;
 }
-
-.category-b{
-    font-weight:bold;
-}
-
 .service-left-img-p{
     position:absolute;
     top: 30px;
@@ -1151,8 +1111,15 @@ footer .router-link-exact-active{
     line-height: 40px;
     padding-left: 10px;
 }
-
+.serp{
+    width: 23%;
+    top:20%;
+    left:0;
+    padding: 15px;
+    line-height: 25px;
+}
 /*服务*/
+
 /*服务详情页*/
 .sdp{
     padding:20px 0;
@@ -1171,7 +1138,6 @@ footer .router-link-exact-active{
     min-height:700px;
 }
 .service_detail_title p{
-    /*margin-top:20px;*/
     line-height:25px;
     text-align: left;
     color:#666;
@@ -1193,10 +1159,6 @@ footer .router-link-exact-active{
 /*服务详情页*/
 
 
-
-
-
-
 /*流程*/
 .appli_process_r_1 {
     width: 100%;
@@ -1211,6 +1173,7 @@ footer .router-link-exact-active{
     border:1px solid #ddd;
     height:100px;
     width:100%;
+    transition: all 0.4s;
 }
 .partner_logo1{
     background:url(../img/1.png) no-repeat center center;
@@ -1260,17 +1223,16 @@ footer .router-link-exact-active{
     background:url(../img/12.png) no-repeat center center;
     background-size:90%;
 }
-
+.partner_logo:hover{
+    background-color:#f1f1f1;
+}
 /*合作伙伴*/
 
 
-
-
-
-/*资讯中心*/
+/*云创孵化*/
 .index_headline{
     border:1px solid #ccc;
-    margin-right:30px;
+    /*margin-right:30px;*/
     margin-bottom:30px;
     display: block;
 }
@@ -1280,7 +1242,6 @@ footer .router-link-exact-active{
 }
 .index_headline_content{
     padding:20px 15px 30px 15px;
-    /*background-color:#fff;*/
     margin-top: -4px;
 }
 .h4{
@@ -1292,24 +1253,91 @@ footer .router-link-exact-active{
     font-size:14px;
     color:#666;
 }
-.btn_betail{
-    width:110px;
-    height:34px;
-    line-height:34px;
-    text-align: center;
-    border:none;
-    border-radius:10px;
-    font-size:14px;
-    background-color:#18b494;
-    color:#fff;
-    display: block;
-    outline: none;
-}
 .margin_btn{
     margin-top:20px;
 }
+/*云创孵化*/
+
+/*资讯中心*/
 .news-leftlist{
   margin-top: 20px;
+}
+.pos-abt {
+    position: absolute;
+}
+.m-r {
+    margin-right: 15px;
+}
+.text-muted {
+    color: #98a6ad;
+}
+.m-r-xs {
+    margin-right: 5px;
+}
+.pull-left {
+    float: left !important;
+}
+.text-dark-lt {
+    color: #454b60;
+}
+.news-margin {
+    margin-bottom: 10px;
+}
+.news-clear {
+    clear: both;
+    overflow: hidden;
+}
+.news-left {
+    margin-top: 0;
+    border-bottom: 1px solid #dee5e7;
+    padding-bottom: 10px;
+}
+.news-rightlist{
+    padding:15px 5px;
+}
+.m_article{
+    background-color:#fff;
+    padding-top:15px;
+}
+.article_title{
+    margin-bottom: 10px;
+}
+.article-header div p {
+    display: inline-block;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+.padder-v-xxl {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.news_header_img {
+    display: block;
+    height: 200px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+}
+.news_header_img img {
+    height: 200px;
+    width: 100%;
+}
+.news_header_img p {
+    display: block;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    bottom: 7px;
+    background-color: rgba(0,0,0,0.5);
+    height: 30px;
+    line-height: 30px;
+}
+.m-right{
+    margin: 10px 5px 20px 5px;
 }
 /*资讯中心*/
 

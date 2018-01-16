@@ -7,8 +7,8 @@
                         <p class="solgan_word f14">创新创业孵化公共服务平台 中小企业一站式服务平台</p>
                     </el-col>
                     <el-col :xs="14" :sm="8" :md="6" :lg="6" :offset="5" class="header-nav-left">
-                        <a type="button" class="index_btn write bgColor">预约参观></a>
-                        <a type="button" class="index_btn write bgColor">发布需求></a>
+                        <a type="button" class="index_btn white bgColor">预约参观></a>
+                        <a type="button" class="index_btn white bgColor">发布需求></a>
                     </el-col>
                     <el-col :xs="10" :sm="6" :md="4" :lg="4">
                         <a class="text r ">免费注册</a>
@@ -34,7 +34,7 @@
                             <router-link to="/incubators">云创空间</router-link>
                         </li>
                         <li>
-                            <router-link to="/university">云创学院</router-link>
+                            <router-link to="/college">云创学院</router-link>
                         </li>
                         <li>
                             <router-link to="/service">云创服务</router-link>
@@ -43,13 +43,13 @@
                                  <a href="">云创咖啡</a>
                              </li> -->
                         <li>
-                            <router-link to="http://www.hangowa.com/" target="_blank">云创电商</router-link>
+                            <router-link to="_blank" href="http://www.hangowa.com/" target="_blank">云创电商</router-link>
                         </li>
                         <li>
                             <router-link to="_blank" href="http://www.gobaowa.com" target="_blank">云创保险 </router-link>
                         </li>
                         <li>
-                            <router-link to="/financialIndex.html">云创金融</router-link>
+                            <router-link to="/financial">云创金融</router-link>
                         </li>
                         <li>
                             <router-link to="/news">资讯中心</router-link>
@@ -60,36 +60,75 @@
                     <div id="menu-button" @click='showMenu()'>菜单</div>
                     <ul v-show="visible">
                         <li>
-                            <router-link to="/index">首页</router-link>
+                            <router-link to="/index" @click='visible = false'>首页</router-link>
                         </li>
                         <li>
-                            <router-link to="/incubators">云创空间</router-link>
+                            <router-link to="/incubators" >云创空间</router-link>
                         </li>
                         <li>
-                            <router-link to="/university">云创学院</router-link>
+                            <router-link to="/college" >云创学院</router-link>
                         </li>
                         <li>
-                            <router-link to="/service">云创服务</router-link>
+                            <router-link to="/service" >云创服务</router-link>
                         </li>
                         <!-- <li>
                                  <a href="">云创咖啡</a>
                              </li> -->
                         <li>
-                            <router-link to="http://www.hangowa.com/" target="_blank">云创电商</router-link>
+                            <router-link to="_blank" href="http://www.hangowa.com/" target="_blank" >云创电商</router-link>
                         </li>
                         <li>
                             <router-link to="_blank" href="http://www.gobaowa.com" target="_blank">云创保险 </router-link>
                         </li>
                         <li>
-                            <router-link to="/financialIndex">云创金融</router-link>
+                            <router-link to="/financial" >云创金融</router-link>
                         </li>
                         <li>
-                            <router-link to="/news">资讯中心</router-link>
+                            <router-link to="/news" >资讯中心</router-link>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+
+        <!--客服-->
+        <div class="call">
+            <div>
+                <!--电话-->
+                <div id="telnumber" class="text-center" >
+                    <a href="tel:027-59103557" style="color:unset;">
+                        <img src="static/img/dianhua.png" alt="" >
+                        <!--<i class="el-icon-phone animate_opatoshow animate_start"></i>-->
+                    </a>
+                    <span class="text-xs block">
+                <i class="el-icon-phone"></i> 027-59103580<br>
+                </span>
+                </div>
+                <!--QQ-->
+                <div id="qq" class="text-center" >
+                    <img src="static/img/qq.png" alt="" >
+                    <!--<i class="icon fa fa-qq animate_opatoshow animate_start"></i>-->
+                    <span class="text-xs block">
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                        <img src="static/img/qq.png" alt="" >
+                    </a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3425454889&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                        <img src="static/img/qq.png" alt="" >
+                    </a>
+                </span>
+                </div>
+                <!--微信-->
+                <div id="code" class="text-center tras-03" >
+                    <img src="static/img/weixin.png" alt="" >
+                    <span class="text-xs" style="line-height:10px;box-shadow:0 0 10px 5px #ddd;">
+                    <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" style="width:120px; height:120px;">
+                </span>
+                </div>
+            </div>
+        </div>
+
+
+
 
     </div>
 
@@ -100,7 +139,7 @@
         data() {
             return {
                 visible: false,
-                visible_sub: false,
+//                visible_sub: false,
                 nickname: "",
                 dialogTableVisible: false,
                 dialogFormVisible: false,
@@ -130,12 +169,14 @@
                 }
             },
             showMenu_sub() {
-                if (this.visible_sub == true) {
-                    this.visible_sub = false;
+                if (this.visible == true) {
+                    this.visible = false;
                 } else {
-                    this.visible_sub = true;
+                    this.visible = true;
                 }
             },
+//            nav ul li .active
+
             getName() {
 //                api.CheckCookie();
             }
@@ -163,6 +204,7 @@
     .header .cur {
         padding: 0 10px;
         border-radius: 3px;
+        background-color: transparent!important;
     }
 
     .header .hr {

@@ -5,7 +5,7 @@
                 <el-col :lg="24" :md="24" :sm="24" :xs="24">
                     <el-row>
                         <el-col :lg="24" :md="24" :sm="24" :xs="24">
-                            <div class="index_headline" style="margin-right:0;background-color:#fff;border:none;">
+                            <div class="index_headline i-d">
                                 <div class="incubation_detail_content float_left">
                                     <h4 class="h4 black1">宜昌慧云电子商务创业园</h4>
                                     <p class="line-height black3 f14">地址:宜昌市西湖路32号2号楼</p>
@@ -45,7 +45,7 @@
                                         </div>
                                         <div style="padding-bottom:30px;">
                                             <h1 class="detail_title"><span>|</span> 入驻类型</h1>
-                                                <span class="label2" v-for="(item,index) in 10" :key="index">大数据</span>
+                                                <span class="label2 fontColor" v-for="(item,index) in 10" :key="index">大数据</span>
                                         </div>
                                     </el-col>
                                 </el-row>
