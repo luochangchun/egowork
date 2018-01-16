@@ -22,12 +22,32 @@
                             </div>
                         </a>
                     </el-col>
-                    <el-col :lg="6" :md="6" :sm="6" :xs="8" class="index_color" v-for="(item,index) in 7" :key="index">
-                        <router-link to="/serviceDetail">
+                    <el-col :lg="6" :md="6" :sm="6" :xs="8" class="index_color" v-for="(item,index) in categories" :key="index">
+                        <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                             <a style="color:#333;">
                                 <div class="index_service tc image-box">
-                                    <img src="static/img/1631.png">
-                                    <p class="f20">企业信息化</p>
+                                    <span v-if="item.id == 163">
+                                        <img src="static/img/1631.png" alt="">
+                                    </span>
+                                    <span v-if="item.id == 164">
+                                        <img src="static/img/1641.png" alt="">
+                                    </span>
+                                    <span v-if="item.id == 165" >
+                                        <img src="static/img/1651.png" alt="">
+                                    </span>
+                                    <span v-if="item.id == 166">
+                                        <img src="static/img/1661.png" alt="">
+                                    </span>
+                                    <span v-if="item.id == 167">
+                                        <img src="static/img/1671.png" alt="">
+                                    </span>
+                                    <span v-if="item.id == 168">
+                                        <img src="static/img/1681.png" alt="" onclick="setCategory('${categories.id}')">
+                                    </span>
+                                    <span v-if="item.id == 169">
+                                        <img src="static/img/1691.png" alt="" onclick="setCategory('${categories.id}')">
+                                    </span>
+                                    <p class="f20">{{ item.name }}</p>
                                 </div>
                             </a>
                         </router-link>
@@ -47,30 +67,30 @@
                             <el-row :gutter="20">
                                 <el-col :lg="12" :md="12" :sm="24" :xs="24">
                                     <el-carousel  :interval="5000" arrow="always" class="index_incubator">
-                                        <el-carousel-item v-for="item in imgArrs" :key="item.id" class="index_incubator_img">
-                                            <img :src="item.src">
+                                        <el-carousel-item v-for="item in incubators" :key="item.id" class="index_incubator_img">
+                                            <img :src="item.photos">
                                             <div class="index_incubator_content">
-                                                <h3 class="f16 white">武汉火凤凰云计算孵化器管理有限公司{{ item }}</h3>
-                                                <p class="text-ellipsis-muti text-ellipsis-6 f14 white">孵化器主要集聚云计算创新研发、大数据服务、小微创新创业、投融资服务等企业，孵化器依托火凤凰云基地云服务平台的优势资源，自建了线上“双云双创”孵化服务平台，线下孵化器...</p>
+                                                <h3 class="f16 white">{{ item.title }}</h3>
+                                                <p class="text-ellipsis-muti text-ellipsis-6 f14 white">{{ item.settled }}</p>
                                                 <span class="label white tc f12">云计算/大数据平台</span>
                                             </div>
                                         </el-carousel-item>
                                     </el-carousel>
                                 </el-col>
-                                <el-col :lg="12" :md="12" :sm="24" :xs="24" v-for="item in imgArrs" :key="item.id" class="index-fh-mb">
-                                    <router-link to="/incubator">
+                                <el-col :lg="12" :md="12" :sm="24" :xs="24" v-for="(item,index) in incubators" :key="index" class="index-fh-mb" v-if="index<3">
+                                    <router-link :to="{ name: 'incubator',params: { id: item.id}}">
                                         <el-col :lg="10" :md="10" :sm="10" :xs="10">
                                             <div class="right_img">
-                                                <img :src="item.src" alt="">
+                                                <img :src="item.photos" alt="">
                                             </div>
                                         </el-col>
                                         <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
-                                            <h3 class="text-ellipsis black1 f16">武汉火凤凰云计算孵化器管理有限公司</h3>
-                                            <p class="text-ellipsis">地址: 武汉火凤凰云计算孵化器管理有限公司</p>
-                                            <p>联系电话:027-59103580</p>
-                                            <p>级别:国家级</p>
-                                            <p>地区:江汉区</p>
-                                            <span class="label2 fontColor" v-for="(item , index) in 3" :key="index">创业圣地</span>
+                                            <h3 class="text-ellipsis black1 f16">{{ item.title }}</h3>
+                                            <p class="text-ellipsis">地址: {{ item.address }}</p>
+                                            <p>联系电话: {{ item.phone }}</p>
+                                            <p>级别: {{ item.level }}</p>
+                                            <p>地区: {{ item.region }}</p>
+                                            <span class="label2 fontColor">{{ item.label }}</span>
                                         </el-col>
                                     </router-link>
                                 </el-col>
@@ -96,35 +116,27 @@
                             <el-col class="container">
                                 <el-col class="vc_row wpb_row vc_inner vc_row-fluid">
                                     <el-row id="numList">
-                                        <el-col :lg="6" :md="6" :sm="6" :xs="6" class="num01">
+                                        <el-col :lg="6" :md="6" :sm="6" :xs="6" class="num01" >
                                             <div class="index_number num01">
-                                                <div class="num">
-                                                    222
-                                                </div>
+                                                <div class="num" v-html="chips.providers"></div>
                                                 <div class="index_number_title f16 white">服务商(家)</div>
                                             </div>
                                         </el-col>
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6" class="num02">
                                             <div class="index_number num02">
-                                                <div class="num">
-                                                   555
-                                                </div>
+                                                <div class="num" v-html="chips.mentors"></div>
                                                 <div class="index_number_title f16 white">导师(位)</div>
                                             </div>
                                         </el-col>
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6" class="num03">
                                             <div class="index_number num03">
-                                                <div class="num">
-                                                    888
-                                                </div>
+                                                <div class="num" v-html="chips.categories"></div>
                                                 <div class="index_number_title f16 white">服务产品种类(种)</div>
                                             </div>
                                         </el-col>
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6" class="num04">
                                             <div class="index_number num04">
-                                                <div class="num">
-                                                    50000
-                                                </div>
+                                                <div class="num" v-html="chips.area"></div>
                                                 <div class="index_number_title f16 white">孵化面积(m²)</div>
                                             </div>
                                         </el-col>
@@ -178,8 +190,7 @@
 </template>
 
 <script>
-//    import api from '../axios/api.js'
-    //  import Swiper from '../components/swiper.vue'
+    import api from '../axios/api.js'
     import {
         formatDate
     } from '../../static/js/date.js'
@@ -196,21 +207,31 @@
                     { "id": '2', "src": "../static/img/fh_bg2.png" },
                     { "id": '4', "src": "../static/img/fh_bg3.png" }
                 ],
-                newStr: '',
-                count: '',
+                categories: '',
+                incubators: '',
+                chips: '',
 
             }
         },
         components: {
-//      commonSwiper: Swiper
+
         },
         created() {
-
+            this.setNewsApi()
         },
         filters: {
 
         },
         methods: {
+            setNewsApi() {
+                api.Get('/pub/index')
+                    .then(res =>{
+                        this.categories = res['categories'];  //全面专业的服务体系
+                        this.incubators = res['incubators']; //国家级孵化器
+                        this.chips = res['chips']; //数字
+                    })
+            },
+
 
         },
 
