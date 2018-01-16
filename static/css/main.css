@@ -879,7 +879,89 @@ a {
 .financial_mail a:hover {
     color: #fff;
 }
+/* 登录注册 */
 
+.register, .login {
+    padding: 80px 0;
+}
+
+.registerBox {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px 15px;
+    max-width: 460px;
+}
+
+.registerBox h1 {
+    font-size: 18px;
+    line-height: 40px;
+    color: #18b494;
+    margin-bottom: 40px;
+    border-bottom: 2px dashed #18b494;
+}
+.registerBox .btn-info {
+    color: #ffffff !important;
+    background-color: #18b494;
+    border-color: #18b494;
+    width: 100%;
+}
+.registerBox .el-button--primary {
+    color: #ffffff !important;
+    background-color: #18b494;
+    height: 34px;
+    margin-top: 4px;
+}
+.registerBox .tc .el-form-item__content {
+    margin-left: 0 !important;
+}
+.registerBox .el-input__inner {
+    width: 90%;
+    height: 34px;
+}
+.loginBox .el-input__inner {
+    width: 85%;
+}
+.registerBox .el-form-item__label {
+    text-align: center;
+}
+.registerBox .submitBtn {
+    padding: 12px 100px;
+    border-radius: 50px;
+}
+
+/* 发布需求表单 */
+.form_title {
+    font-size: 24px;
+    font-weight: 400;
+    padding-bottom: 30px;
+    margin-top: -10px;
+}
+.commmonForm .el-dialog {
+    width: 600px;
+    border-radius: 6px;
+    padding: 20px;
+}
+.commmonForm .el-form-item {
+    margin-bottom: 12px;
+}
+.commmonForm .el-dialog__body {
+    padding: 10px 20px 0px 20px;
+}
+.commmonForm .el-form-item__label {
+    color: #666;
+    /* text-align: center; */
+}
+.commmonForm .el-select {
+    width: 100%;
+}
+.commmonForm .el-button--primary {
+    background-color: #18b494;
+    padding: 8px 36px;
+}
+.commmonForm .el-input .el-input__inner {
+    height: 34px;
+}
 @media (min-width: 768px) {
     .container {
         width: 750px;
