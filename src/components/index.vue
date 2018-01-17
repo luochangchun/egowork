@@ -1,13 +1,14 @@
 <template>
     <div class="index">
         <!--轮播-->
-        <template>
+        <!-- <template>
             <el-carousel :interval="5000" arrow="always">
                 <el-carousel-item v-for="(item,index) in bImgs" :key="item.id" class="header-banner-imgs">
                     <img :src="item.src">
                 </el-carousel-item>
             </el-carousel>
-        </template>
+        </template> -->
+        <commonSwiper></commonSwiper>
 
         <!-- 全面专业的服务体系 -->
         <div class="distance margin-bottom">
@@ -190,56 +191,47 @@
 </template>
 
 <script>
-    import api from '../axios/api.js'
-    import {
-        formatDate
-    } from '../../static/js/date.js'
-    export default {
-        data() {
-            return {
-                bImgs: [
-                    { "id": '1', "src": "../static/img/banner01.jpg" },
-                    { "id": '2', "src": "../static/img/banner02.jpg" },
-                    { "id": '3', "src": "../static/img/banner03.jpg" }
-                ],
-                imgArrs: [
-                    { "id": '1', "src": "../static/img/fh_bg1.png" },
-                    { "id": '2', "src": "../static/img/fh_bg2.png" },
-                    { "id": '4', "src": "../static/img/fh_bg3.png" }
-                ],
-                categories: '',
-                incubators: '',
-                chips: '',
-
-            }
-        },
-        components: {
-
-        },
-        created() {
-            this.setNewsApi()
-        },
-        filters: {
-
-        },
-        methods: {
-            setNewsApi() {
-                api.Get('/pub/index')
-                    .then(res =>{
-                        this.categories = res['categories'];  //全面专业的服务体系
-                        this.incubators = res['incubators']; //国家级孵化器
-                        this.chips = res['chips']; //数字
-                    })
-            },
-
-
-        },
-
-
-
+import api from "../axios/api.js";
+import { formatDate } from "../../static/js/date.js";
+import Swiper from '../components/common/swiper.vue'
+export default {
+  data() {
+    return {
+      bImgs: [
+        { id: "1", src: "../static/img/banner01.jpg" },
+        { id: "2", src: "../static/img/banner02.jpg" },
+        { id: "3", src: "../static/img/banner03.jpg" }
+      ],
+      imgArrs: [
+        { id: "1", src: "../static/img/fh_bg1.png" },
+        { id: "2", src: "../static/img/fh_bg2.png" },
+        { id: "4", src: "../static/img/fh_bg3.png" }
+      ],
+      categories: "",
+      incubators: "",
+      chips: ""
+    };
+  },
+  components: {
+    commonSwiper: Swiper
+  },
+  created() {
+    this.setNewsApi();
+  },
+  filters: {},
+  methods: {
+    setNewsApi() {
+      api.Get("/pub/index").then(res => {
+        this.categories = res["categories"]; //全面专业的服务体系
+        this.incubators = res["incubators"]; //国家级孵化器
+        this.chips = res["chips"]; //数字
+      });
     }
+  }
+};
 </script>
 
 <style>
+
 </style>
 
