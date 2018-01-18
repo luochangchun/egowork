@@ -42,10 +42,10 @@
                                         <img src="static/img/1671.png" alt="">
                                     </span>
                                     <span v-if="item.id == 168">
-                                        <img src="static/img/1681.png" alt="" onclick="setCategory('${categories.id}')">
+                                        <img src="static/img/1681.png" alt="">
                                     </span>
                                     <span v-if="item.id == 169">
-                                        <img src="static/img/1691.png" alt="" onclick="setCategory('${categories.id}')">
+                                        <img src="static/img/1691.png" alt="">
                                     </span>
                                     <p class="f20">{{ item.name }}</p>
                                 </div>
@@ -67,8 +67,11 @@
                             <el-row :gutter="20">
                                 <el-col :lg="12" :md="12" :sm="24" :xs="24">
                                     <el-carousel  :interval="5000" arrow="always" class="index_incubator">
-                                        <el-carousel-item v-for="item in incubators" :key="item.id" class="index_incubator_img">
-                                            <img :src="item.photos">
+                                        <el-carousel-item v-for="(item , index) in incubators" :key="index" class="index_incubator_img">
+                                            <span>
+                                                <img :src="item.photos[0]['uri']" alt="">
+                                            </span>
+
                                             <div class="index_incubator_content">
                                                 <h3 class="f16 white">{{ item.title }}</h3>
                                                 <p class="text-ellipsis-muti text-ellipsis-6 f14 white">{{ item.settled }}</p>
@@ -81,16 +84,27 @@
                                     <router-link :to="{ name: 'incubator',params: { id: item.id}}">
                                         <el-col :lg="10" :md="10" :sm="10" :xs="10">
                                             <div class="right_img">
-                                                <img :src="item.photos" alt="">
+                                                <img :src="item.uri" alt="">
                                             </div>
                                         </el-col>
                                         <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
                                             <h3 class="text-ellipsis black1 f16">{{ item.title }}</h3>
                                             <p class="text-ellipsis">地址: {{ item.address }}</p>
                                             <p>联系电话: {{ item.phone }}</p>
-                                            <p>级别: {{ item.level }}</p>
-                                            <p>地区: {{ item.region }}</p>
-                                            <span class="label2 fontColor">{{ item.label }}</span>
+                                            <p v-if="item.level == subItem.id" v-for="(subItem,index) in dictLevel" :key="index">
+                                                级别: {{ subItem.value }}
+                                            </p>
+                                            <p v-if="item.region == subItem.id" v-for="(subItem,index) in dictRegion" :key="index">
+                                                地区: {{ subItem.value }}
+                                            </p>
+
+                                            <div style="height:40px;overflow: hidden;">
+                                                <p class="dib" v-for="(upItem,index) in item.label.split(',')" :key="index">
+                                                    <span class="label2 fontColor" v-if="upItem == subItem.id" v-for="(subItem,index) in dictIncubator" :key="index">
+                                                        {{ subItem.value }}
+                                                    </span>
+                                                </p>
+                                            </div>
                                         </el-col>
                                     </router-link>
                                 </el-col>
@@ -202,22 +216,22 @@
                     { "id": '2', "src": "../static/img/banner02.jpg" },
                     { "id": '3', "src": "../static/img/banner03.jpg" }
                 ],
-                imgArrs: [
-                    { "id": '1', "src": "../static/img/fh_bg1.png" },
-                    { "id": '2', "src": "../static/img/fh_bg2.png" },
-                    { "id": '4', "src": "../static/img/fh_bg3.png" }
-                ],
                 categories: '',
                 incubators: '',
                 chips: '',
-
+                dictIncubator: '',
+                upItem: '',
+                subItem: '',
+                dictLevel: '',
+                dictRegion: '',
             }
         },
         components: {
 
         },
         created() {
-            this.setNewsApi()
+            this.setNewsApi();
+            this.setIncubator();
         },
         filters: {
 
@@ -228,12 +242,24 @@
                     .then(res =>{
                         this.categories = res['categories'];  //全面专业的服务体系
                         this.incubators = res['incubators']; //国家级孵化器
+//                        console.log(res['incubators']);
                         this.chips = res['chips']; //数字
+                    })
+            },
+            setIncubator() {
+                api.Get('/dict/' + 'incubator')
+                    .then(res =>{
+                        this.dictLevel = res;//级别
+                        this.dictRegion = res;//地区
+                        this.dictIncubator = res;//label
                     })
             },
 
 
-        },
+
+
+
+        }
 
 
 

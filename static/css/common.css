@@ -520,7 +520,7 @@ footer .router-link-exact-active{
 }
 @media (min-width: 970px) {
     .index-fh-mb{
-        margin-bottom: 40px;
+        margin-bottom: 35px;
     }
 }
 @media (max-width: 970px) {
@@ -539,7 +539,7 @@ footer .router-link-exact-active{
 }
 /*国家级孵化器*/
 /*数字*/
-.number{
+.index .number{
     width:100%;
     margin-bottom:50px;
 }
@@ -691,12 +691,31 @@ footer .router-link-exact-active{
 .space_show_right {
     background-color: #fff;
     padding: 0 20px;
-    border-left: 20px solid #f1f1f1;
+    /*border-left: 20px solid #f1f1f1;*/
 }
 .i-d{
     margin-right:0;
     background-color:#fff;
     border:none;
+}
+@media(min-width: 768px){
+    .space_show_right {
+        background-color: #fff;
+        padding: 0 20px;
+        border-left: 20px solid #f1f1f1;
+    }
+    .btn3 {
+        margin-top: -35px;
+    }
+}
+@media(max-width: 768px){
+    .space_show_right{
+        width:100%;
+        margin-top: 30px;
+    }
+    .btn3 {
+        margin-top: -60px;
+    }
 }
 /*孵化器详情页*/
 
@@ -1037,11 +1056,6 @@ footer .router-link-exact-active{
     height:230px;
     margin-top: 30px;
     margin-bottom: 30px;
-}
-.space_show_right{
-    background-color: #fff;
-    padding:0 20px;
-    border-left:20px solid #f1f1f1;
 }
 /*详情标题*/
 

@@ -8,10 +8,10 @@
                         <el-col :lg="24" :md="24" :sm="24" :xs="24" v-for="(item,index) in content" :key="index">
                             <el-row :gutter="20" class="clearfix">
                                 <el-col :lg="8" :md="8" :sm="12" :xs="24" style="clear:both;">
-                                    <div class="index_headline" style="margin-right:0;border:none;">
-                                        <a href="/" style="height:227px;display:block;">
-                                            <img :src="item.icon" alt="" style="height:224px;">
-                                        </a>
+                                    <div class="index_headline" style="margin-right:0;border:none;" >
+                                        <div style="height:227px;">
+                                            <img src="static/img/jinrongbanner.jpg" alt="" style="height:224px;">
+                                        </div>
                                     </div>
                                 </el-col>
                                 <el-col :lg="16" :md="16" :sm="12" :xs="24">
@@ -19,8 +19,12 @@
                                         <h4 class="h4 text-ellipsis">{{ item.title }}</h4>
                                         <p class="p3 line-height text-ellipsis">地址: {{ item.address }}</p>
                                         <p class="p3 line-height text-ellipsis">联系电话: {{ item.phone }}</p>
-                                        <p class="p3 line-height text-ellipsis">级别: {{ item.level }}</p>
-                                        <p class="p3 line-height text-ellipsis">地区: {{ item.region }}</p>
+                                        <p class="p3 line-height text-ellipsis" v-if="item.level == subItem.id" v-for="(subItem,index) in dictLevel" :key="index">
+                                            级别: {{ subItem.value }}
+                                        </p>
+                                        <p class="p3 line-height text-ellipsis" v-if="item.region == subItem.id" v-for="(subItem,index) in dictRegion" :key="index">
+                                            地区: {{ subItem.value }}
+                                        </p>
                                         <router-link :to="{ name: 'incubator',params: { id: item.id}}" class="btn5">
                                             查看详情
                                         </router-link>
@@ -29,10 +33,10 @@
                             </el-row>
                         </el-col>
                         <!--分页-->
-                        <el-row :gutter="10" style="margin-bottom: 50px;">
+                        <el-row :gutter="10" class="margin-bottom">
                             <el-col :lg="8" :md="8" :sm="24" :xs="24" :offset="8">
                                 <div class="block">
-                                    <el-pagination :current-page="0" :total="totalPages"  @current-change="handleCurrentChange" layout="prev, pager, next">
+                                    <el-pagination :current-page="0" :total="total"  @current-change="getIncubatorsList" layout="prev, pager, next">
                                     </el-pagination>
                                 </div>
                             </el-col>
@@ -52,15 +56,17 @@
     export default {
         data() {
             return {
+                photos: '',
                 content: '',
-                totalPages: '',
+                total: '',
             }
         },
         components: {
 
         },
         created() {
-            this.setNewsApiList()
+            this.setIncubator();
+            this.setNewsApiList();
         },
         filters: {
 
@@ -70,21 +76,31 @@
                 let url = '/qb/' + '8' + '/' + '0';
                 api.Get(url)
                     .then(res =>{
-                        console.log(res);
+//                        console.log(res);
                         this.content = res['content']; //孵化器列表
-                        this.totalPages = res['totalPages'] * 10; //分页
+//                        this.photos = res['photos'];
+//                        console.log(res['photos'])
+                        this.total = res['total'] * 10; //分页
+//                        console.log(res['total'])
                     })
             },
-            handleCurrentChange(val) {
+            getIncubatorsList(val) {
                 //获取到当前分页页码，获取当前页面数据
                 var url = '/qb/' + '8' + '/' + val;
                 api.Get(url)
                     .then(res =>{
-                        this.content = res['data'];
-                        this.totalPages = res['totalPages'] * 10;
+//                        this.content = res['data'];
+                        this.total = res['total'] * 10;
                     })
-            }
-
+            },
+            setIncubator() {
+                api.Get('/dict/' + 'incubator')
+                    .then(res =>{
+                        this.dictLevel = res;//级别
+                        this.dictRegion = res;//地区
+//                        this.dictIncubator = res;//label
+                    })
+            },
 
         },
 

@@ -86,17 +86,25 @@
                             <p class="title" style="margin-top: -50px;">云创孵化</p>
                             <el-col :lg="24" :md="24" :sm="24" :xs="24">
                                 <el-row  :gutter="20" class="clearfix">
-                                    <el-col :lg="8" :md="8" :sm="12" :xs="24" v-for="(item,index) in 3" :key="index">
-                                        <router-link to="/incubator" class="index_headline">
-                                            <img src="static/img/ccfh.png" alt="">
+                                    <el-col :lg="8" :md="8" :sm="12" :xs="24" v-for="(item,index) in incubators" :key="index" v-if="index<3">
+                                       <router-link :to="{ name: 'incubator',params: { id: item.id}}" class="index_headline">
+                                            <img :src="item.uri" alt="">
                                             <div class="index_headline_content">
-                                                <h4 class="h4 text-ellipsis">武汉火凤凰云计算基地</h4>
-                                                <p class="p3 line-height text-ellipsis">地址: 湖北省武汉市江汉经济开发区江旺路6号</p>
-                                                <p class="p3 line-height">联系电话: 027-59103580</p>
-                                                <p class="p3 line-height">级别:国家级</p>
-                                                <p class="p3 line-height text-ellipsis">地区:江汉区</p>
-                                                <div>
-                                                    <span class="label2 fontColor" v-for="(item,index) in 5" :key="index">大咖创业导师</span>
+                                                <h4 class="h4 text-ellipsis">{{ item.title }}</h4>
+                                                <p class="p3 line-height text-ellipsis">地址: {{ item.address }}</p>
+                                                <p class="p3 line-height">联系电话: {{ item.phone }}</p>
+                                                <p class="p3 line-height" v-if="item.level == subItem.id" v-for="(subItem,index) in dicts" :key="index">
+                                                    级别: {{ subItem.value }}
+                                                </p>
+                                                <p class="p3 line-height text-ellipsis" v-if="item.region == subItem.id" v-for="(subItem,index) in dicts" :key="index">
+                                                    地区: {{ subItem.value }}
+                                                </p>
+                                                <div style="height:40px;overflow: hidden;">
+                                                    <p class="dib" v-for="(upItem,index) in item.label" :key="index">
+                                                        <span class="label2 fontColor" v-if="upItem == subItem.id" v-for="(subItem,index) in dicts" :key="index">
+                                                            {{ subItem.value }}
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </router-link>
@@ -119,10 +127,10 @@
                             <p class="title">孵化项目</p>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <el-row class="clearfix">
-                                    <el-col :lg="6" :md="8" :sm="12" :xs="24" class="incubation_project" v-for="(item,index) in 4" :key="index">
-                                        <router-link to="/seed">
-                                            <h1 class="f24 tc fontColor">购保网金融平台</h1>
-                                            <p class="text-ellipsis-muti text-ellipsis-2 f14 white tc">通过“互联网+保险”的模式，为客户提供国内各家保险公司不同种类的保险产品</p>
+                                    <el-col :lg="6" :md="8" :sm="12" :xs="24" class="incubation_project" v-for="(item,index) in seeds" :key="index">
+                                       <router-link :to="{ name: 'seed',params: { id: item.id}}">
+                                            <h1 class="f24 tc fontColor">{{ item.name }}</h1>
+                                            <p class="text-ellipsis-muti text-ellipsis-2 f14 white tc">{{ item.intro }}</p>
                                         </router-link>
                                     </el-col>
                                 </el-row>
@@ -141,17 +149,17 @@
                         </el-col>
                     </el-row>
                     <el-row :gutter="20" class="clearfix">
-                        <el-col :lg="6" :md="6" :sm="12" :xs="24" class="port-1 effect-2" v-for="(item,index) in 4" :key="index">
-                            <router-link to="/enterprise" class="item db image-box" style="margin-bottom: 0;">
-                                <h1 class="tc text-ellipsis p_padding black1 f18">鹏博士电信传媒集团股份有限公司武汉分公司</h1>
+                        <el-col :lg="6" :md="6" :sm="12" :xs="24" class="port-1 effect-2" v-for="(item,index) in enterprises" :key="index">
+                            <router-link :to="{ name: 'enterprise',params: { id: item.id}}" class="item db image-box" style="margin-bottom: 0;">
+                                <h1 class="tc text-ellipsis p_padding black1 f18">{{ item.name }}</h1>
                                 <div class="line_green bgColor"></div>
-                                <p class="tc text-ellipsis-muti text-ellipsis-4 f14 black2" style="height:80px">优势 : 200-1000M超宽带 大麦盒子 长宽电00-1000M超宽带 大麦盒子 长宽电视 鹏云课堂 云游戏 15米家庭信息化全管服务</p>
+                                <p class="tc text-ellipsis-muti text-ellipsis-4 f14 black2" style="height:80px">优势 : {{ item.advantage }}</p>
                                 <p class="tc f14 black2">
-                                    <span>所属领域 : 信息通讯</span>
+                                    <span>所属领域 : {{ item.field }}</span>
                                 </p>
                                 <div class="rel">
                                     <div class="img_wrap abs">
-                                        <img src="static/img/yunzhikangjian.png" alt="">
+                                        <img :src="item.icon" alt="">
                                     </div>
                                     <div class="img_line abs"></div>
                                 </div>
@@ -160,12 +168,11 @@
                             <router-link to="/enterprise" class="item db text-desc i-p bgColor">
                                 <div class="rel"  style="margin-top:-20px;">
                                     <div class="img_wrap abs">
-                                        <img src="static/img/yunzhikangjian.png" style="border:none;">
+                                        <img :src="item.icon" style="border:none;">
                                     </div>
                                     <div class="img_line abs" style="background-color:#fff;"></div>
                                 </div>
-                                <p class="tc text-ellipsis-muti text-ellipsis-6 white" style="height:120px;">简介 : 鹏博士电信传媒集团股份有限公司武汉分公司鹏博士电信传媒集团股份有限公
-                                    司武汉分公司鹏博士电信传媒集团股份有限公司武汉分公司鹏博士电信传媒集团股份有限公司武汉分公司</p>
+                                <p class="tc text-ellipsis-muti text-ellipsis-6 white" style="height:120px;">简介 : {{ item.intro }}</p>
                             </router-link>
                         </el-col>
                     </el-row>
@@ -189,7 +196,49 @@
     </div>
 </template>
 <script>
+    import api from '../axios/api.js'
+    import {
+        formatDate
+    } from '../../static/js/date.js'
+    export default {
+        data() {
+            return {
+                incubators: '',
+                seeds: '',
+                enterprises: '',
+                dicts: '',
+                upItem: '',
+                subItem: '',
+            }
+        },
+        components: {
 
+        },
+        created() {
+            this.setIncubatorsApi();
+        },
+        filters: {
+
+        },
+        methods: {
+            setIncubatorsApi() {
+                api.Get('/pub/cloud')
+                    .then(res => {
+                        this.incubators = res['incubators']; //云创孵化
+                        this.seeds = res['seeds']; //孵化项目
+                        this.enterprises = res['enterprises']; //孵化项目
+                        this.dicts = res['dicts'];
+                    })
+            },
+
+
+
+
+        }
+
+
+
+    }
 </script>
 <style>
 

@@ -3,27 +3,60 @@
         <div class="bgColor">
             <div class="container">
                 <div class="hatchedWrap clearfix">
-                    <img src="static/img/yunzhikangjian.png" alt="" class="l hatchedImg">
+                    <img :src="seed.icon" alt="" class="l hatchedImg">
                     <div class="l hatchedInfo">
                         <!-- 公司名 -->
-                        <p style="font-size:16px;font-weight:bold">${seed.name!}</p>
+                        <p style="font-size:16px;font-weight:bold">{{ seed.name }}</p>
                         <!--孵化资金-->
-                        <p>孵化资金 : ${seed.funds!}</p>
+                        <p>孵化资金 : {{ seed.funds }}</p>
                         <!-- 项目简介 -->
-                        <p class="text-ellipsis-muti text-ellipsis-2">简介 : ${seed.intro!}</p>
+                        <p class="text-ellipsis-muti text-ellipsis-2">简介 : {{ seed.intro }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container" style="min-height:800px;">
-            <div class="hatchedBody clearfix">${seed.content!}</div>
+            <div class="hatchedBody clearfix" v-html="seed.content"></div>
         </div>
 
 
     </div>
 </template>
 <script>
+    import api from '../axios/api.js'
+    import {
+        formatDate
+    } from '../../static/js/date.js'
+    export default {
+        data() {
+            return {
+                seed: '',
+            }
+        },
+        components: {
 
+        },
+        created() {
+            let id = this.$route.params.id;
+            this.setSeedDetailApi(id);
+        },
+        filters: {
+
+        },
+        methods: {
+            setSeedDetailApi(id) {
+                api.Get('/seed/' + id)
+                    .then(res =>{
+                        this.seed = res;
+                    })
+            },
+
+
+        },
+
+
+
+    }
 </script>
 <style>
 
