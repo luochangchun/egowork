@@ -1,5 +1,5 @@
 body {
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -7,6 +7,7 @@ body {
     color: #333;
     background-color: transparent;
 }
+
 .nowLocation {
     width: 100%;
     padding: 10px 0;
@@ -14,9 +15,11 @@ body {
     margin-left: -10px;
     /* background-color: #fff; */
 }
+
 .ml0 {
     margin-left: 0;
 }
+
 p {
     word-break: break-all;
     word-break: break-word;
@@ -26,6 +29,338 @@ a {
     display: block;
 }
 
+
+/* 首页轮播 */
+
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    direction: ltr;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    -webkit-transition-property: -webkit-transform, left, top;
+    -webkit-transition-duration: 0s;
+    -webkit-transform: translate3d(0px, 0, 0);
+    -webkit-transition-timing-function: ease;
+    -moz-transition-property: -moz-transform, left, top;
+    -moz-transition-duration: 0s;
+    -moz-transform: translate3d(0px, 0, 0);
+    -moz-transition-timing-function: ease;
+    -o-transition-property: -o-transform, left, top;
+    -o-transition-duration: 0s;
+    -o-transform: translate3d(0px, 0, 0);
+    -o-transition-timing-function: ease;
+    -o-transform: translate(0px, 0px);
+    -ms-transition-property: -ms-transform, left, top;
+    -ms-transition-duration: 0s;
+    -ms-transform: translate3d(0px, 0, 0);
+    -ms-transition-timing-function: ease;
+    transition-property: transform, left, top;
+    transition-duration: 0s;
+    transform: translate3d(0px, 0, 0);
+    transition-timing-function: ease;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.swiper-free-mode>.swiper-wrapper {
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -ms-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    float: left;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+
+/* IE10 Windows Phone 8 Fixes */
+
+.swiper-wp8-horizontal {
+    -ms-touch-action: pan-y;
+}
+
+.swiper-wp8-vertical {
+    -ms-touch-action: pan-x;
+}
+
+.swiper-container {
+    height: 500px;
+}
+
+.swiper-button-prev {
+    background: url(../img/wm_button_icon.png) no-repeat 0 0;
+    background-size: 100%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin-top: -45px;
+    width: 45px;
+    height: 45px;
+    z-index: 10;
+}
+
+.arrow-left:hover {
+    background-position: 0 -46px;
+}
+
+.swiper-button-next {
+    background: url(../img/wm_button_icon.png) no-repeat 0 -93px;
+    background-size: 100%;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -45px;
+    width: 45px;
+    height: 45px;
+    z-index: 10;
+}
+
+.arrow-right:hover {
+    background-position: 0 -139px;
+}
+
+.swiper-container .pagination {
+    position: absolute;
+    left: 0;
+    text-align: center;
+    bottom: 5px;
+    width: 100%;
+}
+
+.swiper-pagination-switch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #999;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.swiper-active-switch {
+    background: #fff;
+}
+
+.swiper-slide {
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+}
+
+.swiper-slide-active {
+    opacity: 1;
+}
+
+.inner {
+    position: relative;
+    display: block;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.sliword {
+    width: 500px;
+    padding-top: 150px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+}
+
+.sliword .img {
+    width: auto;
+    margin: 0 20px;
+}
+
+.inner .s05 {
+    width: auto;
+    margin: 30px auto 0 auto;
+}
+
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.swiper-container-android .swiper-slide,
+.swiper-wrapper {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate(0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    -ms-transition-property: -ms-transform;
+    transition-property: transform;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2;
+    margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #18b494;
+}
+.animate_after {
+    opacity: 0;
+}
+.b00 {
+    -webkit-animation: zoomInDown 1s linear 0 both;
+    -moz-animation: zoomInDown 1s linear 0 both;
+    animation: zoomInDown 1s linear 0s both;
+}
+.b01 {
+    -webkit-animation: zoomInDown 1s linear 0.3s both;
+    -moz-animation: zoomInDown 1s linear 0.3s both;
+    animation: zoomInDown 1s linear 0.3s both;
+}
+.b02 {
+    -webkit-animation: zoomInDown 1s linear 0.6s both;
+    -moz-animation: zoomInDown 1s linear 0.6s both;
+    animation: zoomInDown 1s linear 0.6s both;
+}
+.b03 {
+    -webkit-animation: zoomInDown 1s linear 0.9s both;
+    -moz-animation: zoomInDown 1s linear 0.9s both;
+    animation: zoomInDown 1s linear 0.9s both;
+}
+.b04 {
+    -webkit-animation: bounceInRight 1.2s linear 1.5s both;
+    -moz-animation: bounceInRight 1.2s linear 1.5s both;
+    animation: bounceInRight 1.2s linear 1.5s both;
+}
+.b10 {
+    -webkit-animation: flipInX 1s linear 0 both;
+    -moz-animation: flipInX 1s linear 0 both;
+    animation: flipInX 1s linear 0s both;
+}
+
+.b11 {
+    -webkit-animation: flipInX 1s linear 0.3s both;
+    -moz-animation: flipInX 1s linear 0.3s both;
+    animation: flipInX 1s linear 0.3s both;
+}
+
+.b12 {
+    -webkit-animation: flipInX 1s linear 0.6s both;
+    -moz-animation: flipInX 1s linear 0.6s both;
+    animation: flipInX 1s linear 0.6s both;
+}
+
+.b13 {
+    -webkit-animation: flipInX 1s linear 0.9s both;
+    -moz-animation: flipInX 1s linear 0.9s both;
+    animation: flipInX 1s linear 0.9s both;
+}
+
+.b14 {
+    -webkit-animation: zoomInLeft 1.2s linear 1.5s both;
+    -moz-animation: zoomInLeft 1.2s linear 1.5s both;
+    animation: zoomInLeft 1.2s linear 1.5s both;
+}
+
+.b10 {
+    -webkit-animation: rotateIn 1s linear 0 both;
+    -moz-animation: rotateIn 1s linear 0 both;
+    animation: rotateIn 1s linear 0s both;
+}
+
+.b21 {
+    -webkit-animation: rotateIn 1s linear 0.3s both;
+    -moz-animation: rotateIn 1s linear 0.3s both;
+    animation: rotateIn 1s linear 0.3s both;
+}
+
+.b22 {
+    -webkit-animation: rotateIn 1s linear 0.6s both;
+    -moz-animation: rotateIn 1s linear 0.6s both;
+    animation: rotateIn 1s linear 0.6s both;
+}
+
+.b23 {
+    -webkit-animation: rotateIn 1s linear 0.9s both;
+    -moz-animation: rotateIn 1s linear 0.9s both;
+    animation: rotateIn 1s linear 0.9s both;
+}
+
+.b24 {
+    -webkit-animation: zoomInDown 1.2s linear 1.5s both;
+    -moz-animation: zoomInDown 1.2s linear 1.5s both;
+    animation: zoomInDown 1.2s linear 1.5s both;
+}
 .el-rate__icon {
     margin-right: 2px
 }
@@ -58,6 +393,7 @@ a {
     -webkit-line-clamp: 3;
     /*文本占的行数,如果要设置2行加...则设置为2*/
 }
+
 .top_line,
 .bottom_line,
 .left_line,
@@ -94,6 +430,7 @@ a {
     right: 0px;
     top: 2px;
 }
+
 .commonList .item:hover .left_line,
 .commonList .item:hover .right_line {
     height: 100% !important;
@@ -103,24 +440,31 @@ a {
 .commonList .item:hover .bottom_line {
     width: 100% !important;
 }
+
 .container {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
+
 .mb50 {
     margin-bottom: 50px;
 }
+
 .pb50 {
     padding-bottom: 50px;
 }
+
+
 /* 云创学院 */
+
 .banner_college {
     background: url(../img/xueyuanbanner.png) no-repeat center center;
     background-size: cover;
     height: 500px;
 }
+
 .commonTitle {
     color: #2e2a3f;
     font-size: 24px;
@@ -185,6 +529,7 @@ a {
     padding-top: 5px;
     margin-bottom: 5px;
 }
+
 .view_more {
     font-size: 16px;
     color: #666;
@@ -196,6 +541,8 @@ a {
     letter-spacing: 2px;
     margin-top: 25px;
 }
+
+
 /* 培训集锦 */
 
 .train {
@@ -207,6 +554,8 @@ a {
     background: url(../img/train_icon.png) no-repeat 100% 20%;
     background-size: 20%;
 }
+
+
 /* 热门课程 */
 
 .hot_course {
@@ -269,6 +618,7 @@ a {
     width: 100%;
     height: 186px;
 }
+
 .onlineMask {
     width: 100%;
     height: 100%;
@@ -278,6 +628,7 @@ a {
     background-color: rgba(0, 0, 0, 0.3);
     transition: 0.5s;
 }
+
 .onlineMask a {
     border: 1px solid #fff;
     font-size: 14px;
@@ -286,11 +637,14 @@ a {
     border-radius: 5px;
     margin: 60px auto 0 auto;
 }
+
 .item:hover .onlineMask {
     top: 0px;
 }
 
+
 /* 企业培训申请流程 */
+
 .appli_process {
     background-color: #18b494;
     height: auto;
@@ -329,6 +683,8 @@ a {
     /* background: url(../img/process_line.png) no-repeat center center; */
     background-size: contain;
 }
+
+
 /* 金牌导师 */
 
 .tutor {
@@ -337,15 +693,16 @@ a {
 
 .tutorList .item {
     padding: 20px 10px;
-     -webkit-transition: all .2s linear;
-     transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
 }
+
 .tutorList .item:hover {
     z-index: 2;
     -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-   
 }
+
 .tutorList .item img {
     width: 60%;
     margin-left: auto;
@@ -418,6 +775,7 @@ a {
     margin-top: 50px;
 }
 
+
 /* 活动详情 */
 
 .activity_detail {
@@ -487,11 +845,13 @@ a {
 .activity_bottom .el-button--primary {
     background-color: #17b594;
 }
-.activity_bottom .el-button--primary, 
+
+.activity_bottom .el-button--primary,
 .activity_bottom .el-button--primary:active {
     border-color: #17b594;
     padding: 8px 12px;
 }
+
 .activity_bottom_body {
     min-height: 500px;
     margin-top: 30px;
@@ -535,25 +895,31 @@ a {
     margin-top: 10px;
 }
 
+
 /* 活动列表页 */
+
 .activityListWrap {
     width: 100%;
     min-height: 500px;
     padding-top: 30px;
     padding-bottom: 50px;
 }
+
 .activityListWrap .item {
     margin-bottom: 20px;
 }
-.activityListWrap .item img{
+
+.activityListWrap .item img {
     width: 100%;
     height: 172px;
     max-height: 172px;
 }
+
 .activityListWrap .item .info {
     padding: 5px 15px 30px 15px;
     margin-top: -4px;
 }
+
 .activityListWrap .item .info h4 {
     font-size: 16px;
     color: #2e2a3f;
@@ -569,24 +935,29 @@ a {
 
 .activityListWrap .item .info .btn_betail {
     padding: 6px 12px;
-    border:1px solid  #18b494;
+    border: 1px solid #18b494;
     border-radius: 5px;
     font-size: 14px;
 }
+
 .activityListWrap .el-pagination.is-background .btn-next,
 .activityListWrap .el-pagination.is-background .btn-prev,
 .activityListWrap .el-pagination.is-background .el-pager li {
     background-color: #fff;
 }
+
 .activityListWrap .el-pagination.is-background .el-pager li.active {
     background-color: #18b494;
 }
+
 .activityListWrap .el-pagination.is-background .el-pager li:hover {
     color: #18b494;
 }
+
 .margin_btn {
     margin-top: 20px;
 }
+
 
 /* 云创金融 */
 
@@ -879,9 +1250,12 @@ a {
 .financial_mail a:hover {
     color: #fff;
 }
+
+
 /* 登录注册 */
 
-.register, .login {
+.register,
+.login {
     padding: 80px 0;
 }
 
@@ -900,72 +1274,90 @@ a {
     margin-bottom: 40px;
     border-bottom: 2px dashed #18b494;
 }
+
 .registerBox .btn-info {
     color: #ffffff !important;
     background-color: #18b494;
     border-color: #18b494;
     width: 100%;
 }
+
 .registerBox .el-button--primary {
     color: #ffffff !important;
     background-color: #18b494;
     height: 34px;
     margin-top: 4px;
 }
+
 .registerBox .tc .el-form-item__content {
     margin-left: 0 !important;
 }
+
 .registerBox .el-input__inner {
     width: 90%;
     height: 34px;
 }
+
 .loginBox .el-input__inner {
     width: 85%;
 }
+
 .registerBox .el-form-item__label {
     text-align: center;
 }
+
 .registerBox .submitBtn {
     padding: 12px 100px;
     border-radius: 50px;
 }
 
+
 /* 发布需求表单 */
+
 .form_title {
     font-size: 24px;
     font-weight: 400;
     padding-bottom: 30px;
     margin-top: -10px;
 }
+
 .commmonForm .el-dialog {
     width: 600px;
     border-radius: 6px;
     padding: 20px;
     max-width: 100%;
 }
+
 .commmonForm .el-form-item {
     margin-bottom: 12px;
 }
+
 .commmonForm .el-dialog__body {
     padding: 10px 20px 0px 20px;
 }
+
 .commmonForm .el-form-item__label {
     color: #666;
 }
+
 .commmonForm .el-select,
 .commmonForm .el-date-editor.el-input {
     width: 100%;
 }
+
 .commmonForm .el-button--primary {
     background-color: #18b494;
     padding: 8px 36px;
 }
+
 .commmonForm .el-input .el-input__inner {
     height: 34px;
 }
+
 .commmonForm .el-form-item.is-success .el-input__inner {
     border-color: #dcdfe6;
 }
+
 @media (min-width: 768px) {
     .container {
         width: 750px;

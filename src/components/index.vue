@@ -1,13 +1,14 @@
 <template>
     <div class="index">
         <!--轮播-->
-        <template>
+        <!-- <template>
             <el-carousel :interval="5000" arrow="always">
                 <el-carousel-item v-for="(item,index) in bImgs" :key="item.id" class="header-banner-imgs">
                     <img :src="item.src">
                 </el-carousel-item>
             </el-carousel>
-        </template>
+        </template> -->
+        <commonSwiper></commonSwiper>
 
         <!-- 全面专业的服务体系 -->
         <div class="distance margin-bottom">
@@ -263,9 +264,11 @@
 
 
 
-    }
+
+};
 </script>
 
 <style>
+
 </style>
 
