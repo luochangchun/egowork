@@ -53,21 +53,26 @@
         },
         methods: {
             setEnterpriseList() {
+                var _this = this;
                 let url = '/enterprise/' + '8' + '/' + '0';
-                api.Get(url)
+                _this.getRequest(url)
                     .then(res =>{
-                        console.log(res);
-                        this.content = res['content']; //入孵企业列表
-                        this.total = res['total'] * 10; //分页
+                        if (res && res.status == 200) {
+                            this.content = res['content']; //入孵企业列表
+                            this.total = res['total'] * 10; //分页
+                        }
                     })
             },
             getHatchedList(val) {
+                var _this = this;
                 //获取到当前分页页码，获取当前页面数据
                 var url = '/enterprise/' + '8' + '/' + val;
-                api.Get(url)
+                _this.getRequest(url)
                     .then(res =>{
-                        this.content = res['content'];
-                        this.total = res["total"] * 10;
+                        if (res && res.status == 200){
+                            this.content = res['content'];
+                            this.total = res["total"] * 10;
+                        }
                     })
             }
 

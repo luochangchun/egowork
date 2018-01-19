@@ -221,12 +221,15 @@
         },
         methods: {
             setIncubatorsApi() {
-                api.Get('/pub/cloud')
+                var _this = this;
+                _this.getRequest('/pub/cloud')
                     .then(res => {
-                        this.incubators = res['incubators']; //云创孵化
-                        this.seeds = res['seeds']; //孵化项目
-                        this.enterprises = res['enterprises']; //孵化项目
-                        this.dicts = res['dicts'];
+                        if (res && res.status == 200) {
+                            this.incubators = res['incubators']; //云创孵化
+                            this.seeds = res['seeds']; //孵化项目
+                            this.enterprises = res['enterprises']; //孵化项目
+                            this.dicts = res['dicts'];
+                        }
                     })
             },
 

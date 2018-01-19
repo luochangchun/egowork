@@ -44,9 +44,12 @@
         },
         methods: {
             setSeedDetailApi(id) {
-                api.Get('/seed/' + id)
+                var _this = this;
+                _this.getRequest('/seed/' + id)
                     .then(res =>{
-                        this.seed = res;
+                        if (res && res.status == 200) {
+                            this.seed = res;
+                        }
                     })
             },
 

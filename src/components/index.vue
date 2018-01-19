@@ -254,9 +254,11 @@
                 var _this = this;
                 _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
-                        this.dictLevel = res;//级别
-                        this.dictRegion = res;//地区
-                        this.dictIncubator = res;//label
+                        if (res && res.status == 200) {
+                            this.dictLevel = res;//级别
+                            this.dictRegion = res;//地区
+                            this.dictIncubator = res;//label
+                        }
                     })
             },
 

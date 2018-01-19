@@ -72,27 +72,36 @@
         },
         methods: {
             setNewsApiList() {
+                var _this = this;
                 let url = '/qb/' + '3' + '/' + '0';
-                api.Get(url)
+                _this.getRequest(url)
                     .then(res =>{
-                        this.content = res['content']; //孵化器列表
-                        this.total = res['total'] * 10; //分页
+                        if (res && res.status == 200) {
+                            this.content = res['content']; //孵化器列表
+                            this.total = res['total'] * 10; //分页
+                        }
                     })
             },
             getIncubatorsList(val) {
+                var _this = this;
                 //获取到当前分页页码，获取当前页面数据
                 var url = '/qb/' + '3' + '/' + count;
-                api.Get(url)
+                _this.getRequest(url)
                     .then(res =>{
-                        this.content = res['content'];
-                        this.total = res['total'] * 10;
+                        if (res && res.status == 200) {
+                            this.content = res['content'];
+                            this.total = res['total'] * 10;
+                        }
                     })
             },
             setIncubator() {
-                api.Get('/dict/' + 'incubator')
+                var _this = this;
+                _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
-                        this.dictLevel = res;//级别
-                        this.dictRegion = res;//地区
+                        if (res && res.status == 200) {
+                            this.dictLevel = res;//级别
+                            this.dictRegion = res;//地区
+                        }
                     })
             },
 

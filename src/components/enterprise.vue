@@ -61,9 +61,12 @@
         },
         methods: {
             setEnterpriseDetailApi(id) {
-                api.Get('/enterprise/' + id)
+                var _this = this;
+                _this.getRequest('/enterprise/' + id)
                     .then(res =>{
-                        this.enterprise = res;
+                        if (res && res.status == 200) {
+                            this.enterprise = res;
+                        }
                     })
             },
 

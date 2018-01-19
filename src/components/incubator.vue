@@ -217,22 +217,27 @@
         },
         methods: {
             setNewsApiDetail(id) {
-                api.Get('/qb/' + id)
+                var _this = this;
+                _this.getRequest('/qb/' + id)
                     .then(res =>{
-                        this.incubator = res;
-//                        console.log(res);
-                        this.photos = res['photos']; //空间展示
+                        if (res && res.status == 200) {
+                            this.incubator = res;
+                            //console.log(res);
+                            this.photos = res['photos']; //空间展示
+                        }
                     })
             },
-            setIncubator() {
-                api.Get('/dict/' + 'incubator')
+            setIncubator() {var _this = this;
+                _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
-                        this.dictLevel = res;
-                        this.dictRegion = res;
-                        this.dictEnter = res;//入驻类型
-                        console.log(res);
-                        this.dictService = res;//空间服务
-                        this.dictFacility = res;//配套设施
+                        if (res && res.status == 200) {
+                            this.dictLevel = res;
+                            this.dictRegion = res;
+                            this.dictEnter = res;//入驻类型
+                            console.log(res);
+                            this.dictService = res;//空间服务
+                            this.dictFacility = res;//配套设施
+                        }
                     })
             },
 

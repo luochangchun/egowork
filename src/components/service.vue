@@ -180,10 +180,13 @@
                 console.log(tab, event);
             },
             setService() {
-                api.Get('/pub/service')
+                var _this = this;
+                _this.getRequest('/pub/service')
                     .then(res =>{
-                        this.services = res;  //服务
-                        console.log(res);
+                        if (res && res.status == 200) {
+                            this.services = res;  //服务
+                            console.log(res);
+                        }
                     })
             }
 

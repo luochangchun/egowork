@@ -88,18 +88,24 @@
             console.log(key, keyPath);
         },
         setServiceList() {
-            api.Get('/pub/service')
+            var _this = this;
+            _this.getRequest('/pub/service')
                 .then(res =>{
-                    this.services = res;  //服务分类
-                    console.log(res);
+                    if (res && res.status == 200) {
+                        this.services = res;  //服务分类
+                        console.log(res);
+                    }
                 })
         },
         setServiceDetail() {
+            var _this = this;
             let scid = window.localStorage.getItem("scid");
-            api.Get('/product/cat' + "/?cid=" + scid)
+            _this.getRequest('/product/cat' + "/?cid=" + scid)
                 .then(res =>{
-                    this.servicesDetail = res;  //服务产品详情
-                    console.log(res);
+                    if (res && res.status == 200) {
+                        this.servicesDetail = res;  //服务产品详情
+                        console.log(res);
+                    }
                 })
         }
 
