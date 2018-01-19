@@ -41,7 +41,6 @@
 </template>
 
 <script>
-    import api from "../axios/api.js";
     export default {
         data() {
             return {

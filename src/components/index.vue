@@ -205,7 +205,6 @@
 </template>
 
 <script>
-    import api from '../axios/api.js'
     import commonSwiper from '../components/common/swiper.vue'
     import {
         formatDate
@@ -239,16 +238,21 @@
         },
         methods: {
             setNewsApi() {
-                api.Get('/pub/index')
+                var _this = this;
+                _this.getRequest('/pub/index')
                     .then(res =>{
-                        this.categories = res['categories'];  //全面专业的服务体系
-                        this.incubators = res['incubators']; //国家级孵化器
+                        if (res && res.status == 200){
+                            this.categories = res['data']['categories'];  //全面专业的服务体系
+                            this.incubators = res['data']['incubators']; //国家级孵化器
 //                        console.log(res['incubators']);
-                        this.chips = res['chips']; //数字
+                            this.chips = res['data']['chips']; //数字
+                        }
+
                     })
             },
             setIncubator() {
-                api.Get('/dict/' + 'incubator')
+                var _this = this;
+                _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
                         this.dictLevel = res;//级别
                         this.dictRegion = res;//地区

@@ -77,7 +77,6 @@
 </template>
 
 <script>
-    import api from "../axios/api.js";
     import FinancialProjectItem from './common/financialProjectItem.vue' //融资项目组件
     import AgencyItem from './common/agencyItem.vue' //投资机构组件
     export default {
