@@ -54,21 +54,21 @@
         },
         methods: {
             setEnterpriseList() {
-                let url = '/enterprise/' + '4' + '/' + '0';
+                let url = '/enterprise/' + '8' + '/' + '0';
                 api.Get(url)
                     .then(res =>{
                         console.log(res);
                         this.content = res['content']; //入孵企业列表
-                        this.total = res['total'] * 4; //分页
+                        this.total = res['total'] * 10; //分页
                     })
             },
             getHatchedList(val) {
                 //获取到当前分页页码，获取当前页面数据
-                var url = '/enterprise/' + '4' + '/' + val;
+                var url = '/enterprise/' + '8' + '/' + val;
                 api.Get(url)
                     .then(res =>{
                         this.content = res['content'];
-                        this.total = res["total"] * 4;
+                        this.total = res["total"] * 10;
                     })
             }
 

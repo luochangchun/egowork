@@ -9,27 +9,45 @@
                     <el-col :lg="24" :md="24" :sm="24" :xs="24">
                         <el-tabs @tab-click="handleClick" type="card">
                             <el-tab-pane label="企业信息化">
-                                <p class="s-p">点击查看更多</p>
+                                <a href="https://www.hansap.com/portal/welcome" target="__blank" class="s-p">点击查看更多</a>
                             </el-tab-pane>
-                            <el-tab-pane v-for="(item,index) in 7" :key="index" label="知识产权大" :cid="item.id">
+                            <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :cid="item.id">
                                 <el-row>
-                                    <router-link to="/serviceDetail">
+                                    <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                                         <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                             <div class="s-img">
-                                                <img src="static/img/fw_left1.png" class="rel">
-                                                <p class="abs white f14 serp">招聘类服务招聘类服务招聘类服务招聘类服务
-                                                    招聘类服务招聘类服务招聘类服务招聘类服务
-                                                    招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务
-                                                    招聘类服务招聘类服务招聘类服务招聘类服务招聘类服务
-                                                </p>
+                                                <span v-if="item.category.id == 163">
+                                                    <img src="static/img/163.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 164">
+                                                    <img src="static/img/164.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 165" >
+                                                    <img src="static/img/165.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 166">
+                                                    <img src="static/img/166.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 167">
+                                                    <img src="static/img/167.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 168">
+                                                    <img src="static/img/168.png" alt="" class="rel">
+                                                </span>
+                                                <span v-if="item.category.id == 169">
+                                                    <img src="static/img/169.png" alt="" class="rel">
+                                                </span>
+                                                <!--<img src="static/img/fw_left1.png" class="rel">-->
+                                                <p class="abs white f14 serp">{{ item.category.description }}</p>
                                             </div>
                                         </el-col>
-                                        <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in 9" :key="index">
+                                        <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index">
+
                                             <ul class="service_index_ul cl">
-                                                <router-link to="/serviceDetail">
+                                                <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                                                     <li class="service_index_li">
-                                                        <h1>招聘类服务</h1>
-                                                        <p class="text-ellipsis-muti text-ellipsis-3">1、高端人才猎头、2、招聘外包、3、背景调查、4、人才测评</p>
+                                                        <h1>{{ item.title }}</h1>
+                                                        <p class="text-ellipsis-muti text-ellipsis-3">{{ item.intro }}</p>
                                                     </li>
                                                 </router-link>
                                             </ul>
@@ -145,20 +163,30 @@
 
 </template>
 <script>
+    import api from '../axios/api.js'
+    import {
+        formatDate
+    } from '../../static/js/date.js'
     export default {
         data() {
             return {
-
+                services: '',
             };
         },
         created() {
-//            this.newApi();
+            this.setService();
         },
         methods: {
             handleClick(tab, event) {
                 console.log(tab, event);
+            },
+            setService() {
+                api.Get('/pub/service')
+                    .then(res =>{
+                        this.services = res;  //服务
+                        console.log(res);
+                    })
             }
-
 
         },
         filters: {

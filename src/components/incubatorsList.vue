@@ -10,7 +10,7 @@
                                 <el-col :lg="8" :md="8" :sm="12" :xs="24" style="clear:both;">
                                     <div class="index_headline" style="margin-right:0;border:none;" >
                                         <div style="height:227px;">
-                                            <img src="static/img/jinrongbanner.jpg" alt="" style="height:224px;">
+                                            <img :src="item.photos[0]['uri']" alt="" style="height:224px;">
                                         </div>
                                     </div>
                                 </el-col>
@@ -73,23 +73,19 @@
         },
         methods: {
             setNewsApiList() {
-                let url = '/qb/' + '8' + '/' + '0';
+                let url = '/qb/' + '3' + '/' + '0';
                 api.Get(url)
                     .then(res =>{
-//                        console.log(res);
                         this.content = res['content']; //孵化器列表
-//                        this.photos = res['photos'];
-//                        console.log(res['photos'])
                         this.total = res['total'] * 10; //分页
-//                        console.log(res['total'])
                     })
             },
             getIncubatorsList(val) {
                 //获取到当前分页页码，获取当前页面数据
-                var url = '/qb/' + '8' + '/' + val;
+                var url = '/qb/' + '3' + '/' + count;
                 api.Get(url)
                     .then(res =>{
-//                        this.content = res['data'];
+                        this.content = res['content'];
                         this.total = res['total'] * 10;
                     })
             },
@@ -98,7 +94,6 @@
                     .then(res =>{
                         this.dictLevel = res;//级别
                         this.dictRegion = res;//地区
-//                        this.dictIncubator = res;//label
                     })
             },
 

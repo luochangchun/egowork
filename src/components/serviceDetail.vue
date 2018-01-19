@@ -18,12 +18,12 @@
                                 </a>
                             </template>
                         </el-submenu>
-                        <el-submenu index="2" v-for="(item,index) in 7" :key="index">
+                        <el-submenu index="item.index" v-for="(item,index) in services" :key="index">
                             <template slot="title">
-                                <span slot="title">融资撮合</span>
+                                <span slot="title">{{ item.category.name }}</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="1-1" v-for="(item,index) in 4" :key="index">小微企业贷款</el-menu-item>
+                                <el-menu-item index="item.index" v-for="(item, index) in item.products" :key="index">{{ item.title }}</el-menu-item>
                             </el-menu-item-group>
                         </el-submenu>
                     </el-menu>
@@ -60,18 +60,23 @@
     </div>
 </template>
 <script>
-export default {
+    import api from '../axios/api.js'
+    import {
+        formatDate
+    } from '../../static/js/date.js'
+    export default {
     data() {
         return {
-
-
+            services: '',
+            servicesDetail: '',
         }
     },
     components: {
-//      commonSwiper: Swiper
+
     },
     created() {
-
+        this.setServiceList();
+        this.setServiceDetail();
     },
     filters: {
 
@@ -82,7 +87,24 @@ export default {
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
+        },
+        setServiceList() {
+            api.Get('/pub/service')
+                .then(res =>{
+                    this.services = res;  //服务分类
+                    console.log(res);
+                })
+        },
+        setServiceDetail() {
+            let scid = window.localStorage.getItem("scid");
+            api.Get('/product/cat' + "/?cid=" + scid)
+                .then(res =>{
+                    this.servicesDetail = res;  //服务产品详情
+                    console.log(res);
+                })
         }
+
+
 
     }
 

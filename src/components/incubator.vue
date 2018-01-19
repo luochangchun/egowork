@@ -33,7 +33,7 @@
                                 <el-row :gutter="20">
                                     <el-col :lg="18" :md="18" :sm="18" :xs="24" style="background-color:#fff;padding:20px;">
                                         <el-row :gutter="20">
-                                            <el-col :lg="8" :md="8" :sm="8" :xs="8" v-for="(item,index) in photos">
+                                            <el-col :lg="8" :md="8" :sm="8" :xs="8" v-for="(item,index) in photos" :key="index">
                                                 <div class="s_show_img">
                                                     <img :src="item.uri" alt="">
                                                 </div>
