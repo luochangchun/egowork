@@ -48,10 +48,10 @@
                 <h1 class="tc rel">融资项目 <a class="abs goLogin" href="/signin.html">我要融资</a> <a data-toggle="modal" data-target="#financialForm" data-whatever="@mdo" class="abs" style="display: none;">机构入驻</a> </h1>
                 <el-row :gutter="30" class="clearfix">
                     <!-- 融资项目组件 -->
-                    <FinancialProjectItem v-for="item in projectList" v-bind:financialProject="item" v-bind:key="item.id">></FinancialProjectItem>
+                    <FinancialProjectItem v-for="item in projectList" v-bind:financialProject="item" v-bind:key="item.id"></FinancialProjectItem>
                     <!-- 融资项目组件 -->
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                        <a href="" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i> </a>
+                        <router-link :to="{ name: 'financialList', params: { type: 'project'} }" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i></router-link>
                     </el-col>
                 </el-row>
             </div>
@@ -61,9 +61,9 @@
             <div class="container">
                 <h1 class="tc rel">知名投资机构 <a class="abs goLogin" href="/signin.html">机构入驻</a> <a data-toggle="modal" data-target="#agencyForm" data-whatever="@mdo" class="abs" style="display: none;">机构入驻</a></h1>
                 <el-row :gutter="30" class="row clearfix">
-                    <AgencyItem v-for="item in AgencyList" v-bind:agency="item" v-bind:key="item.id">></AgencyItem>
+                    <AgencyItem v-for="item in AgencyList" v-bind:agency="item" v-bind:key="item.id"></AgencyItem>
                     <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-                        <a href="" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i> </a>
+                        <router-link :to="{ name: 'financialList', params: { type: 'agency'} }" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i></router-link>
                     </el-col>
                 </el-row>
             </div>
@@ -82,52 +82,32 @@
     export default {
         data() {
             return {
-                projectList: [{
-                        'title': '三峡创谷',
-                        'componyName': '利农',
-                        'money': 200
-                    },
-                    {
-                        'title': '三峡创谷',
-                        'componyName': '利农',
-                        'money': 200
-                    },
-                    {
-                        'title': '三峡创谷',
-                        'componyName': '利农',
-                        'money': 200
-                    },
-                    {
-                        'title': '三峡创谷',
-                        'componyName': '利农',
-                        'money': 200
-                    },
-                ],
-                AgencyList: [{
-                    'name':'红杉资本',
-                    'info':'非常好',
-                    'label':'天使基金人'
-                },
-                {
-                    'name':'红杉资本',
-                    'info':'非常好',
-                    'label':'天使基金人'
-                },
-                {
-                    'name':'红杉资本',
-                    'info':'非常好',
-                    'label':'天使基金人'
-                },
-                {
-                    'name':'红杉资本',
-                    'info':'非常好',
-                    'label':'天使基金人'
-                }]
+                type:"",
+                projectList: "",
+                AgencyList: ""
             }
         },
         components: {
             FinancialProjectItem,
             AgencyItem
+        },
+        mounted() {
+            this.getFinancial();
+        },
+        methods: {
+            getFinancial() {
+                var _this = this;
+                var domain = "http://www.egowork.com/";
+                _this.getRequest("/pub/finance").then(res => {
+                    if (res && res.status == 200) {
+                        _this.projectList = res['data']['projects'];
+                        _this.AgencyList = res['data']['investors'];
+                        for(var i=0;i<_this.AgencyList.length;i++) {
+                            _this.AgencyList[i]['icon'] = domain + _this.AgencyList[i]['icon'];
+                        }
+                    }
+                });
+            }
         }
     }
 </script>

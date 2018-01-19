@@ -34,8 +34,8 @@
       <div class="hot_course">
         <div class="hot_course">
           <h1 class="commonTitle tc">热门课程</h1>
-          <el-row :gutter="30" class="courseList clearfix">
-            <HotCourseItem v-for="item in HotCourseList" v-bind:hotCourse="item" v-bind:key="item.id"></HotCourseItem>
+          <el-row :gutter="0" class="courseList clearfix">
+            <HotCourseItem v-for="(item, index) in HotCourseList" v-bind:hotCourse="item" :key="index"></HotCourseItem>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
               <a href="http://vedio.whwomen.org.cn/front/showcoulist" target="__blank" class="view_more db tc">查看更多<i class="el-icon-d-arrow-right"></i> </a>
             </el-col>
@@ -156,6 +156,7 @@
           if (res && res.status == 200) {
             this.HotCourseList = res['data']['entity']['courseList'];
             for (var i = 0; i < res['data']['entity']['courseList'].length; i++) {
+              res['data']['entity']['courseList'][i]['index'] = i;
               res['data']['entity']['courseList'][i]['logo'] = domain + res['data']['entity']['courseList'][i]['logo'];
               res['data']['entity']['courseList'][i]['courseId'] = turl + res['data']['entity']['courseList'][i]['courseId'];
             }

@@ -6,6 +6,7 @@ import activity from '../src/components/activity.vue'//活动详情
 import activityList from "../src/components/activityList.vue";//活动列表
 import financial from "../src/components/financial.vue";//云创金融首页
 import financialList from "../src/components/financialList.vue";//云创金融(融资项目或投资机构列表页)
+import investor from "../src/components/investor.vue";//云创金融详情页
 import incubator from "../src/components/incubator.vue";//孵化器详情页
 import register from '../src/components/register/register.vue'//注册组件
 import login from '../src/components/register/login.vue'//登录组件
@@ -38,6 +39,8 @@ const routes = [
     { path: '/activityList/:type', component: activityList, name: 'activityList' },
     { path: '/activity/:id', component: activity, name: 'activity' },
     { path: '/financial', component: financial, name: 'financial' },
+    { path: '/financialList/:type', component: financialList, name: 'financialList' },
+    { path: '/investor/:type/:id', component: investor, name: 'investor' },
     { path: '/register', component: register, name: 'register' },
     { path: '/login', component: login, name: 'login' },
     { path: '/forms', component: forms, name: 'forms' },

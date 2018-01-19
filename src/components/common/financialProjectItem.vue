@@ -1,14 +1,14 @@
 <template>
     <el-col :xs="24" :sm="24" :md="12" :lg="6" :xl="6">
-        <a class="db item" href="">
+        <router-link class="db item" :to="{ name: 'investor', params: {type: 'project', id: financialProject.id} }">
             <div class="rel">
-                <div class="abs mask"></div> <img src="http://www.egowork.com/themes/newego/img/mr.jpg" alt=""> <span class="abs white">融资中</span> </div>
+                <div class="abs mask"></div> <img src="http://www.egowork.com/themes/newego/img/mr.jpg" alt=""> <span class="abs white">{{financialProject.progress}}</span> </div>
             <div class="para">
-                <h2 class="tc text-ellipsis">{{financialProject.title}}</h2>
-                <p class="tc money text-ellipsis">{{financialProject.componyName}}</p>
-                <p class="tc money">融资金额： <span>{{financialProject.money}}</span>万元 </p>
+                <h2 class="tc text-ellipsis">{{financialProject.name}}</h2>
+                <p class="tc money text-ellipsis">{{financialProject.field}}</p>
+                <p class="tc money">融资金额： <span>{{financialProject.capital}}</span>万元 </p>
             </div>
-        </a>
+        </router-link>
     </el-col>
 </template>
 
@@ -17,7 +17,3 @@
         props: ['financialProject'],
     }
 </script>
-
-<style>
-
-</style>

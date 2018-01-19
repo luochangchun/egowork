@@ -5,7 +5,8 @@
                 <el-col>
                     <el-breadcrumb separator-class="el-icon-arrow-right">
                         <el-breadcrumb-item :to="{ path: '/college' }">云创学院</el-breadcrumb-item>
-                        <el-breadcrumb-item :to="{ path: '/activityList' }">精彩活动列表</el-breadcrumb-item>
+                        <el-breadcrumb-item v-if="activity.cid == '129'" :to="{ path: '/activityList/activity' }">精彩活动列表</el-breadcrumb-item>
+                        <el-breadcrumb-item v-if="activity.cid == '157'" :to="{ path: '/activityList/train' }">培训集锦列表</el-breadcrumb-item>
                         <el-breadcrumb-item>活动详情</el-breadcrumb-item>
                     </el-breadcrumb>
                 </el-col>
@@ -14,11 +15,11 @@
                 <el-col :sm="24" :lg="6" :xl="6"><img src="http://www.egowork.com/upload/images/articleimage/2017091916/1505811548599_e1980b59fa3e4e6f9c0ace3bf228b882.jpeg" alt=""> </el-col>
                 <el-col :sm="24" :lg="18" :xl="18" class="info">
                     <h1 class="text-ellipsis">{{activity.title}}</h1>
-                    <p class="f14 text-ellipsis">活动时间： <span>{{activity.activeTime}}</span> </p>
+                    <p class="f14 text-ellipsis">活动时间： <span>{{activity.activeTime | formatDate}}</span> </p>
                     <p class="f14 text-ellipsis">活动地址： <span>{{activity.address}}</span> </p>
                 </el-col>
             </el-row>
-            <el-row :gutter="20" class="activity_bottom clearfix">
+            <el-row :gutter="20" class="activity_bottom clearfix" style="margin-bottom:20px">
                 <el-col>
                     <el-tabs v-model="activeName" @tab-click="handleClick">
                         <el-tab-pane label="活动详情" name="first">
@@ -65,15 +66,24 @@
 </template>
 
 <script>
+    import {
+        formatDate
+    } from "../../static/js/date.js";
     export default {
         data() {
             return {
                 labelPosition: 'right',
-                activeName: "second",
+                activeName: "first",
                 form: {
                     desc: ''
                 },
                 activity: ""
+            }
+        },
+        filters: {
+            formatDate(time) {
+                let date = new Date(time);
+                return formatDate(date, "yyyy-MM-dd");
             }
         },
         mounted() {
@@ -85,9 +95,12 @@
                 console.log(tab, event);
             },
             initActivity(id) {
+                var _this = this;
                 let url = "/activity/" + id;
-                api.Get(url).then(res => {
-                    this.activity = res;
+                _this.getRequest(url).then(res => {
+                    if (res && res.status == 200) {
+                        this.activity = res['data'];
+                    }
                 });
             }
         }
