@@ -48,7 +48,7 @@
                 _this.getRequest('/seed/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.seed = res;
+                            this.seed = res['data'];
                         }
                     })
             },

@@ -165,7 +165,7 @@
                                 </div>
                             </router-link>
 
-                            <router-link to="/enterprise" class="item db text-desc i-p bgColor">
+                            <router-link :to="{ name: 'enterprise',params: { id: item.id}}" class="item db text-desc i-p bgColor">
                                 <div class="rel"  style="margin-top:-20px;">
                                     <div class="img_wrap abs">
                                         <img :src="item.icon" style="border:none;">
@@ -225,10 +225,10 @@
                 _this.getRequest('/pub/cloud')
                     .then(res => {
                         if (res && res.status == 200) {
-                            this.incubators = res['incubators']; //云创孵化
-                            this.seeds = res['seeds']; //孵化项目
-                            this.enterprises = res['enterprises']; //孵化项目
-                            this.dicts = res['dicts'];
+                            this.incubators = res['data']['incubators']; //云创孵化
+                            this.seeds = res['data']['seeds']; //孵化项目
+                            this.enterprises = res['data']['enterprises']; //孵化项目
+                            this.dicts = res['data']['dicts'];
                         }
                     })
             },

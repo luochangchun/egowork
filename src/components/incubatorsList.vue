@@ -33,10 +33,10 @@
                             </el-row>
                         </el-col>
                         <!--分页-->
-                        <el-row :gutter="10" class="margin-bottom">
-                            <el-col :lg="8" :md="8" :sm="24" :xs="24" :offset="8">
+                        <el-row class="margin-bottom">
+                            <el-col class="tc">
                                 <div class="block">
-                                    <el-pagination :current-page="0" :total="total"  @current-change="getIncubatorsList" layout="prev, pager, next">
+                                    <el-pagination :total="total"  @current-change="getIncubatorsList" layout="prev, pager, next">
                                     </el-pagination>
                                 </div>
                             </el-col>
@@ -77,8 +77,8 @@
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.content = res['content']; //孵化器列表
-                            this.total = res['total'] * 10; //分页
+                            this.content = res['data']['content']; //孵化器列表
+                            this.total = res['data']['total'] * 10; //分页
                         }
                     })
             },
@@ -89,8 +89,8 @@
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.content = res['content'];
-                            this.total = res['total'] * 10;
+                            this.content = res['data']['content'];
+                            this.total = res['data']['total'] * 10;
                         }
                     })
             },
@@ -99,8 +99,8 @@
                 _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.dictLevel = res;//级别
-                            this.dictRegion = res;//地区
+                            this.dictLevel = res['data'];//级别
+                            this.dictRegion = res['data'];//地区
                         }
                     })
             },

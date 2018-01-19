@@ -221,22 +221,22 @@
                 _this.getRequest('/qb/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.incubator = res;
+                            this.incubator = res['data'];
                             //console.log(res);
-                            this.photos = res['photos']; //空间展示
+                            this.photos = res['data']['photos']; //空间展示
                         }
-                    })
+                    })['data']
             },
             setIncubator() {var _this = this;
                 _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.dictLevel = res;
-                            this.dictRegion = res;
-                            this.dictEnter = res;//入驻类型
+                            this.dictLevel = res['data'];
+                            this.dictRegion = res['data'];
+                            this.dictEnter = res['data'];//入驻类型
                             console.log(res);
-                            this.dictService = res;//空间服务
-                            this.dictFacility = res;//配套设施
+                            this.dictService = res['data'];//空间服务
+                            this.dictFacility = res['data'];//配套设施
                         }
                     })
             },

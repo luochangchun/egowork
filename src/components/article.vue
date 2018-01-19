@@ -25,13 +25,13 @@
                         <div class="news-rightlist" style="background-color:#fff">
                             <p class="f16 b">热门资讯 : </p>
                             <el-row class="news-rightlist">
-                                <el-col :lg="24" :md="24" :sm="24" :xs="24" class="m-t" v-for="(item, index) in 8" :key="index" style="margin: 10px 5px 20px 5px;">
+                                <el-col :lg="24" :md="24" :sm="24" :xs="24" class="m-t" v-for="(item, index) in ranking" :key="index" style="margin: 10px 5px 20px 5px;">
                                     <div>
-                                        <router-link to="/article">
-                                            <p style="margin-bottom: 5px;clear:both;color: #428bca;"> 省科技厅关于组织申报2018年度大学生科技创业专项计划项目的通知</p>
+                                        <router-link :to="{ name: 'article',params: { id: item.id}}">
+                                            <p style="margin-bottom: 5px;clear:both;color: #428bca;"> {{ item.title }}</p>
                                             <div style="margin-bottom:20px;">
-                                                <p class="text-muted pull-left m-r"><i class="el-icon-time"></i><span>时间：2017-11-28</span></p>
-                                                <p class="text-muted pull-left"><i class="el-icon-view"></i> <span>浏览:1134次</span></p>
+                                                <p class="text-muted pull-left m-r"><i class="el-icon-time"></i><span>时间：{{ item.time | formatDate }}</span></p>
+                                                <p class="text-muted pull-left"><i class="el-icon-view"></i> <span>浏览:{{ item.views }}次</span></p>
                                             </div>
                                         </router-link>
                                     </div>
@@ -45,3 +45,44 @@
         </div>
     </div>
 </template>
+<script>
+    import {
+        formatDate
+    } from '../../static/js/date.js'
+    export default {
+        data() {
+            return {
+                ranking: '',
+            };
+        },
+        created() {
+            this.setNews();
+        },
+        methods: {
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            setNews() {
+                var _this = this;
+                _this.getRequest('/pub/news')
+                    .then(res =>{
+                        if (res && res.status == 200) {
+                            this.ranking = res['data']['ranking'];  //右侧热门资讯
+                            console.log(res['data']['ranking']);
+                        }
+                    })
+            }
+
+
+
+        },
+
+
+        filters: {
+
+        }
+    };
+</script>
+<style>
+
+</style>

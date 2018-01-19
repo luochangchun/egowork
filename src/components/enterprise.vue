@@ -65,7 +65,7 @@
                 _this.getRequest('/enterprise/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.enterprise = res;
+                            this.enterprise = res['data'];
                         }
                     })
             },

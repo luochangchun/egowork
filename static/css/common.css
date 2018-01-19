@@ -1170,6 +1170,13 @@ footer .router-link-exact-active{
 .el-menu-item.is-active {
     color: #18b494;
 }
+.serviceDetail .active{
+    color:#18b494;
+    font-weight: bold;
+}
+.el-menu-item-group ul li{
+    padding:0 20px !important;
+}
 /*服务详情页*/
 
 

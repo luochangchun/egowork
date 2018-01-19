@@ -58,8 +58,8 @@
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.content = res['content']; //入孵企业列表
-                            this.total = res['total'] * 10; //分页
+                            this.content = res['data']['content']; //入孵企业列表
+                            this.total = res['data']['total'] * 10; //分页
                         }
                     })
             },
@@ -70,8 +70,8 @@
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200){
-                            this.content = res['content'];
-                            this.total = res["total"] * 10;
+                            this.content = res['data']['content'];
+                            this.total = res['data']["total"] * 10;
                         }
                     })
             }

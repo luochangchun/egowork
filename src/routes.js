@@ -57,7 +57,7 @@ const routes = [
     { path: '/service', component: service, name: 'service' },
     { path: '/serviceDetail/:id', component: serviceDetail, name: 'serviceDetail' },
     { path: '/news', component: news, name: 'news' },
-    { path: '/article', component: article, name: 'article' },
+    { path: '/article/:id', component: article, name: 'article' },
 ];
 // 页面刷新时，重新赋值token
 // if (window.localStorage.getItem('token')) {

@@ -13,46 +13,42 @@
                             </el-tab-pane>
                             <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :cid="item.id">
                                 <el-row>
-                                    <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
-                                        <el-col :lg="6" :md="6" :sm="6" :xs="6">
-                                            <div class="s-img">
+                                    <el-col :lg="6" :md="6" :sm="6" :xs="6">
+                                        <div class="s-img">
                                                 <span v-if="item.category.id == 163">
                                                     <img src="static/img/163.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 164">
+                                            <span v-if="item.category.id == 164">
                                                     <img src="static/img/164.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 165" >
+                                            <span v-if="item.category.id == 165" >
                                                     <img src="static/img/165.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 166">
+                                            <span v-if="item.category.id == 166">
                                                     <img src="static/img/166.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 167">
+                                            <span v-if="item.category.id == 167">
                                                     <img src="static/img/167.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 168">
+                                            <span v-if="item.category.id == 168">
                                                     <img src="static/img/168.png" alt="" class="rel">
                                                 </span>
-                                                <span v-if="item.category.id == 169">
+                                            <span v-if="item.category.id == 169">
                                                     <img src="static/img/169.png" alt="" class="rel">
                                                 </span>
-                                                <!--<img src="static/img/fw_left1.png" class="rel">-->
-                                                <p class="abs white f14 serp">{{ item.category.description }}</p>
-                                            </div>
-                                        </el-col>
-                                        <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index">
-
-                                            <ul class="service_index_ul cl">
-                                                <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
-                                                    <li class="service_index_li">
-                                                        <h1>{{ item.title }}</h1>
-                                                        <p class="text-ellipsis-muti text-ellipsis-3">{{ item.intro }}</p>
-                                                    </li>
-                                                </router-link>
-                                            </ul>
-                                        </el-col>
-                                    </router-link>
+                                            <p class="abs white f14 serp">{{ item.category.description }}</p>
+                                        </div>
+                                    </el-col>
+                                    <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index">
+                                        <ul class="service_index_ul cl">
+                                            <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
+                                                <li class="service_index_li">
+                                                    <h1>{{ item.title }}</h1>
+                                                    <p class="text-ellipsis-muti text-ellipsis-3">{{ item.intro }}</p>
+                                                </li>
+                                            </router-link>
+                                        </ul>
+                                    </el-col>
                                 </el-row>
                             </el-tab-pane>
                         </el-tabs>
@@ -182,14 +178,14 @@
             setService() {
                 var _this = this;
                 _this.getRequest('/pub/service')
-                    .then(res =>{
+                    .then(res => {
                         if (res && res.status == 200) {
-                            this.services = res;  //服务
-                            console.log(res);
+                            this.services = res['data'];  //服务分类
+                            console.log(res['data']);
+//                        console.log(res);
                         }
                     })
             }
-
         },
         filters: {
 
