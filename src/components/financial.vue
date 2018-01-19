@@ -77,6 +77,7 @@
 </template>
 
 <script>
+    import api from "../axios/api.js";
     import FinancialProjectItem from './common/financialProjectItem.vue' //融资项目组件
     import AgencyItem from './common/agencyItem.vue' //投资机构组件
     export default {
@@ -122,8 +123,7 @@
                     'name':'红杉资本',
                     'info':'非常好',
                     'label':'天使基金人'
-                }
-                ]
+                }]
             }
         },
         components: {

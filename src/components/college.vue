@@ -117,7 +117,6 @@
 </template>
 
 <script>
-  import api from "../axios/api.js";
   import ActivityItem from './common/activityItem.vue' //活动组件
   import HotCourseItem from './common/hotCourse.vue' //热门课程组件
   export default {
@@ -140,33 +139,39 @@
     },
     methods: {
       getCollege() {
-        api.Get("/pub/college").then(res => {
-          this.activityList = res['activities'];
-          this.trainList = res['educates'];
+        var _this = this;
+        _this.getRequest('/pub/college', {}).then(res => {
+          if (res && res.status == 200) {
+            _this.activityList = res['data']['activities'];
+            _this.trainList = res['data']['educates'];
+          }
         });
       },
       getCourseList() {
+        var _this = this;
         var domain = "http://vedio.whwomen.org.cn";
-        var turl ="http://vedio.whwomen.org.cn/free/play/";
-        api.outGet("http://vedio.whwomen.org.cn/webapp/cou/list?currentPage=1&pageSize=6").then(res => {
-          if (res['success'] == true) {
-            this.HotCourseList = res['entity']['courseList'];
-            for (var i = 0; i < res['entity']['courseList'].length; i++) {
-              res['entity']['courseList'][i]['logo'] = domain + res['entity']['courseList'][i]['logo'];
-              res['entity']['courseList'][i]['courseId'] = turl + res['entity']['courseList'][i]['courseId'];
+        var turl = "http://vedio.whwomen.org.cn/free/play/";
+        _this.outGet("http://vedio.whwomen.org.cn/webapp/cou/list?currentPage=1&pageSize=6").then(res => {
+          console.log(res);
+          if (res && res.status == 200) {
+            this.HotCourseList = res['data']['entity']['courseList'];
+            for (var i = 0; i < res['data']['entity']['courseList'].length; i++) {
+              res['data']['entity']['courseList'][i]['logo'] = domain + res['data']['entity']['courseList'][i]['logo'];
+              res['data']['entity']['courseList'][i]['courseId'] = turl + res['data']['entity']['courseList'][i]['courseId'];
             }
           }
         });
       },
       getTeacherList() {
+        var _this = this;
         var domain = "http://vedio.whwomen.org.cn";
         var turl = "http://vedio.whwomen.org.cn/front/teacher/";
-        api.outGet("http://vedio.whwomen.org.cn/webapp/teacher/list?currentPage=1&pageSize=8").then(res => {
-          if (res['success'] == true) {
-            this.teacherList = res['entity']['teacherList'];
-            for (var i = 0; i < res['entity']['teacherList'].length; i++) {
-              res['entity']['teacherList'][i]['id'] = turl + res['entity']['teacherList'][i]['id'];
-              res['entity']['teacherList'][i]['picPath'] = domain + res['entity']['teacherList'][i]['picPath'];
+        _this.outGet("http://vedio.whwomen.org.cn/webapp/teacher/list?currentPage=1&pageSize=8").then(res => {
+          if (res && res.status == 200) {
+            this.teacherList = res['data']['entity']['teacherList'];
+            for (var i = 0; i < res['data']['entity']['teacherList'].length; i++) {
+              res['data']['entity']['teacherList'][i]['id'] = turl + res['data']['entity']['teacherList'][i]['id'];
+              res['data']['entity']['teacherList'][i]['picPath'] = domain + res['data']['entity']['teacherList'][i]['picPath'];
             }
           }
         });
