@@ -13,15 +13,17 @@
             <el-row :gutter="20" class="activity_top clearfix">
                 <el-col :sm="24" :lg="6" :xl="6"><img src="http://www.egowork.com/upload/images/articleimage/2017091916/1505811548599_e1980b59fa3e4e6f9c0ace3bf228b882.jpeg" alt=""> </el-col>
                 <el-col :sm="24" :lg="18" :xl="18" class="info">
-                    <h1 class="text-ellipsis">11月8日，首届武汉女性创业大赛颁奖典礼及女性云创空间揭牌仪式诚邀请您参加！</h1>
-                    <p class="f14 text-ellipsis">活动时间： <span>2017-11-8 9:34:31</span> </p>
-                    <p class="f14 text-ellipsis">活动地址： <span>武汉市江汉区常青五路25号武汉妇女新技术创业中心</span> </p>
+                    <h1 class="text-ellipsis">{{activity.title}}</h1>
+                    <p class="f14 text-ellipsis">活动时间： <span>{{activity.activeTime}}</span> </p>
+                    <p class="f14 text-ellipsis">活动地址： <span>{{activity.address}}</span> </p>
                 </el-col>
             </el-row>
             <el-row :gutter="20" class="activity_bottom clearfix">
                 <el-col>
                     <el-tabs v-model="activeName" @tab-click="handleClick">
-                        <el-tab-pane label="活动详情" name="first"></el-tab-pane>
+                        <el-tab-pane label="活动详情" name="first">
+                            <div class="activity_bottom_body" v-html="activity.content"></div>
+                        </el-tab-pane>
                         <el-tab-pane label="活动评价" name="second">
                             <div class="reply_list">
                                 <div class="item rel">
@@ -63,6 +65,7 @@
 </template>
 
 <script>
+    import api from "../axios/api.js";
     export default {
         data() {
             return {
@@ -70,12 +73,23 @@
                 activeName: "second",
                 form: {
                     desc: ''
-                }
+                },
+                activity: ""
             }
+        },
+        mounted() {
+            let id = this.$route.params.id;
+            this.initActivity(id);
         },
         methods: {
             handleClick(tab, event) {
                 console.log(tab, event);
+            },
+            initActivity(id) {
+                let url = "/activity/" + id;
+                api.Get(url).then(res => {
+                    this.activity = res;
+                });
             }
         }
     };

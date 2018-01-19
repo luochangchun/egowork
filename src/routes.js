@@ -5,12 +5,13 @@ import college from '../src/components/college.vue'//云创学院首页
 import activity from '../src/components/activity.vue'//活动详情
 import activityList from "../src/components/activityList.vue";//活动列表
 import financial from "../src/components/financial.vue";//云创金融首页
-// import financialList from "../src/components/financialList.vue";//云创金融(融资项目或投资机构列表页)
-// import forms from '../src/components/forms.vue'//表单集合
+import financialList from "../src/components/financialList.vue";//云创金融(融资项目或投资机构列表页)
 import incubator from "../src/components/incubator.vue";//孵化器详情页
 import register from '../src/components/register/register.vue'//注册组件
 import login from '../src/components/register/login.vue'//登录组件
 import forms from '../src/components/forms.vue'//表单集合
+import personalCenter from '../src/components/personalCenter/personalCenter.vue'//个人中心首页
+import apply from '../src/components/personalCenter/apply.vue'//个人中心申请表格
 
 
 import incubatorsList from "../src/components/incubatorsList.vue";//孵化器列表
@@ -32,37 +33,19 @@ import article from "../src/components/article.vue";//资讯详情页
 Vue.use(VueRouter)
 
 const routes = [
-
-
     { path: '/index', component: Index, name: 'index' },
     { path: '/college', component: college, name: 'college' },
     { path: '/activityList/:type', component: activityList, name: 'activityList' },
-    { path: '/activity', component: activity, name: 'activity' },
+    { path: '/activity/:id', component: activity, name: 'activity' },
     { path: '/financial', component: financial, name: 'financial' },
-    // { path: '/financialList', component: financialList, name: 'financialList' },
-
-
-
-
-
-
-	{ path: '/register', component: register, name: 'register' },
-	{ path: '/login', component: login, name: 'login' },
-
-	// { path: '/forms', component: forms, name: 'forms' },
-
-
-	{ path: '/forms', component: forms, name: 'forms' },
-
-
-	{ path: '/index', component: Index, name: 'index' },
-	{ path: '/college', component: college, name: 'college' },
-	{ path: '/activityList/:type', component: activityList, name: 'activityList' },
-	{ path: '/activity', component: activity, name: 'activity' },
-	{ path: '/financial', component: financial, name: 'financial' },
-	{ path: '/register', component: register, name: 'register' },
-	{ path: '/login', component: login, name: 'login' },
-	{ path: '/forms', component: forms, name: 'forms' },
+    { path: '/register', component: register, name: 'register' },
+    { path: '/login', component: login, name: 'login' },
+    { path: '/forms', component: forms, name: 'forms' },
+    {
+        path: '/personalCenter', component: personalCenter, name: 'personalCenter',
+        children: [
+            { path: '/apply/:type', component: apply, name: 'apply', hidden: true },]
+    },
 
 
     { path: '/incubator/:id', component: incubator, name: 'incubator' },

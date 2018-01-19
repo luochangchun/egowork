@@ -206,6 +206,7 @@
 
 <script>
     import api from '../axios/api.js'
+    import commonSwiper from '../components/common/swiper.vue'
     import {
         formatDate
     } from '../../static/js/date.js'
@@ -228,14 +229,13 @@
             }
         },
         components: {
-
+            commonSwiper:commonSwiper
         },
         created() {
             this.setNewsApi();
             this.setIncubator();
         },
         filters: {
-
         },
         methods: {
             setNewsApi() {

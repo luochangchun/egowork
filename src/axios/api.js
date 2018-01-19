@@ -52,6 +52,19 @@ export function toGet(url) {
       })
   })
 }
+// 访问外链url
+export function outerGet(url) {
+  const newUrl = url
+  return new Promise((resolve) => {
+    axios.get(newUrl)
+      .then(response => {
+        resolve(response.data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}
 // 封装axios的post请求
 export function fetch(url, params) {
   const newUrl = baseUrl + url
@@ -98,6 +111,9 @@ export default {
   axios,
   Get(url) {
     return toGet(url)
+  },
+  outGet(url) {
+    return outerGet(url)
   },
   Post(url, params) {
     return fetch(url, params)
