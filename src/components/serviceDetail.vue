@@ -14,13 +14,13 @@
                         <el-submenu index="1">
                             <template slot="title">
                                 <a target="_blank" href="https://www.hansap.com/portal/welcome" style="color:#333;">
-                                    <span slot="title" class="f16 b">企业信息化</span>
+                                    <span slot="title" class="f15 b">企业信息化</span>
                                 </a>
                             </template>
                         </el-submenu>
-                        <el-submenu index="2" v-for="(item,index) in services" :key="index">
+                        <el-submenu :index="item.category.id" v-for="(item,index) in services" :key="index">
                             <template slot="title">
-                                <span slot="title" class="f16 b">{{ item.category.name }}</span>
+                                <span slot="title" class="f15 b">{{ item.category.name }}</span>
                             </template>
                             <el-menu-item-group>
                                 <el-menu-item index="2-1" v-for="(item, index) in item.products" :key="index">
