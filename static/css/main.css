@@ -1337,7 +1337,7 @@ a {
 }
 
 .commmonForm .el-form-item {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .commmonForm .el-dialog__body {
@@ -1362,10 +1362,11 @@ a {
     height: 34px;
 }
 
-.commmonForm .el-form-item.is-success .el-input__inner {
+.commmonForm .el-form-item.is-success .el-input__inner,
+.el-form-item.is-success .el-textarea__inner {
     border-color: #dcdfe6;
 }
-
+.el-form-item.is-success .el-textarea__inner
 
 /* 个人中心 */
 
