@@ -2,7 +2,7 @@
     <div class="hatchedList">
         <div class="container">
             <el-row :gutter="20" class="clearfix">
-                <el-col :lg="6" :md="6" :sm="12" :xs="24"  v-for="(item,index) in content" :key="index">
+                <el-col :lg="6" :md="6" :sm="12" :xs="24"  v-for="(item,index) in hatchedList" :key="index">
                     <router-link :to="{ name: 'enterprise',params: { id: item.id}}" class="item db">
                         <h1 class="tc text-ellipsis p_padding black1 f18">{{ item.name }}</h1>
                         <div class="line_green"></div>
@@ -20,12 +20,10 @@
                 </el-col>
             </el-row>
             <!--分页-->
-            <el-row class="margin-bottom tc">
-                <el-col :lg="24" :md="24" :sm="24" :xs="24">
-                    <div class="block">
-                        <el-pagination :current-page="0" :total="total"  @current-change="getHatchedList" layout="prev, pager, next">
-                        </el-pagination>
-                    </div>
+            <el-row>
+                <el-col class="tc margin-bottom">
+                    <el-pagination background layout="prev, pager, next" @current-change="getHatchedList" :total="totalPages">
+                    </el-pagination>
                 </el-col>
             </el-row>
         </div>
@@ -38,15 +36,16 @@
     export default {
         data() {
             return {
-                content: '',
-                total: '',
+                hatchedList: '',
+                totalPages: '',
             }
         },
         components: {
 
         },
         created() {
-            this.setEnterpriseList()
+            this.setEnterpriseList();
+            this.getHatchedList(val);
         },
         filters: {
 
@@ -54,24 +53,24 @@
         methods: {
             setEnterpriseList() {
                 var _this = this;
-                let url = '/enterprise/' + '8' + '/' + '0';
+                let url = '/enterprise/12/0';
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.content = res['data']['content']; //入孵企业列表
-                            this.total = res['data']['total'] * 10; //分页
+                            this.hatchedList = res['data']['content']; //入孵企业列表
+                            this.totalPages = res['data']['total'] * 10; //分页
                         }
                     })
             },
             getHatchedList(val) {
                 var _this = this;
                 //获取到当前分页页码，获取当前页面数据
-                var url = '/enterprise/' + '8' + '/' + val;
+                var url = '/enterprise/12/' + val;
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200){
-                            this.content = res['data']['content'];
-                            this.total = res['data']["total"] * 10;
+                            this.hatchedList = res['data']['content'];
+                            this.totalPages = res['data']["total"] * 10;
                         }
                     })
             }

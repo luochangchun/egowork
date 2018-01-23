@@ -1132,6 +1132,13 @@ footer .router-link-exact-active{
     padding: 15px;
     line-height: 25px;
 }
+.el-tabs__item.is-active {
+    color: #18b494;
+}
+.el-tabs__item:hover {
+    color: #18b494;
+    cursor: pointer;
+}
 /*服务*/
 
 /*服务详情页*/
@@ -1175,10 +1182,14 @@ footer .router-link-exact-active{
     font-weight: bold;
 }
 .el-menu-item-group ul li{
-    padding:0 20px !important;
+    padding:0 5px !important;
 }
 .f15{
     font-size: 15px;
+}
+.el-submenu.is-opened .el-submenu__title{
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#72f9dd), to(#18b494));
+    color:#fff;
 }
 /*服务详情页*/
 
@@ -1284,7 +1295,11 @@ footer .router-link-exact-active{
 
 /*资讯中心*/
 .news-leftlist{
-  margin-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.news-left{
+    padding:5px 0;
 }
 .pos-abt {
     position: absolute;
@@ -1363,8 +1378,17 @@ hr {
 .m-right{
     margin: 10px 5px 20px 5px;
 }
+.news-height{
+    height:80px;
+    margin-bottom: 5px;
+}
+.el-tabs__active-bar{
+    background-color:#18b494;
+}
 /*资讯中心*/
 
 /*分页*/
-
+.el-pagination.is-background .el-pager li.active{
+    background-color: #18b494;
+}
 /*分页*/

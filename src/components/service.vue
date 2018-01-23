@@ -11,7 +11,7 @@
                             <el-tab-pane label="企业信息化">
                                 <a href="https://www.hansap.com/portal/welcome" target="__blank" class="s-p">点击查看更多</a>
                             </el-tab-pane>
-                            <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :cid="item.id">
+                            <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :cid="item.category.id">
                                 <el-row>
                                     <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                         <div class="s-img">
@@ -37,13 +37,15 @@
                                                     <img src="static/img/169.png" alt="" class="rel">
                                                 </span>
                                             <p class="abs white f14 serp">{{ item.category.description }}</p>
+                                            {{item.category.id}}
                                         </div>
                                     </el-col>
-                                    <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index">
+                                    <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index" :cid="item.id" v-if="index<9">
                                         <ul class="service_index_ul cl">
                                             <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                                                 <li class="service_index_li">
                                                     <h1>{{ item.title }}</h1>
+                                                    {{item.id}}
                                                     <p class="text-ellipsis-muti text-ellipsis-3">{{ item.intro }}</p>
                                                 </li>
                                             </router-link>
@@ -166,6 +168,7 @@
         data() {
             return {
                 services: '',
+                cid: '',
             };
         },
         created() {
@@ -173,7 +176,9 @@
         },
         methods: {
             handleClick(tab, event) {
-                console.log(tab, event);
+//                console.log(tab, event);
+//                this.cid = cid;
+//                window.localStorage.setItem("servicesCategoryId",id);
             },
             setService() {
                 var _this = this;
@@ -181,7 +186,7 @@
                     .then(res => {
                         if (res && res.status == 200) {
                             this.services = res['data'];  //服务分类
-                            console.log(res['data']);
+//                            console.log(res['data']);
 //                        console.log(res);
                         }
                     })

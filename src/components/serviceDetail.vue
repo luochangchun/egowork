@@ -18,9 +18,9 @@
                                 </a>
                             </template>
                         </el-submenu>
-                        <el-submenu :index="item.category.id" v-for="(item,index) in services" :key="index">
+                        <el-submenu :index="item.category.id" v-for="(item,index) in services" :key="index" :cid="item.category.id">
                             <template slot="title">
-                                <span slot="title" class="f15 b">{{ item.category.name }}</span>
+                                <span slot="title" class="f15 b" :cid="item.id">{{ item.category.name }}</span>
                             </template>
                             <el-menu-item-group>
                                 <el-menu-item index="2-1" v-for="(item, index) in item.products" :key="index">
@@ -64,6 +64,7 @@
         return {
             services: '',
             servicesDetail: '',
+            cid: 'services.category.id',
         }
     },
     components: {
@@ -85,19 +86,20 @@
                 //获取文章数据
                 //this.setServiceDetail(id);//获取id
                 this.setServiceDetail(this.$route.params.id);//传入文章id
-                console.log(this.$route.params.id);
+//                console.log(this.$route.params.id);
             }
         }
      },
 
         methods: {
         handleOpen(key, keyPath) {
-            console.log(key, keyPath);
+//            console.log(key, keyPath);
         },
         handleClose(key, keyPath) {
-            console.log(key, keyPath);
+//            console.log(key, keyPath);
         },
         setServiceList() {
+//            window.localStorage.setItem("servicesCategoryId",id);
             var _this = this;
             _this.getRequest('/pub/service')
                 .then(res =>{
@@ -108,13 +110,25 @@
                     }
                 })
         },
+//        setServiceList(cid) {
+//                var _this = this;
+//                var cid = window.localStorage.setItem("servicesCategoryId");
+//                _this.getRequest('/product/cat' + cid )
+//                    .then(res =>{
+//                        if (res && res.status == 200) {
+//                            this.services = res['data'];  //服务分类
+////                        console.log(res['data']);
+////                        console.log(res);
+//                        }
+//                    })
+//            },
         setServiceDetail(id) {
             var _this = this;
             _this.getRequest('/product/' + id)
                 .then(res =>{
                     if (res && res.status == 200) {
                         this.servicesDetail = res['data'];  //服务产品详情
-                        console.log(res);
+//                        console.log(res);
                     }
                 })
         }

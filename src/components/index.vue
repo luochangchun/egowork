@@ -23,7 +23,7 @@
                             </div>
                         </a>
                     </el-col>
-                    <el-col :lg="6" :md="6" :sm="6" :xs="8" class="index_color" v-for="(item,index) in categories" :key="index">
+                    <el-col :lg="6" :md="6" :sm="6" :xs="8" class="index_color" v-for="(item,index) in categories" :key="index" :cid="item.id">
                         <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                             <a style="color:#333;">
                                 <div class="index_service tc image-box">

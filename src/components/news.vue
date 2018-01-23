@@ -18,35 +18,33 @@
 
 
                     <!--导航切换-->
-                    <el-tabs>
-                        <el-tab-pane v-for="(item,index) in 5" :key="index" label="今日头条">
-                            <el-row :gutter="10" class="news-leftlist" v-for="(item, index) in 4" :key="index">
-                                <!--<router-link :to="{ name: 'article',params: { id: item.id}}" class="news-left news-clear">-->
+                    <el-tabs @tab-click="handleClick">
+                        <el-tab-pane v-for="(item,index) in categories" :key="index" :label="item.name" :name="item.cname" :cid="item.id">
+                            <el-row :gutter="10" class="news-leftlist">
+                                <router-link :to="{ name: 'article',params: { id: item.id}}" class="news-left news-clear" v-for="(item, index) in newsList" :key="index">
                                     <el-col :lg="8" :md="8" :sm="8" :xs="8" class="news-left-img">
-                                        <img src="static/img/nl.jpg" class="w-full">
+                                        <img :src="item.icon" class="w-full">
                                     </el-col>
                                     <el-col :lg="16" :md="16" :sm="16" :xs="16" class="news-left-content">
                                         <p class="news-text-ellipsis news-margin">
-                                            <a class="text-dark-lt f16 b">第十届武汉金融博览会暨中国中部（湖北）创业投资大会举办</a>
+                                            <a class="text-dark-lt f16 b">{{ item.title }}</a>
                                         </p>
-                                        <p class="text-ellipsis-muti text-ellipsis-4 f14 black1">11月22日，由湖北省人民政府、科技部、中国人民银行、武汉市人民政府等共同主办的第十届武汉金融博览会暨中国中部（湖北）创业投资大会开幕。</p>
-                                        <div class="pos-abt" style="bottom:25px;">
-                                            <p class="text-muted pull-left m-r"><i class="el-icon-time"></i> <span>时间：2017-11-28</span></p>
-                                            <p class="text-muted pull-left m-r"><i class="el-icon-view"></i> <span>浏览次数:1,006</span></p>
+                                        <p class="text-ellipsis-muti text-ellipsis-4 f14 black1 news-height">{{ item.description }}</p>
+                                        <div style="bottom:25px;">
+                                            <p class="text-muted pull-left m-r"><i class="el-icon-time"></i> <span>时间：{{item.time | formatDate}}</span></p>
+                                            <p class="text-muted pull-left m-r"><i class="el-icon-view"></i> <span>浏览次数: {{ item.views }}</span></p>
                                             <p class="text-muted pull-left"><i class="el-icon-edit-outline"></i> <span>云创空间</span></p>
                                         </div>
                                     </el-col>
-                                <!--</router-link>-->
+                                </router-link>
                             </el-row>
                             <!--分页-->
-                            <!--<el-row :gutter="10" style="margin-bottom: 50px;">-->
-                            <!--<el-col :lg="8" :md="8" :sm="24" :xs="24" :offset="8">-->
-                            <!--<div class="block">-->
-                            <!--<el-pagination :current-page="1" :total="totalPages" @current-change="handleCurrentChange" layout="prev, pager, next">-->
-                            <!--</el-pagination>-->
-                            <!--</div>-->
-                            <!--</el-col>-->
-                            <!--</el-row>-->
+                            <el-row>
+                                <el-col class="tc margin-bottom">
+                                    <el-pagination :current-page="0" background layout="prev, pager, next" @current-change="getNewsList" :total="totalPages">
+                                    </el-pagination>
+                                </el-col>
+                            </el-row>
                         </el-tab-pane>
                     </el-tabs>
                 </el-col>
@@ -81,16 +79,24 @@
         data() {
             return {
                 top: '',
+                categories: '',
+                newsList: '',
                 ranking: '',
+                totalPages: '',
             };
         },
         created() {
             let id = this.$route.params.id;
-            this.setNews();
+            this.setNews();//资讯页
+            this.setNewsList();//列表
         },
         methods: {
             handleClick(tab, event) {
-                console.log(tab, event);
+//                console.log(111);
+                //点击切换tab,切换文章列表类别
+                this.setNewsList(tab["$attrs"]["cid"]);
+                console.log(tab["$attrs"]["cid"]);
+                window.localStorage.setItem("cid",tab["$attrs"]["cid"]);
             },
             setNews() {
                 var _this = this;
@@ -98,13 +104,38 @@
                     .then(res =>{
                         if (res && res.status == 200) {
                             this.top = res['data']['top'];  //左侧顶部两个资讯
-                            console.log(res['data']['top']);
+                            this.categories = res['data']['categories'];//分类
                             this.ranking = res['data']['ranking'];  //右侧热门资讯
-                            console.log(res['data']['ranking']);
                         }
                     })
-                }
-
+                },
+            setNewsList(cid) {
+                var _this = this;
+                let url = '/article/10/0';
+//                var url = "/article/" + cid + "/" + "12" + "/" + "0";
+                _this.getRequest(url)
+                    .then(res =>{
+                        if (res && res.status == 200) {
+                            this.newsList = res['data']['content']; //资讯列表
+//                            console.log(res['data']['content']);
+                            this.totalPages = res['data']['total'] * 10; //分页
+                        }
+                    })
+            },
+            getNewsList(val) {
+                var _this = this;
+                //获取到当前分页页码，获取当前页面数据
+                let cid=window.localStorage.getItem("cid");
+//                var url = "/article/" + cid + "/" + "12" + "/" + val;
+                var url = '/article/10/' + val;
+                _this.getRequest(url)
+                    .then(res =>{
+                        if (res && res.status == 200){
+                            this.newsList = res['data']['content'];
+                            this.totalPages = res['data']["total"] * 10;
+                        }
+                    })
+            },
 
 
             },
