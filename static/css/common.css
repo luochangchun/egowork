@@ -1191,6 +1191,9 @@ footer .router-link-exact-active{
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#72f9dd), to(#18b494));
     color:#fff;
 }
+.el-submenu__icon-arrow{
+    font-size: 16px;
+}
 /*服务详情页*/
 
 

@@ -37,17 +37,17 @@
                 <el-col :lg="18" :md="18" :sm="24" :xs="24" class="category-bg">
                     <div class="service_detail_title">
                         <el-col :lg="24" :md="24" :sm="24" :xs="24" class="service_body">
-                                <div>
-                                    <p class="f20 b" style="color:#18b494;display: inline-block; margin-bottom:30px;">
-                                        {{ servicesDetail.title }}
-                                    </p>
-                                    <!--QQ-->
-                                    <a id="category-qq" class="text-center ng-scope" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank">
-                                        <!--<i class="icon fa fa-qq animate_opatoshow animate_start"> 在线咨询</i>-->
-                                        <img src="static/img/btn_zxzx.png" alt="">
-                                    </a>
-                                    <div v-html="servicesDetail.content" style="border-top:1px dashed #ddd;padding-top:20px;"></div>
-                                </div>
+                            <div>
+                                <p class="f20 b" style="color:#18b494;display: inline-block; margin-bottom:30px;">
+                                    {{ servicesDetail.title }}
+                                </p>
+                                <!--QQ-->
+                                <a id="category-qq" class="text-center ng-scope" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank">
+                                    <!--<i class="icon fa fa-qq animate_opatoshow animate_start"> 在线咨询</i>-->
+                                    <img src="static/img/btn_zxzx.png" alt="">
+                                </a>
+                                <div v-html="servicesDetail.content" style="border-top:1px dashed #ddd;padding-top:20px;"></div>
+                            </div>
                         </el-col>
                     </div>
                 </el-col>
@@ -60,56 +60,56 @@
         formatDate
     } from '../../static/js/date.js'
     export default {
-    data() {
-        return {
-            services: '',
-            servicesDetail: '',
-            cid: 'services.category.id',
-        }
-    },
-    components: {
-
-    },
-    created() {
-        let id = this.$route.params.id;
-        this.setServiceList();
-        this.setServiceDetail(id);
-
-    },
-    filters: {
-
-    },
-//路由监听
-    watch: {
-        '$route' (to, from) { //监听路由是否变化
-            if(this.$route.params.id){//是否有文章id /文章id
-                //获取文章数据
-                //this.setServiceDetail(id);//获取id
-                this.setServiceDetail(this.$route.params.id);//传入文章id
-//                console.log(this.$route.params.id);
+        data() {
+            return {
+                services: '',
+                servicesDetail: '',
+                cid: 'services.category.id',
             }
-        }
-     },
+        },
+        components: {
+
+        },
+        created() {
+            let id = this.$route.params.id;
+            this.setServiceList();
+            this.setServiceDetail(id);
+
+        },
+        filters: {
+
+        },
+//路由监听
+        watch: {
+            '$route' (to, from) { //监听路由是否变化
+                if(this.$route.params.id){//是否有文章id /文章id
+                    //获取文章数据
+                    //this.setServiceDetail(id);//获取id
+                    this.setServiceDetail(this.$route.params.id);//传入文章id
+//                console.log(this.$route.params.id);
+                }
+            }
+        },
 
         methods: {
-        handleOpen(key, keyPath) {
+            handleOpen(key, keyPath) {
 //            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
+            },
+            handleClose(key, keyPath) {
 //            console.log(key, keyPath);
-        },
-        setServiceList() {
+            },
+            setServiceList() {
 //            window.localStorage.setItem("servicesCategoryId",id);
-            var _this = this;
-            _this.getRequest('/pub/service')
-                .then(res =>{
-                    if (res && res.status == 200) {
-                        this.services = res['data'];  //服务分类
+                var _this = this;
+                _this.getRequest('/pub/service')
+                    .then(res =>{
+                        if (res && res.status == 200) {
+                            this.services = res['data'];  //服务分类
 //                        console.log(res['data']);
 //                        console.log(res);
-                    }
-                })
-        },
+                        }
+                    })
+            },
 //        setServiceList(cid) {
 //                var _this = this;
 //                var cid = window.localStorage.setItem("servicesCategoryId");
@@ -122,22 +122,22 @@
 //                        }
 //                    })
 //            },
-        setServiceDetail(id) {
-            var _this = this;
-            _this.getRequest('/product/' + id)
-                .then(res =>{
-                    if (res && res.status == 200) {
-                        this.servicesDetail = res['data'];  //服务产品详情
+            setServiceDetail(id) {
+                var _this = this;
+                _this.getRequest('/product/' + id)
+                    .then(res =>{
+                        if (res && res.status == 200) {
+                            this.servicesDetail = res['data'];  //服务产品详情
 //                        console.log(res);
-                    }
-                })
+                        }
+                    })
+            }
+
+
+
         }
 
-
-
     }
-
-}
 </script>
 
 

@@ -19,7 +19,7 @@
 
                     <!--导航切换-->
                     <el-tabs @tab-click="handleClick">
-                        <el-tab-pane v-for="(item,index) in categories" :key="index" :label="item.name" :name="item.cname" :cid="item.id">
+                        <el-tab-pane v-for="(item,index) in categories" :key="index" :label="item.name" :name="item.cname" :id="item.id">
                             <el-row :gutter="10" class="news-leftlist">
                                 <router-link :to="{ name: 'article',params: { id: item.id}}" class="news-left news-clear" v-for="(item, index) in newsList" :key="index">
                                     <el-col :lg="8" :md="8" :sm="8" :xs="8" class="news-left-img">
@@ -92,11 +92,11 @@
         },
         methods: {
             handleClick(tab, event) {
-//                console.log(111);
                 //点击切换tab,切换文章列表类别
-                this.setNewsList(tab["$attrs"]["cid"]);
-                console.log(tab["$attrs"]["cid"]);
-                window.localStorage.setItem("cid",tab["$attrs"]["cid"]);
+                this.setNewsList(tab["$attrs"]["id"]);
+                console.log(tab["$attrs"]["id"]);
+                window.localStorage.setItem("id",tab["$attrs"]["id"]);
+                console.log("id",tab["$attrs"]["id"]);
             },
             setNews() {
                 var _this = this;
@@ -109,10 +109,11 @@
                         }
                     })
                 },
-            setNewsList(cid) {
+            setNewsList() {
                 var _this = this;
-                let url = '/article/10/0';
-//                var url = "/article/" + cid + "/" + "12" + "/" + "0";
+                let id=window.localStorage.getItem("id");
+//                let url = '/article/10/0';
+                var url = "/article/" + "/" + "12" + "/" + "0" + '?cid=' + id;
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
@@ -126,8 +127,8 @@
                 var _this = this;
                 //获取到当前分页页码，获取当前页面数据
                 let cid=window.localStorage.getItem("cid");
-//                var url = "/article/" + cid + "/" + "12" + "/" + val;
-                var url = '/article/10/' + val;
+                var url = "/article/" + "/" + "12" + "/" + val + '?cid = ' + cid;
+//                var url = '/article/10/' + val;
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200){

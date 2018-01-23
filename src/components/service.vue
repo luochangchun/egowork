@@ -15,25 +15,25 @@
                                 <el-row>
                                     <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                         <div class="s-img">
-                                                <span v-if="item.category.id == 163">
+                                                <span v-if="item.category.id == 173">
                                                     <img src="static/img/163.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 164">
+                                            <span v-if="item.category.id == 174">
                                                     <img src="static/img/164.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 165" >
+                                            <span v-if="item.category.id == 175" >
                                                     <img src="static/img/165.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 166">
+                                            <span v-if="item.category.id == 176">
                                                     <img src="static/img/166.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 167">
+                                            <span v-if="item.category.id == 177">
                                                     <img src="static/img/167.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 168">
+                                            <span v-if="item.category.id == 178">
                                                     <img src="static/img/168.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 169">
+                                            <span v-if="item.category.id == 179">
                                                     <img src="static/img/169.png" alt="" class="rel">
                                                 </span>
                                             <p class="abs white f14 serp">{{ item.category.description }}</p>

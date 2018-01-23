@@ -87,7 +87,7 @@
                                 <el-row :gutter="20" class="clearfix">
                                     <el-col :lg="8" :md="8" :sm="12" :xs="24" v-for="(item,index) in incubators" :key="index" v-if="index<3">
                                         <router-link :to="{ name: 'incubator',params: { id: item.id}}" class="index_headline">
-                                            <img :src="item.uri" alt="">
+                                            <img :src="item.photos[0]['uri']" alt="">
                                             <div class="index_headline_content">
                                                 <h4 class="h4 text-ellipsis">{{ item.title }}</h4>
                                                 <p class="p3 line-height text-ellipsis">地址: {{ item.address }}</p>

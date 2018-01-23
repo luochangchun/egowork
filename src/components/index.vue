@@ -27,25 +27,25 @@
                         <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                             <a style="color:#333;">
                                 <div class="index_service tc image-box">
-                                    <span v-if="item.id == 163">
+                                    <span v-if="item.id == 173">
                                         <img src="static/img/1631.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 164">
+                                    <span v-if="item.id == 174">
                                         <img src="static/img/1641.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 165" >
+                                    <span v-if="item.id == 175" >
                                         <img src="static/img/1651.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 166">
+                                    <span v-if="item.id == 176">
                                         <img src="static/img/1661.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 167">
+                                    <span v-if="item.id == 177">
                                         <img src="static/img/1671.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 168">
+                                    <span v-if="item.id == 178">
                                         <img src="static/img/1681.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 169">
+                                    <span v-if="item.id == 179">
                                         <img src="static/img/1691.png" alt="">
                                     </span>
                                     <p class="f20">{{ item.name }}</p>
@@ -63,7 +63,7 @@
             <div class="container">
                 <el-row>
                     <el-col :xs="24" :sm="24" :md="24" :lg="24">
-                        <p  class="incubator title">国家级孵化器</p>
+                        <p  class="incubator title">国家级孵化器 - 众创空间</p>
                         <el-col :xs="24" :sm="24" :md="24" :lg="24">
                             <el-row :gutter="20">
                                 <el-col :lg="12" :md="12" :sm="24" :xs="24">
@@ -85,7 +85,7 @@
                                     <router-link :to="{ name: 'incubator',params: { id: item.id}}">
                                         <el-col :lg="10" :md="10" :sm="10" :xs="10">
                                             <div class="right_img">
-                                                <img :src="item.uri" alt="">
+                                                <img :src="item.photos[0]['uri']" alt="">
                                             </div>
                                         </el-col>
                                         <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
@@ -170,20 +170,20 @@
             <div class="container">
                 <p class="title">线上课堂</p>
                 <el-row :gutter="20" class="clearfix" id="onlineList">
-                    <el-col :lg="6" :md="6" :sm="12" :xs="24" class="item db" style="margin-bottom: 20px" v-for="(item,index) in 4" :key="index">
+                    <el-col :lg="6" :md="6" :sm="12" :xs="24" class="item db" style="margin-bottom: 20px" v-for="(item,index) in HotCourseList" :key="index">
                         <div class="onlineWrap rel ovh">
-                            <img src="static/img/fh_bg1.png" style="height:170px;">
+                            <img :src="item.logo" style="height:170px;">
                             <div class="abs onlineMask">
                                 <a target="__blank" href="http://vedio.whwomen.org.cn/free/play/54" class="tc white db">开始学习</a>
                             </div>
                         </div>
                         <div class="onlineWord">
-                            <p class="text-ellipsis f14">工厂互联网巨头模式的优势与劣势</p>
+                            <p class="text-ellipsis f14">{{ item.courseName }}</p>
                             <p class="clearfix">
                                 <i class="fa fa-graduation-cap"></i>
-                                <span>0</span>&nbsp;&nbsp;|&nbsp;
+                                <span>{{ item.pageBuycount }}</span>&nbsp;&nbsp;|&nbsp;
                                 <i class="fa fa-eye" aria-hidden="true"></i>
-                                <span>18</span>
+                                <span>{{ item.pageViewcount }}</span>
                                 <strong class="r white tc bgColor">免费</strong>
                             </p>
                         </div>
@@ -217,14 +217,15 @@
                     { "id": '2', "src": "../static/img/banner02.jpg" },
                     { "id": '3', "src": "../static/img/banner03.jpg" }
                 ],
-                categories: '',
-                incubators: '',
-                chips: '',
-                dictIncubator: '',
+                categories: '',//服务分类
+                incubators: '',//国家级孵化器
+                chips: '',//数字
+                dictIncubator: '',//字典查询
                 upItem: '',
                 subItem: '',
-                dictLevel: '',
-                dictRegion: '',
+                dictLevel: '',//级别
+                dictRegion: '',//地区
+                HotCourseList: '',//线上课堂
             }
         },
         components: {
@@ -233,6 +234,7 @@
         created() {
             this.setNewsApi();
             this.setIncubator();
+            this.getCourseList();
         },
         filters: {
         },
@@ -261,7 +263,22 @@
                         }
                     })
             },
-
+            getCourseList() {
+                var _this = this;
+                var domain = "http://vedio.whwomen.org.cn";
+                var turl = "http://vedio.whwomen.org.cn/free/play/";
+                _this.outGet("http://vedio.whwomen.org.cn/webapp/cou/list?currentPage=1&pageSize=4").then(res => {
+                    console.log(res);
+                    if (res && res.status == 200) {
+                        this.HotCourseList = res['data']['entity']['courseList'];
+                        for (var i = 0; i < res['data']['entity']['courseList'].length; i++) {
+                            res['data']['entity']['courseList'][i]['index'] = i;
+                            res['data']['entity']['courseList'][i]['logo'] = domain + res['data']['entity']['courseList'][i]['logo'];
+                            res['data']['entity']['courseList'][i]['courseId'] = turl + res['data']['entity']['courseList'][i]['courseId'];
+                        }
+                    }
+                });
+            },
 
 
 
