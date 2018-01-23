@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-let base = 'http://192.168.11.222/ego';
+let base = 'http://192.168.11.222/ego/r';
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = base;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
@@ -44,15 +44,8 @@ export const postRequest = (url, params) => {
         method: 'post',
         url: `${base}${url}`,
         data: params,
-        transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-            }
-            return ret
-        }],
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
         }
     });
 }
@@ -71,15 +64,8 @@ export const putRequest = (url, params) => {
         method: 'put',
         url: `${base}${url}`,
         data: params,
-        transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-            }
-            return ret
-        }],
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
         }
     });
 }
