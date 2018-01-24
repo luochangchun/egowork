@@ -7,11 +7,11 @@
                 <el-row>
                     <p class="title carousel_height">创业服务</p>
                     <el-col :lg="24" :md="24" :sm="24" :xs="24">
-                        <el-tabs @tab-click="handleClick" type="card">
+                        <el-tabs @tab-click="handleClick" type="card" v-model="activeName">
                             <el-tab-pane label="企业信息化">
-                                <a href="https://www.hansap.com/portal/welcome" target="__blank" class="s-p">点击查看更多</a>
+                                <a href="https://www.hansap.com/portal/welcome" target="__blank" class="s-p"><span class="fontColor b">※</span> 点击此处可查看更多 <span class="fontColor b">※</span></a>
                             </el-tab-pane>
-                            <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :cid="item.category.id">
+                            <el-tab-pane v-for="(item,index) in services" :key="index" :label="item.category.name" :name="item.index" :cid="item.category.id">
                                 <el-row>
                                     <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                         <div class="s-img">
@@ -37,15 +37,15 @@
                                                     <img src="static/img/169.png" alt="" class="rel">
                                                 </span>
                                             <p class="abs white f14 serp">{{ item.category.description }}</p>
-                                            {{item.category.id}}
+                                            <!--{{item.category.id}}-->
                                         </div>
                                     </el-col>
                                     <el-col :lg="6" :md="6" :sm="6" :xs="6"  v-for="(item, index) in item.products" :key="index" :cid="item.id" v-if="index<9">
                                         <ul class="service_index_ul cl">
                                             <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                                                 <li class="service_index_li">
-                                                    <h1>{{ item.title }}</h1>
-                                                    {{item.id}}
+                                                    <h1 class="text-ellipsis">{{ item.title }}</h1>
+                                                    <!--{{item.id}}-->
                                                     <p class="text-ellipsis-muti text-ellipsis-3">{{ item.intro }}</p>
                                                 </li>
                                             </router-link>
@@ -167,6 +167,7 @@
     export default {
         data() {
             return {
+                activeName: '1',
                 services: '',
                 cid: '',
             };
