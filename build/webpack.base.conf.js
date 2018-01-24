@@ -52,7 +52,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/vue-bulma-tooltip')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/vue-bulma-tooltip'), resolve('static/js')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
