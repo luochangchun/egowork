@@ -67,7 +67,7 @@
                             <div class="appli_process_l">
                                 <p class="tc">服务</p>
                                 <p class="tc">申请流程</p>
-                                <a type="button" class="tc" data-toggle="modal" data-target="#demandForm" data-whatever="@mdo">发布需求</a>
+                                <a type="button" class="tc" @click="alertDemand">发布需求</a>
                             </div>
                         </el-col>
                         <el-col :lg="20" :md="20" :sm="20" :xs="20">
@@ -157,19 +157,23 @@
             <!--合作伙伴-->
 
         </div>
+        <DemandForm v-bind:demandFormProps="demandFormVisible"></DemandForm>
     </div>
 
 </template>
 <script>
-    import {
-        formatDate
-    } from '../../static/js/date.js'
+    import {formatDate} from '../../static/js/date.js'
+    import DemandForm from './common/demandForm.vue' //投资机构组件
     export default {
         data() {
             return {
                 activeName: '1',
                 services: '',
                 cid: '',
+                demandFormVisible: {
+                    flag:false,
+                    needsClassify: ""
+                }
             };
         },
         created() {
@@ -177,9 +181,7 @@
         },
         methods: {
             handleClick(tab, event) {
-//                console.log(tab, event);
-//                this.cid = cid;
-//                window.localStorage.setItem("servicesCategoryId",id);
+
             },
             setService() {
                 var _this = this;
@@ -187,14 +189,30 @@
                     .then(res => {
                         if (res && res.status == 200) {
                             this.services = res['data'];  //服务分类
-//                            console.log(res['data']);
-//                        console.log(res);
+                        }
+                    })
+            },
+            alertDemand() {
+                if (this.demandFormVisible.flag == true) {
+                    this.demandFormVisible.flag = false;
+                } else {
+                    this.demandFormVisible.flag = true;
+                    this.initDemandClassify();
+                }
+            },
+            //发布需求类别
+            initDemandClassify() {
+                var _this = this;
+                _this.getRequest('/dict/needsApply')
+                    .then(res => {
+                        if (res && res.status == 200) {
+                            _this.demandFormVisible.needsClassify = res['data'];
                         }
                     })
             }
         },
-        filters: {
-
+        components: {
+            DemandForm
         }
     };
 </script>
