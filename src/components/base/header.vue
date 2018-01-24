@@ -11,7 +11,7 @@
                         <a href="javascript:;" @click="alertVisit" class="index_btn white bgColor">预约参观></a>
                     </el-col>
                     <el-col :xs="10" :sm="6" :md="4" :lg="4">
-                        <a class="text r ">免费注册</a>
+                        <router-link to="/register" class="text r">免费注册</router-link>
                         <i class="r hr">&nbsp;&nbsp;|&nbsp;&nbsp;</i>
                         <router-link to="/login" class="text cur r">登录</router-link>
                         <p class="text r"></p>
