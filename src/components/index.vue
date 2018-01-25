@@ -2,12 +2,12 @@
     <div class="index">
         <!--轮播-->
         <!-- <template>
-            <el-carousel :interval="5000" arrow="always">
-                <el-carousel-item v-for="(item,index) in bImgs" :key="item.id" class="header-banner-imgs">
-                    <img :src="item.src">
-                </el-carousel-item>
-            </el-carousel>
-        </template> -->
+                <el-carousel :interval="5000" arrow="always">
+                    <el-carousel-item v-for="(item,index) in bImgs" :key="item.id" class="header-banner-imgs">
+                        <img :src="item.src">
+                    </el-carousel-item>
+                </el-carousel>
+</template>-->
         <commonSwiper></commonSwiper>
 
         <!-- 全面专业的服务体系 -->
@@ -70,9 +70,8 @@
                                     <el-carousel  :interval="5000" arrow="always" class="index_incubator">
                                         <el-carousel-item v-for="(item , index) in incubators" :key="index" class="index_incubator_img">
                                             <span>
-                                                <img :src="item.photos[0]['uri']" alt="">
+                                                <img :src="item['icon']" alt="">
                                             </span>
-
                                             <div class="index_incubator_content">
                                                 <h3 class="f16 white">{{ item.title }}</h3>
                                                 <p class="text-ellipsis-muti text-ellipsis-6 f14 white">{{ item.settled }}</p>
@@ -85,7 +84,7 @@
                                     <router-link :to="{ name: 'incubator',params: { id: item.id}}">
                                         <el-col :lg="10" :md="10" :sm="10" :xs="10">
                                             <div class="right_img">
-                                                <img :src="item.photos[0]['uri']" alt="">
+                                                <img :src="item['icon']" alt="">
                                             </div>
                                         </el-col>
                                         <el-col :lg="14" :md="14" :sm="14" :xs="14" class="right_content">
@@ -206,51 +205,50 @@
 
 <script>
     import commonSwiper from '../components/common/swiper.vue'
-    import {
-        formatDate
-    } from '../../static/js/date.js'
+    import {formatDate} from '../../static/js/date.js'
     export default {
         data() {
             return {
-                categories: '',//服务分类
-                incubators: '',//国家级孵化器
-                chips: '',//数字
-                dictIncubator: '',//字典查询
-                HotCourseList: '',//线上课堂
-                upItem : '',
+                categories: '', //服务分类
+                incubators: '', //国家级孵化器
+                chips: '', //数字
+                dictIncubator: '', //字典查询
+                HotCourseList: '', //线上课堂
+                upItem: '',
                 subItem: '',
             }
         },
         components: {
-            commonSwiper:commonSwiper
+            commonSwiper: commonSwiper
         },
         created() {
             this.setNewsApi();
             this.setIncubator();
             this.getCourseList();
         },
-        filters: {
-        },
+        filters: {},
         methods: {
             setNewsApi() {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/pub/index')
-                    .then(res =>{
-                        if (res && res.status == 200){
-                            this.categories = res['data']['categories'];  //全面专业的服务体系
-                            this.incubators = res['data']['incubators']; //国家级孵化器
-//                        console.log(res['incubators']);
-                            this.chips = res['data']['chips']; //数字
+                    .then(res => {
+                        if (res && res.status == 200) {
+                            _this.categories = res['data']['categories']; //全面专业的服务体系
+                            _this.incubators = res['data']['incubators']; //国家级孵化器
+                            for (var i = 0; i < _this.incubators.length; i++) {
+                                _this.incubators[i]['icon'] = domain + _this.incubators[i]['icon'];
+                            }
+                            _this.chips = res['data']['chips']; //数字
                         }
-
                     })
             },
             setIncubator() {
                 var _this = this;
                 _this.getRequest('/dict/' + 'incubator')
-                    .then(res =>{
+                    .then(res => {
                         if (res && res.status == 200) {
-                            this.dictIncubator = res;//字典查询
+                            this.dictIncubator = res; //字典查询
                         }
                     })
             },
@@ -259,7 +257,6 @@
                 var domain = "http://vedio.whwomen.org.cn";
                 var turl = "http://vedio.whwomen.org.cn/free/play/";
                 _this.outGet("http://vedio.whwomen.org.cn/webapp/cou/list?currentPage=1&pageSize=4").then(res => {
-                    console.log(res);
                     if (res && res.status == 200) {
                         this.HotCourseList = res['data']['entity']['courseList'];
                         for (var i = 0; i < res['data']['entity']['courseList'].length; i++) {
@@ -270,19 +267,7 @@
                     }
                 });
             },
-
-
-
-
         }
-
-
-
-
-};
+    };
 </script>
-
-<style>
-
-</style>
 
