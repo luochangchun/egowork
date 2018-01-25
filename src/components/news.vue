@@ -4,22 +4,20 @@
             <el-row :gutter="20" class="margin-bottom">
                 <el-col :lg="17" :md="17" :sm="24" :xs="24">
                     <el-row :gutter="20">
-                        <el-col :lg="12" :md="12" :sm="24" :xs="24"  v-for="(item, index) in top" :key="index">
+                        <el-col :lg="12" :md="12" :sm="24" :xs="24" v-for="(item, index) in top" :key="index">
                             <div>
                                 <router-link :to="{ name: 'article',params: { id: item.id}}">
                                     <span class="news_header_img">
-                                        <img :src="item.icon" alt="">
-                                        <p class="text-ellipsis">{{ item.title }}</p>
-                                    </span>
+                                                <img :src="item.icon" alt="">
+                                                <p class="text-ellipsis">{{ item.title }}</p>
+                                            </span>
                                 </router-link>
                             </div>
                         </el-col>
                     </el-row>
-
-
                     <!--导航切换-->
-                    <el-tabs @tab-click="handleClick">
-                        <el-tab-pane v-for="(item,index) in categories" :key="index" :label="item.name" :name="item.cname" :id="item.id">
+                    <el-tabs v-model="activeName"  @tab-click="handleClick">
+                        <el-tab-pane v-for="(item,index) in categories" :key="index" :label="item.name" :name="item.cname" :cid="item.id">
                             <el-row :gutter="10" class="news-leftlist">
                                 <router-link :to="{ name: 'article',params: { id: item.id}}" class="news-left news-clear" v-for="(item, index) in newsList" :key="index">
                                     <el-col :lg="8" :md="8" :sm="8" :xs="8" class="news-left-img">
@@ -41,8 +39,8 @@
                             <!--分页-->
                             <el-row>
                                 <el-col class="tc margin-bottom">
-                                    <el-pagination :current-page="0" background layout="prev, pager, next" @current-change="getNewsList" :total="totalPages">
-                                    </el-pagination>
+                                    <el-pagination background :current-page="1" :total="totalPages" @current-change="handleCurrentChange" layout="prev, pager, next">
+                                   </el-pagination>
                                 </el-col>
                             </el-row>
                         </el-tab-pane>
@@ -71,6 +69,7 @@
         </div>
     </div>
 </template>
+
 <script>
     import {
         formatDate
@@ -78,6 +77,7 @@
     export default {
         data() {
             return {
+                activeName: "tab0",
                 top: '',
                 categories: '',
                 newsList: '',
@@ -85,68 +85,71 @@
                 totalPages: '',
             };
         },
-        created() {
-            let id = this.$route.params.id;
-            this.setNews();//资讯页
-            this.setNewsList();//列表
+        mounted() {
+            this.setNews(); //资讯页
         },
         methods: {
             handleClick(tab, event) {
                 //点击切换tab,切换文章列表类别
-                this.setNewsList(tab["$attrs"]["id"]);
-                console.log(tab["$attrs"]["id"]);
-                window.localStorage.setItem("id",tab["$attrs"]["id"]);
-                console.log("id",tab["$attrs"]["id"]);
+                this.setNewsList(tab["$attrs"]["cid"]);
+                window.localStorage.setItem("cid", tab["$attrs"]["cid"]);
             },
             setNews() {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/pub/news')
-                    .then(res =>{
+                    .then(res => {
                         if (res && res.status == 200) {
-                            this.top = res['data']['top'];  //左侧顶部两个资讯
-                            this.categories = res['data']['categories'];//分类
-                            this.ranking = res['data']['ranking'];  //右侧热门资讯
-                        }
-                    })
-                },
-            setNewsList() {
-                var _this = this;
-                let id=window.localStorage.getItem("id");
-//                let url = '/article/10/0';
-                var url = "/article/" + "/" + "12" + "/" + "0" + '?cid=' + id;
-                _this.getRequest(url)
-                    .then(res =>{
-                        if (res && res.status == 200) {
-                            this.newsList = res['data']['content']; //资讯列表
-//                            console.log(res['data']['content']);
-                            this.totalPages = res['data']['total'] * 10; //分页
+                            _this.top = res['data']['top']; //左侧顶部两个资讯
+                            for (var i = 0; i < _this.top.length; i++) {
+                                _this.top[i]['icon'] = domain + _this.top[i]['icon'];
+                            }
+                            _this.categories = res['data']['categories']; //分类  
+                            _this.categories.forEach((value, index, array) => {
+                                _this.categories[index]["cname"] = "tab" + index;
+                                if (index == 0) {
+                                    //打开新闻资讯首页，默认加载每日头条第1页
+                                    this.setNewsList(_this.categories[index]["id"]);
+                                    window.localStorage.setItem("nid", _this.categories[index]["id"]);
+                                }
+                            });
+                            this.ranking = res['data']['ranking']; //右侧热门资讯
                         }
                     })
             },
-            getNewsList(val) {
+            setNewsList(id) {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
+                var url = "/article/" + "8" + "/" + "0" + '?cid=' + id;
+                _this.getRequest(url)
+                    .then(res => {
+                        if (res && res.status == 200) {
+                            _this.newsList = res['data']['content']; //资讯列表
+                            for (var i = 0; i < _this.newsList.length; i++) {
+                                _this.newsList[i]['icon'] = domain + _this.newsList[i]['icon'];
+                            }
+                            _this.totalPages = res['data']['total'] * 10; //分页
+                        }
+                    })
+            },
+            handleCurrentChange(val) {
+                var _this = this;
+                var value = val-1;
+                var domain = "http://www.egowork.com/";
                 //获取到当前分页页码，获取当前页面数据
-                let cid=window.localStorage.getItem("cid");
-                var url = "/article/" + "/" + "12" + "/" + val + '?cid = ' + cid;
-//                var url = '/article/10/' + val;
+                let cid = window.localStorage.getItem("cid");
+                var url = "/article/" + "8" + "/" + value + '?cid=' + cid;
                 _this.getRequest(url)
-                    .then(res =>{
-                        if (res && res.status == 200){
-                            this.newsList = res['data']['content'];
-                            this.totalPages = res['data']["total"] * 10;
+                    .then(res => {
+                        if (res && res.status == 200) {
+                            _this.newsList = res['data']['content']; //资讯列表
+                            for (var i = 0; i < _this.newsList.length; i++) {
+                                _this.newsList[i]['icon'] = domain + _this.newsList[i]['icon'];
+                            }
+                            _this.totalPages = res['data']['total'] * 10; //分页
                         }
                     })
-            },
-
-
-            },
-
-
-        filters: {
-
-        }
+            }
+        },
     };
 </script>
-<style>
-
-</style>
