@@ -1139,6 +1139,11 @@ footer .router-link-exact-active{
     color: #18b494;
     cursor: pointer;
 }
+@media (max-width: 768px) {
+    .service-show{
+display: none;
+    }
+}
 /*服务*/
 
 /*服务详情页*/
@@ -1181,7 +1186,8 @@ footer .router-link-exact-active{
     color:#18b494;
     font-weight: bold;
 }
-.el-menu-item-group ul li{
+
+.serviceDetail .el-menu-item-group ul li{
     padding:0 5px !important;
 }
 .f15{

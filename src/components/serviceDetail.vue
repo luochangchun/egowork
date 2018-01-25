@@ -18,12 +18,12 @@
                                 </a>
                             </template>
                         </el-submenu>
-                        <el-submenu :index="item.category.id" v-for="(item,index) in services" :key="index" :cid="item.category.id">
+                        <el-submenu :index="item.category.id" v-if="item.id=item.category.id" v-for="(item,index) in products" :key="index" :cid="item.category.id" @tab-click="handleClick">
                             <template slot="title">
                                 <span slot="title" class="f15 b" :cid="item.id">{{ item.category.name }}</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="2-1" v-for="(item, index) in item.products" :key="index">
+                                <el-menu-item index="2-1" v-for="(item, index) in item.products" :key="index" :cid="item.id">
                                     <el-menu-item index="1-1">
                                         <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}" :router="true" class="black2 f14">
                                             {{ item.title }}
@@ -62,9 +62,9 @@
     export default {
         data() {
             return {
-                services: '',
+                category: '',
+                products: '',
                 servicesDetail: '',
-                cid: 'services.category.id',
             }
         },
         components: {
@@ -72,9 +72,9 @@
         },
         created() {
             let id = this.$route.params.id;
-            this.setServiceList();
+//            this.setServiceList();
             this.setServiceDetail(id);
-
+//            this.setService();
         },
         filters: {
 
@@ -98,37 +98,36 @@
             handleClose(key, keyPath) {
 //            console.log(key, keyPath);
             },
-            setServiceList() {
-//            window.localStorage.setItem("servicesCategoryId",id);
-                var _this = this;
-                _this.getRequest('/pub/service')
-                    .then(res =>{
-                        if (res && res.status == 200) {
-                            this.services = res['data'];  //服务分类
-//                        console.log(res['data']);
-//                        console.log(res);
-                        }
-                    })
-            },
-//        setServiceList(cid) {
+//点击
+//            handleClick(tab, event) {
+//                //点击切换tab,切换文章列表类别
+//                this.setServiceList(tab["$attrs"]["id"]);
+////                console.log(tab["$attrs"]["servicesCategory"]);
+//                window.localStorage.setItem("servicesCategory",tab["$attrs"]["id"]);
+////                console.log("servicesCategory",tab["$attrs"]["servicesCategory"]);
+//            },
+
+//            setServiceList(cid) {
 //                var _this = this;
-//                var cid = window.localStorage.setItem("servicesCategoryId");
-//                _this.getRequest('/product/cat' + cid )
+//                let sid=window.localStorage.getItem("id");
+//                _this.getRequest('/product/cat/top/' + sid )
 //                    .then(res =>{
 //                        if (res && res.status == 200) {
-//                            this.services = res['data'];  //服务分类
-////                        console.log(res['data']);
-////                        console.log(res);
+//                            this.category = res['data']['category'];  //服务分类
+////                            console.log(res['data']['category']);
+//                            this.products = res['data']['products'];  //服务分类
+////                            console.log(res['data']['products']);
 //                        }
 //                    })
 //            },
-            setServiceDetail(id) {
+            setServiceDetail() {
                 var _this = this;
+//                let id=window.localStorage.getItem("servicesCategory");
                 _this.getRequest('/product/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
                             this.servicesDetail = res['data'];  //服务产品详情
-//                        console.log(res);
+                        console.log(res['data']);
                         }
                     })
             }

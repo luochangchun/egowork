@@ -27,25 +27,25 @@
                         <router-link :to="{ name: 'serviceDetail',params: { id: item.id}}">
                             <a style="color:#333;">
                                 <div class="index_service tc image-box">
-                                    <span v-if="item.id == 173">
+                                    <span v-if="item.id == 163">
                                         <img src="static/img/1631.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 174">
+                                    <span v-if="item.id == 164">
                                         <img src="static/img/1641.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 175" >
+                                    <span v-if="item.id == 165" >
                                         <img src="static/img/1651.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 176">
+                                    <span v-if="item.id == 166">
                                         <img src="static/img/1661.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 177">
+                                    <span v-if="item.id == 167">
                                         <img src="static/img/1671.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 178">
+                                    <span v-if="item.id == 168">
                                         <img src="static/img/1681.png" alt="">
                                     </span>
-                                    <span v-if="item.id == 179">
+                                    <span v-if="item.id == 169">
                                         <img src="static/img/1691.png" alt="">
                                     </span>
                                     <p class="f20">{{ item.name }}</p>
@@ -92,10 +92,10 @@
                                             <h3 class="text-ellipsis black1 f16">{{ item.title }}</h3>
                                             <p class="text-ellipsis">地址: {{ item.address }}</p>
                                             <p>联系电话: {{ item.phone }}</p>
-                                            <p v-if="item.level == subItem.id" v-for="(subItem,index) in dictLevel" :key="index">
+                                            <p v-if="item.level == subItem.id" v-for="(subItem,index) in dictIncubator" :key="index">
                                                 级别: {{ subItem.value }}
                                             </p>
-                                            <p v-if="item.region == subItem.id" v-for="(subItem,index) in dictRegion" :key="index">
+                                            <p v-if="item.region == subItem.id" v-for="(subItem,index) in dictIncubator" :key="index">
                                                 地区: {{ subItem.value }}
                                             </p>
 
@@ -212,20 +212,13 @@
     export default {
         data() {
             return {
-                bImgs: [
-                    { "id": '1', "src": "../static/img/banner01.jpg" },
-                    { "id": '2', "src": "../static/img/banner02.jpg" },
-                    { "id": '3', "src": "../static/img/banner03.jpg" }
-                ],
                 categories: '',//服务分类
                 incubators: '',//国家级孵化器
                 chips: '',//数字
                 dictIncubator: '',//字典查询
-                upItem: '',
-                subItem: '',
-                dictLevel: '',//级别
-                dictRegion: '',//地区
                 HotCourseList: '',//线上课堂
+                upItem : '',
+                subItem: '',
             }
         },
         components: {
@@ -257,9 +250,7 @@
                 _this.getRequest('/dict/' + 'incubator')
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.dictLevel = res;//级别
-                            this.dictRegion = res;//地区
-                            this.dictIncubator = res;//label
+                            this.dictIncubator = res;//字典查询
                         }
                     })
             },

@@ -15,25 +15,25 @@
                                 <el-row>
                                     <el-col :lg="6" :md="6" :sm="6" :xs="6">
                                         <div class="s-img">
-                                                <span v-if="item.category.id == 173">
+                                                <span v-if="item.category.id == 163">
                                                     <img src="static/img/163.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 174">
+                                            <span v-if="item.category.id == 164">
                                                     <img src="static/img/164.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 175" >
+                                            <span v-if="item.category.id == 165" >
                                                     <img src="static/img/165.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 176">
+                                            <span v-if="item.category.id == 166">
                                                     <img src="static/img/166.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 177">
+                                            <span v-if="item.category.id == 167">
                                                     <img src="static/img/167.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 178">
+                                            <span v-if="item.category.id == 168">
                                                     <img src="static/img/168.png" alt="" class="rel">
                                                 </span>
-                                            <span v-if="item.category.id == 179">
+                                            <span v-if="item.category.id == 169">
                                                     <img src="static/img/169.png" alt="" class="rel">
                                                 </span>
                                             <p class="abs white f14 serp">{{ item.category.description }}</p>
@@ -63,14 +63,14 @@
             <div class="appli_process">
                 <div class="container">
                     <el-row class="appli_process_list clearfix">
-                        <el-col :lg="4" :md="4" :sm="4" :xs="4">
+                        <el-col :lg="4" :md="4" :sm="4" :xs="24">
                             <div class="appli_process_l">
                                 <p class="tc">服务</p>
                                 <p class="tc">申请流程</p>
                                 <a type="button" class="tc" @click="alertDemand">发布需求</a>
                             </div>
                         </el-col>
-                        <el-col :lg="20" :md="20" :sm="20" :xs="20">
+                        <el-col :lg="20" :md="20" :sm="20" :xs="20" class="service-show">
                             <div class="appli_process_r_1 rel"></div>
                         </el-col>
                     </el-row>

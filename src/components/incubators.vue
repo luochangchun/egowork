@@ -17,7 +17,7 @@
                                     </div>
                                     <div class="back bgColor">
                                         <p class="incubator_one_p">空间租赁</p>
-                                        <p class="index_why_p  text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:44px;">办公设施设备齐全 管家式服务、互联网+企业社群</p>
+                                        <p class="index_why_p  text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:42px;">办公设施设备齐全 管家式服务、互联网+企业社群</p>
                                         <button type="button" class="btn btn2 f14 fontColor" @click="alertRent(2)" style="margin-top:20px;line-height:20px;">立即申请 ></button>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="back bgColor">
                                         <p class="incubator_one_p">线上孵化</p>
-                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:44px;">通过我们的虚拟办公室计划，您可以选择合适的虚拟地址无需额外费用。</p>
+                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:42px;">通过我们的虚拟办公室计划，您可以选择合适的虚拟地址无需额外费用。</p>
                                         <button type="button" class="btn btn2 f14 fontColor" @click="alertOnline" style="line-height:20px;">立即申请 ></button>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="back bgColor">
                                         <p class="incubator_one_p">共享办公</p>
-                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3 white" style="height:43px;">移动办公，根据您的需求随意选择每天的办公桌位置，租期无限灵活。</p>
+                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3 white" style="height:42px;">移动办公，根据您的需求随意选择每天的办公桌位置，租期无限灵活。</p>
                                         <button type="button" class="btn btn2 f14 fontColor" @click="alertRent(1)" style="margin-top:20px;line-height:20px;">立即申请 ></button>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="back bgColor">
                                         <p class="incubator_one_p">共享会议室</p>
-                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:44px;">提供路演、采访、演讲、培训等会议室租赁服务。满足您在会议期间的餐饮、咖啡、放映设备等各种需求。</p>
+                                        <p class="index_why_p text-ellipsis-muti text-ellipsis-3" style="color:#fff;height:42px;">提供路演、采访、演讲、培训等会议室租赁服务。满足您在会议期间的餐饮、咖啡、放映设备等各种需求。</p>
                                         <button type="button" class="btn btn2 f14 fontColor" @click="alertShare" style="margin-top:20px;line-height:20px;">立即申请 ></button>
                                     </div>
                                 </div>
@@ -101,8 +101,8 @@
                                                 <div style="height:40px;overflow: hidden;">
                                                     <p class="dib" v-for="(upItem,index) in item.label" :key="index">
                                                         <span class="label2 fontColor" v-if="upItem == subItem.id" v-for="(subItem,index) in dicts" :key="index">
-                                                                                    {{ subItem.value }}
-                                                                                </span>
+                                                            {{ subItem.value }}
+                                                        </span>
                                                     </p>
                                                 </div>
                                             </div>
@@ -375,8 +375,8 @@
                 seeds: '',
                 enterprises: '',
                 dicts: '',
-                upItem: '',
-                subItem: '',
+//                upItem: '',
+//                subItem: '',
                 rentIncubators: '',
                 substances: "",
                 applyType: '',
