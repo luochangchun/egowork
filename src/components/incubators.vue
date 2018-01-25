@@ -602,12 +602,19 @@
         methods: {
             setIncubatorsApi() {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/pub/cloud')
                     .then(res => {
                         if (res && res.status == 200) {
-                            this.incubators = res['data']['incubators']; //云创孵化
+                            _this.incubators = res['data']['incubators']; //云创孵化
+                            for (var i = 0; i<_this.incubators.length; i++) {
+                                _this.incubators[i]['uri'] = domain + _this.incubators[i]['uri'];
+                            }
                             this.seeds = res['data']['seeds']; //孵化项目
-                            this.enterprises = res['data']['enterprises']; //孵化项目
+                            _this.enterprises = res['data']['enterprises']; //孵化项目
+                            for (var i = 0; i<_this.enterprises.length; i++) {
+                                _this.enterprises[i]['icon'] = domain + _this.enterprises[i]['icon'];
+                            }
                             this.dicts = res['data']['dicts'];
                         }
                     })

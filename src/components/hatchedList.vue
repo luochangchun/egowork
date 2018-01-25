@@ -53,23 +53,31 @@
         methods: {
             setEnterpriseList() {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 let url = '/enterprise/12/0';
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.hatchedList = res['data']['content']; //入孵企业列表
+                            _this.hatchedList = res['data']['content']; //入孵企业列表
+                            for (var i = 0; i<_this.hatchedList.length; i++) {
+                                _this.hatchedList[i]['icon'] = domain + _this.hatchedList[i]['icon'];
+                            }
                             this.totalPages = res['data']['total'] * 10; //分页
                         }
                     })
             },
             getHatchedList(val) {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 //获取到当前分页页码，获取当前页面数据
                 var url = '/enterprise/12/' + val;
                 _this.getRequest(url)
                     .then(res =>{
                         if (res && res.status == 200){
-                            this.hatchedList = res['data']['content'];
+                            _this.hatchedList = res['data']['content'];
+                            for (var i = 0; i<_this.hatchedList.length; i++) {
+                                _this.hatchedList[i]['icon'] = domain + _this.hatchedList[i]['icon'];
+                            }
                             this.totalPages = res['data']["total"] * 10;
                         }
                     })

@@ -17,7 +17,7 @@
                                         地区: {{ subItem.value }}
                                     </p>
                                     <button class="btn3" @click="alertRent">申请入驻</button>
-                                    <p class="p4 color2 text-ellipsis-muti text-ellipsis-4 black2">{{ incubator.settled }}</p>
+                                    <p class="p4 color2 text-ellipsis-muti text-ellipsis-4 black2" v-html="incubator.settled"></p>
                                 </div>
                             </div>
                         </el-col>
@@ -337,6 +337,7 @@
         methods: {
             setNewsApiDetail(id) {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/qb/' + id)
                     .then(res => {
                         if (res && res.status == 200) {
@@ -344,7 +345,10 @@
                             this.enter = res['data']['enter'].split(',');
                             this.service = res['data']['service'].split(',');
                             this.facility = res['data']['facility'].split(',');
-                            this.photos = res['data']['photos']; //空间展示
+                            _this.photos = res['data']['photos']; //空间展示
+                            for (var i = 0; i<_this.photos.length; i++) {
+                                _this.photos[i]['uri'] = domain + _this.photos[i]['uri'];
+                            }
                         }
                     })['data']
             },
