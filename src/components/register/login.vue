@@ -20,6 +20,7 @@
 </template>
 
 <script>
+    import * as types from '../store/types'
     export default {
         data() {
             return {
@@ -51,6 +52,11 @@
                 }
             };
         },
+        mounted() {
+            console.log(this.$store);
+            this.$store.commit(types.TITLE, 'Login');
+            this.$store.commit(types.TITLE, 'userinfo');
+        },
         methods: {
             login(formName) {
                 var _this = this;
@@ -66,6 +72,27 @@
                                     message: "登录成功",
                                     type: 'success'
                                 });
+                                this.$confirm('登录成功', '提示', {
+                                        confirmButtonText: '确定',
+                                        cancelButtonText: '取消',
+                                        type: 'success'
+                                    }).then(() => {
+                                        var userInfo = {
+                                            "userId": res['data']['data']['userId'],
+                                            "userName": res['data']['data']['userName'],
+                                        }
+                                        userInfo = JSON.stringify(userInfo);//存取用户信息
+                                        if (userInfo) {
+                                            this.$store.commit(types.USERINFO, userInfo)
+                                            let redirect = decodeURIComponent('/index');
+                                            this.$router.push({
+                                                path: redirect
+                                            });
+                                            window.location.reload();
+                                        }
+                                    }).catch(() => {
+                                        //点击取消
+                                    });
                                 _this.loginForm.name = _this.loginForm.pass = "";
                             } else {
                                 _this.$message({

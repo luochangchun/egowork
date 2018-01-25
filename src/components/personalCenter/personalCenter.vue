@@ -10,7 +10,7 @@
                                 <span>我的申请</span>
                             </template>
                             <el-menu-item-group>
-                                <el-menu-item index="/apply/01">空间租赁申请</el-menu-item>
+                                <el-menu-item index="/apply/01" class="tc">空间租赁申请</el-menu-item>
                                 <el-menu-item index="/apply/02">线上孵化申请</el-menu-item>
                                 <el-menu-item index="/apply/03">共享办公申请</el-menu-item>
                                 <el-menu-item index="/apply/04">共享会议室申请</el-menu-item>
@@ -37,7 +37,7 @@
                                 <el-menu-item index="">我融资的项目</el-menu-item>
                             </el-menu-item-group>
                         </el-submenu>
-                        <el-submenu index="/apply">
+                        <!-- <el-submenu index="/apply">
                             <template slot="title">
                                 <i class="el-icon-edit-outline"></i>
                                 <span>账户管理</span>
@@ -47,8 +47,8 @@
                                 <el-menu-item index="">账户安全</el-menu-item>
                                 <el-menu-item index="">我的优惠券</el-menu-item>
                             </el-menu-item-group>
-                        </el-submenu>
-                        <el-submenu index="/apply">
+                        </el-submenu> -->
+                        <!-- <el-submenu index="/apply">
                             <template slot="title">
                                 <i class="el-icon-edit-outline"></i>
                                 <span>客服服务</span>
@@ -56,7 +56,7 @@
                             <el-menu-item-group>
                                 <el-menu-item index="">我的退款</el-menu-item>
                             </el-menu-item-group>
-                        </el-submenu>
+                        </el-submenu> -->
                     </el-menu> 
                     <section class="content-container">
                         <router-view></router-view>

@@ -11,10 +11,12 @@
                         <a href="javascript:;" @click="alertVisit" class="index_btn white bgColor">预约参观></a>
                     </el-col>
                     <el-col :xs="10" :sm="6" :md="4" :lg="4">
-                        <router-link to="/register" class="text r">免费注册</router-link>
+                        <a v-if="loginFlag" href="javascript:;" @click="logout" class="text r">退出</a>
+                        <router-link v-if="!loginFlag" to="/register" class="text r">免费注册</router-link>
                         <i class="r hr">&nbsp;&nbsp;|&nbsp;&nbsp;</i>
-                        <router-link to="/login" class="text cur r">登录</router-link>
-                        <p class="text r"></p>
+                        <router-link v-if="!loginFlag" to="/login" class="text cur r">登录</router-link>
+                        <router-link v-if="loginFlag" to="/personalCenter" class="text r">{{username}}</router-link>
+                        <!-- <p v-if="loginFlag" class="text r">{{username}}</p> -->
                     </el-col>
                 </el-row>
             </div>
@@ -40,8 +42,8 @@
                             <router-link to="/service">云创服务</router-link>
                         </li>
                         <!-- <li>
-                                                                                 <a href="">云创咖啡</a>
-                                                                             </li> -->
+                                                                                         <a href="">云创咖啡</a>
+                                                                                     </li> -->
                         <li>
                             <router-link to="_blank" href="http://www.hangowa.com/" target="_blank">云创电商</router-link>
                         </li>
@@ -72,8 +74,8 @@
                             <router-link to="/service">云创服务</router-link>
                         </li>
                         <!-- <li>
-                                                                                 <a href="">云创咖啡</a>
-                                                                             </li> -->
+                                                                                         <a href="">云创咖啡</a>
+                                                                                     </li> -->
                         <li>
                             <router-link to="_blank" href="http://www.hangowa.com/" target="_blank">云创电商</router-link>
                         </li>
@@ -100,28 +102,28 @@
                         <!--<i class="el-icon-phone animate_opatoshow animate_start"></i>-->
                     </a>
                     <span class="text-xs block">
-                                                                <i class="el-icon-phone"></i> 027-59103580<br>
-                                                                </span>
+                                                                        <i class="el-icon-phone"></i> 027-59103580<br>
+                                                                        </span>
                 </div>
                 <!--QQ-->
                 <div id="qq" class="text-center">
                     <img src="static/img/qq.png" alt="">
                     <!--<i class="icon fa fa-qq animate_opatoshow animate_start"></i>-->
                     <span class="text-xs block">
-                                                                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
-                                                                        <img src="static/img/qq.png" alt="" >
-                                                                    </a>
-                                                                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3425454889&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
-                                                                        <img src="static/img/qq.png" alt="" >
-                                                                    </a>
-                                                                </span>
+                                                                            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3453276422&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                                                                                <img src="static/img/qq.png" alt="" >
+                                                                            </a>
+                                                                            <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=3425454889&amp;site=qq&amp;menu=yes" target="_blank" class="pull-left text-2x padder-xs tras-03 b-r b-r-dashed">
+                                                                                <img src="static/img/qq.png" alt="" >
+                                                                            </a>
+                                                                        </span>
                 </div>
                 <!--微信-->
                 <div id="code" class="text-center tras-03">
                     <img src="static/img/weixin.png" alt="">
                     <span class="text-xs" style="line-height:10px;box-shadow:0 0 10px 5px #ddd;">
-                                                                    <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" style="width:120px; height:120px;">
-                                                                </span>
+                                                                            <img src="http://www.egowork.com/themes/egowork/img/egowork.jpg" style="width:120px; height:120px;">
+                                                                        </span>
                 </div>
             </div>
         </div>
@@ -150,8 +152,8 @@
                     </el-select>
                 </el-form-item>
                 <!-- <el-form-item label="了解更多" :label-width="visitLabelWidth" prop="interest">
-                        <el-input type="textarea" :rows="3" v-model="visitForm.interest" auto-complete="off"></el-input>
-                    </el-form-item> -->
+                                <el-input type="textarea" :rows="3" v-model="visitForm.interest" auto-complete="off"></el-input>
+                            </el-form-item> -->
             </el-form>
             <div slot="footer" class="dialog-footer tc">
                 <el-button type="primary" @click="submitVisit('visitForm')">确 定</el-button>
@@ -180,6 +182,8 @@
                     flag: false,
                     needsClassify: ""
                 },
+                loginFlag: false,
+                username: '',
                 visible: false,
                 visitLabelWidth: '100px',
                 visitFormVisible: false, //预约参观flag
@@ -239,6 +243,14 @@
                 }
             }
         },
+        mounted() {
+            let userInfoStr = window.localStorage.getItem('userinfo');
+            if (userInfoStr) {
+                let userinfo = JSON.parse(userInfoStr);
+                this.loginFlag = true;
+                this.username = userinfo['userName'];
+            }
+        },
         methods: {
             showMenu() {
                 if (this.visible == true) {
@@ -246,6 +258,21 @@
                 } else {
                     this.visible = true;
                 }
+            },
+            logout() {
+                this.$confirm('退出当前账号, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    window.localStorage.clear();
+                    window.location.reload();
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    });
+                });
             },
             showMenu_sub() {
                 if (this.visible == true) {
@@ -291,7 +318,6 @@
                         }
                     })
             },
-            
             // 弹出发布需求表单
             submitDemand(formName) {
                 var _this = this;

@@ -106,3 +106,9 @@
         }
     };
 </script>
+<style scoped>
+    .activity_bottom img {
+        width: auto!important;
+    }
+</style>
+

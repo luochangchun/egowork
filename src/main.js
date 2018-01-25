@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-// import api from './axios/api'
+import store from '../src/components/store/store'
 import ElementUI from 'element-ui'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import '../static/css/reset.css'
@@ -30,5 +30,6 @@ Vue.prototype.putRequest = putRequest;
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

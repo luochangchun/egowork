@@ -1,4 +1,7 @@
 import axios from 'axios'
+import store from '../components/store/store'
+import * as types from '../components/store/types'
+import router from '../routes.js'
 import { Message } from 'element-ui'
 let base = 'http://192.168.11.222/ego/r';
 axios.defaults.timeout = 5000;

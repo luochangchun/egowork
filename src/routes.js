@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../src/components/store/store'
+import * as types from '../src/components/store/types'
 import Index from '../src/components/index.vue'//首页
 import college from '../src/components/college.vue'//云创学院首页
 import activity from '../src/components/activity.vue'//活动详情
@@ -63,12 +65,10 @@ const routes = [
     { path: '/article/:id', component: article, name: 'article' },
 ];
 // 页面刷新时，重新赋值token
-// if (window.localStorage.getItem('token')) {
-// 	store.commit(types.LOGIN, window.localStorage.getItem('token'))
-// }
-// if (window.localStorage.getItem('userinfo')) {
-// 	store.commit(types.USERINFO, window.localStorage.getItem('userinfo'))
-// }
+
+if (window.localStorage.getItem('userinfo')) {
+	store.commit(types.USERINFO, window.localStorage.getItem('userinfo'))
+}
 
 const router = new VueRouter({
     linkActiveClass: 'active',
