@@ -62,10 +62,12 @@
         methods: {
             setEnterpriseDetailApi(id) {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/enterprise/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.enterprise = res['data'];
+                            _this.enterprise = res['data'];
+                            _this.enterprise['icon'] = domain + _this.enterprise['icon'];
                         }
                     })
             },

@@ -21,7 +21,7 @@
                 </el-row>
             </div>
         </div>
-        <div class="main">
+        <div class="main shadow-bottom">
             <div class="container clear" style="position:relative;display:block;height:auto;overflow: inherit;">
                 <el-col :xs="0" :sm="4" :md="4" :lg="4">
                     <a href="" class="l logo"><img src="static/img/logo_header.png" class="padder-vx" style="margin-top:15px;"></a>

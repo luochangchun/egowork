@@ -295,7 +295,9 @@ img{
     margin-top: 50px;
     height: 80px;
 }
-
+.shadow-bottom{
+    box-shadow: 0 0 16px #e6e6e6;
+}
 /*头部*/
 
 /*footer*/
@@ -536,6 +538,21 @@ footer .router-link-exact-active{
     position: absolute;
     top:0;
     left:0;
+}
+/*动画*/
+.right_img .onlineMask {
+    width: 18.4%;
+    height: 28.4%;
+    top: 0;
+    left: 51.7%;
+    /* top: -170px; */
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: 0.8s;
+    display: none;
+}
+.right_img:hover .onlineMask{
+    display: block;
+    transition: 0.5s;
 }
 /*国家级孵化器*/
 /*数字*/
@@ -843,9 +860,11 @@ footer .router-link-exact-active{
     height:200px;
     background-size:95%;
     margin-bottom:10px;
+    padding-top:55px;
+
 }
 .incubation_project h1{
-    margin-top:55px;
+    /*margin-top:55px;*/
     font-weight: 400;
 }
 .incubation_project p{

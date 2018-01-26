@@ -87,7 +87,7 @@
                                 <el-row :gutter="20" class="clearfix">
                                     <el-col :lg="8" :md="8" :sm="12" :xs="24" v-for="(item,index) in incubators" :key="index" v-if="index<3">
                                         <router-link :to="{ name: 'incubator',params: { id: item.id}}" class="index_headline">
-                                            <img :src="item.photos[0]['uri']" alt="">
+                                            <img :src="item['icon']" alt="">
                                             <div class="index_headline_content">
                                                 <h4 class="h4 text-ellipsis">{{ item.title }}</h4>
                                                 <p class="p3 line-height text-ellipsis">地址: {{ item.address }}</p>
@@ -99,7 +99,7 @@
                                                     地区: {{ subItem.value }}
                                                 </p>
                                                 <div style="height:40px;overflow: hidden;">
-                                                    <p class="dib" v-for="(upItem,index) in item.label" :key="index">
+                                                    <p class="dib" v-for="(upItem,index) in item.label.split(',')" :key="index">
                                                         <span class="label2 fontColor" v-if="upItem == subItem.id" v-for="(subItem,index) in dicts" :key="index">
                                                             {{ subItem.value }}
                                                         </span>
@@ -127,7 +127,7 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <el-row class="clearfix">
                                     <el-col :lg="6" :md="8" :sm="12" :xs="24" class="incubation_project" v-for="(item,index) in seeds" :key="index">
-                                        <router-link :to="{ name: 'seed',params: { id: item.id}}">
+                                        <router-link :to="{ name: 'seed',params: { id: item.id}}" style="height:100%;padding-top:55px;">
                                             <h1 class="f24 tc fontColor">{{ item.name }}</h1>
                                             <p class="text-ellipsis-muti text-ellipsis-2 f14 white tc">{{ item.intro }}</p>
                                         </router-link>
@@ -607,8 +607,8 @@
                     .then(res => {
                         if (res && res.status == 200) {
                             _this.incubators = res['data']['incubators']; //云创孵化
-                            for (var i = 0; i<_this.incubators.length; i++) {
-                                _this.incubators[i]['uri'] = domain + _this.incubators[i]['uri'];
+                            for (var i = 0; i < _this.incubators.length; i++) {
+                                _this.incubators[i]['icon'] = domain + _this.incubators[i]['icon'];
                             }
                             this.seeds = res['data']['seeds']; //孵化项目
                             _this.enterprises = res['data']['enterprises']; //孵化项目

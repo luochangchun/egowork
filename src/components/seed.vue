@@ -45,10 +45,12 @@
         methods: {
             setSeedDetailApi(id) {
                 var _this = this;
+                var domain = "http://www.egowork.com/";
                 _this.getRequest('/seed/' + id)
                     .then(res =>{
                         if (res && res.status == 200) {
-                            this.seed = res['data'];
+                            _this.seed = res['data'];
+                            _this.seed['icon'] = domain + _this.seed['icon'];
                         }
                     })
             },
